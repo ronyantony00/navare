@@ -15,7 +15,7 @@ export default function RiveNavigation({ className }: RiveNavigationProps) {
   const events = [{ name: 'NAVONE-EVENT', path: '/navone' }, { name: 'NAVSCAN-EVENT', path: '/navscan' }, { name: 'NAVAIR-EVENT', path: '/navairandocean' }, { name: 'NAVBRIDGE-EVENT', path: '/navbridge' }];
 
   const { rive, RiveComponent } = useRive({
-    src: '/assets/animation/navarefinevent.riv',
+    src: '/assets/animation/navare CLICK-HOVER.riv',
     stateMachines: STATE_MACHINE,
     autoplay: true, // Allowed in useRive options
   });
@@ -30,6 +30,7 @@ export default function RiveNavigation({ className }: RiveNavigationProps) {
       const event = events.find(event => event.name === e.data?.name);
       if (event) {
         router.push(`/solutions/${event.path}`);
+        console.warn('Rive Event:', event);
       }
     };
 
@@ -38,6 +39,8 @@ export default function RiveNavigation({ className }: RiveNavigationProps) {
   }, [rive, router]);
 
   return (
-    <RiveComponent className={className} />
+    <div>
+      <RiveComponent className={className} />
+    </div>
   );
 }

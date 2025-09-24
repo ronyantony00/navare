@@ -42,11 +42,11 @@ const JobListingContent: React.FC<JobListingContentProps> = ({
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center py-space-32 text-center">
-        <div className="text-red-600 text-lg font-medium mb-space-8">
+      <div className="flex flex-col items-center justify-center py-space-32 text-center mx-auto">
+        <div className="text-text-placeholder text-sm font-medium mb-space-8">
           {t('error_occurred')}
         </div>
-        <div className="text-gray-600">
+        <div className="text-text-placeholder text-md">
           {error}
         </div>
       </div>

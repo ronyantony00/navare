@@ -1,5 +1,5 @@
 import type { TechnologySection } from '@/types/commonTypes';
-import RiveTextController from '@/components/atoms/RiveComponent/RiveComponent';
+import RiveTextController from '@/components/atoms/RiveComponent/SolutionRiveComponent';
 // import RiveComponent from '@/components/atoms/RiveComponent/RiveComponent';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import { extractTitleParts } from '@/utils/utilFunctions/extractTitleParts';

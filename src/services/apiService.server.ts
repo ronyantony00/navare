@@ -52,8 +52,7 @@ async function makeServerRequest<T>(
   let url = endpoint;
 
   // Add content mode status parameter
-  // const contentMode = process.env.NEXT_PUBLIC_CONTENT_MODE || 'published';
-  const contentMode = 'draft';
+  const contentMode = process.env.NEXT_PUBLIC_CONTENT_MODE || 'published';
   const statusParam = `status=${contentMode}`;
 
   if (params && Object.keys(params).length > 0) {
