@@ -1,0 +1,354 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --gray-100: #a8b5ad;
+  --gray-200: #ededed;
+  --gray-300: #eef9f0;
+  --gray-500: #8d8d8d;
+  --gray-600: #061611;
+  --neutral-600: #575757;
+
+  --blue-100: #206e9eb0;
+  --blue-200: #4c80ad;
+  --blue-500: #229aff;
+  --blue-800: #54a5ff;
+
+  /* Green palette */
+  --green-100: #a8b5ad;
+  --green-200: #b3dbb5;
+  --green-500: #b0db9c;
+  --green-700: #1e5547;
+  --green-800: #185a43;
+  --green-900: #11342a;
+  --green-1000: #061611e3;
+
+  /* Navare Green Palette */
+  --color-default: #0a130c;
+  --color-secondary: #0e3413;
+  --color-brand-subtle: #b0db9c;
+  --color-btn-primary: #1b7015;
+  --color-btn-secondary: #147c22;
+  --color-a-hover: #40ff40;
+  --color-heading: #0a7300;
+  --color-heading-small: #195c19;
+  --color-small-text: #b2b2b2;
+  --color-subtle-text: #d9d9d9;
+  --color-breadcrumb-nav-bg: #ededed;
+  --color-breadcrumb-separator: #47cc42;
+  --color-contact-form-bg: #f4fcf3;
+  --color-mobile-dropdown-outline: #195c24;
+  --color-hover-effect: rgba(13, 255, 25, 0.8);
+  --color-play-button-border: rgba(33, 255, 13, 0.7);
+  --color-play-button-bg: rgba(53, 255, 13, 0.4);
+  --color-service-description: #194813;
+  --color-loader: #b3dbb5;
+  --color-link: #ff492b;
+  --color-primary-blur: #153429;
+  --color-hero-text-gradient: linear-gradient(180deg, #ffffff 0%, #a4aeab 100%);
+  --color-border-image-source: linear-gradient(90deg, #357f4b 0%, #ffffff 100%);
+  --color-btn-gradient: radial-gradient(67.71% 67.71% at 53.82% 15.63%, #56e07f 0%, #2ed960 100%);
+  --color-service-card-bg: linear-gradient(180deg, #122518 0%, #071712 100%);
+  --color-legal-hub-gradient: linear-gradient(269.71deg, rgba(8, 50, 21, 0.7) 2.02%, #061611 77.46%);
+  --color-blog-card-bg: linear-gradient(180deg, #122518 0%, #071712 100%);
+  --color-pagination-btn-bg: linear-gradient(180deg, #071712 0%, #122518 100%);
+  --color-primary: #2ed960;
+  --color-stories-text: #2ed960;
+  --color-custom-black: #061611;
+  --color-toggle-border: rgba(46, 217, 96, 0.3);
+  --color-plan-section-blur: rgba(66, 137, 51, 0.49);
+  --color-placeholder-text: #a8b5ad;
+  --color-hightlight-border: #22c55e;
+  --color-feature-card-border: rgba(34, 197, 94, 0.3);
+  --color-feature-card-bg: rgba(34, 197, 94, 0.102);
+  --color-icon-bg: #15372b;
+  --color-feature-card: rgba(34, 197, 94, 0.102);
+  --color-border-light: #194439;
+}
+
+@theme {
+  /* Navare colors */
+  --color-navare-green: var(--gray-600);
+  --color-navare-green-light: #154233;
+  --color-default: #0a130c;
+  --color-primary-old: #339037;
+  --color-secondary: #0e3413;
+  --color-brand-subtle: #b0db9c;
+  --color-btn-primary: #1b7015;
+  --color-btn-secondary: #147c22;
+  --color-heading: var(--color-heading);
+  --color-heading-small: var(--color-heading-small);
+  --color-subtle-border: var(--gray-500);
+  --color-primary-blur: var(--color-primary-blur);
+  --color-secondary-blur: var(--green-800);
+  --color-pagination-btn-bg: var(--color-pagination-btn-bg);
+  --color-link-hover: var(--color-a-hover);
+  --color-link-subtle: var(--gray-500);
+  --color-link: var(--color-link);
+  --color-base-white: #ffffff;
+  --color-base-black: var(--color-black);
+  --color-secondary: var(--color-secondary);
+  --color-primary: var(--color-primary);
+  --color-tag-bg: var(--color-service-description);
+  --color-btn-primary: var(--color-btn-primary);
+  --color-btn-secondary: var(--color-btn-secondary);
+  --color-primary-text: var(--color-black);
+  --color-secondary-text: #ffffff;
+  --color-subtle-text: var(--color-subtle-text);
+  --color-subtle-dark: #575757;
+  --color-green-secondary: #1e5547;
+  --color-subtle-desc: var(--gray-300);
+  --color-feature-card-border: var(--color-feature-card-border);
+  --color-feature-card: var(--color-feature-card);
+  --color-subtle-text: #d9d9d9;
+
+  --color-text-placeholder: #a8b5ad;
+  --color-blog-card-bg: var(--color-blog-card-bg);
+  --color-border-light: var(--color-border-light);
+  --color-testimonial-card-blur: var(--green-800);
+  --color-key-card-border: #22c55e80;
+  --color-green-light-shade: #061611d1;
+  --color-blue-light-shade: #4c80ad;
+
+  /* Navare colors */
+  --color-white: var(--white);
+  --border-feature-border: var(--neutral-600);
+  --color-blue-banner: var(--blue-800);
+  --color-small-text: var(--gray-500);
+  --color-plan-card: var(--gray-200);
+  --color-plan-card-name: var(--green-100);
+  --color-plan-card-tier: var(--green-200);
+  --color-plan-card-bar: var(--green-500);
+  --color-skeleton-border: var(--gray-200);
+  --color-blue-text: var(--blue-500);
+  --color-hero-desc-color: var(--gray-100);
+  --color-impact-card-border: var(--green-100);
+  --color-sea-cargo-card-border: var(--green-100);
+  --color-desc-text: var(--gray-100);
+  --color-landing-hero-bg-color: var(--color-custom-black);
+  --color-landing-our-impact-bg: var(--color-green-200);
+  --color-border-color: var(--green-700);
+  --color-legal-hub-bg: var(--color-legal-hub-gradient);
+  --color-toggle-border: var(--color-toggle-border);
+  --color-plan-section-blur: var(--color-plan-section-blur);
+  --color-hightlight-border: var(--color-hightlight-border);
+  --color-icon-bg: var(--color-icon-bg);
+  --color-placeholder-text: var(--green-100);
+  --color-blue-circle-bg: var(--blue-100);
+  --color-primary-content-white: var(--gray-300);
+  --color-ecosystem-bg: var(--color-green-1000);
+  --color-job-detail-bg: var(--green-700);
+}
+
+.gradient-text {
+  background: var(--color-hero-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.solutions-hero-bg {
+  background: linear-gradient(285.43deg, rgba(6, 22, 17, 0) 3.27%, #061611 76.08%);
+}
+
+.feature-image-card-bg {
+  background: linear-gradient(180deg, #20512c -6.07%, #22783e 45.99%, #11342a 97.1%);
+}
+
+.pagination-btn-bg {
+  background: linear-gradient(180deg, #071712 0%, #122518 100%);
+}
+
+.general-image-shadow {
+  box-shadow: 0px 0px 9.1px 0px #fff2f240;
+}
+
+.gradient-hero {
+  background: var(--color-border-image-source);
+}
+
+.feature-image-shadow {
+  box-shadow: inset 0px 11px 10px 0px #1a7142;
+}
+
+.usecase-card-bg {
+  background: linear-gradient(180deg, #083114 0%, #071712 100%);
+}
+
+.insights-hero-shade {
+  background: linear-gradient(179.14deg, rgba(6, 22, 17, 0.6) 37.93%, rgba(6, 22, 17, 0.94) 90.81%);
+}
+
+.btn-gradient {
+  background: var(--color-btn-gradient);
+}
+
+.service-card-bg {
+  background: var(--color-service-card-bg);
+}
+
+.impact-card-bg {
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.filter-card-bg {
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.feature-card-border-color {
+  background: linear-gradient(180deg, var(--green-800) -6.07%, var(--green-900) 45.99%, var(--green-700) 97.1%);
+}
+
+.feature-card-bg {
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.landing-footer-bg {
+  background: linear-gradient(180deg, rgba(18, 37, 24, 0.82) 0%, rgba(7, 23, 18, 0.82) 100%);
+}
+
+.aboutus-testimonial-gradient {
+  background: linear-gradient(180deg, rgba(18, 37, 24, 0.9) 0%, rgba(7, 23, 18, 0.9) 100%);
+}
+
+.testimonial-page-overlay {
+  background: linear-gradient(356.1deg, rgba(0, 0, 0, 0) 40%, rgba(1, 25, 12, 0.7) 20%);
+}
+
+.blog-detail-hero-overlay {
+  background: linear-gradient(180.57deg, rgba(6, 22, 17, 0) 30.24%, rgba(6, 22, 17, 0.9) 99.43%);
+}
+
+.blog-detail-hero-gradient {
+  background: linear-gradient(180.57deg, rgba(6, 22, 17, 0) 10%, rgba(6, 22, 17, 0.94) 80%);
+}
+
+.contact-page-field-bg {
+  background: linear-gradient(180deg, rgba(12, 37, 31, 0.56) 0%, rgba(7, 23, 18, 0.56) 100%);
+}
+
+.landing-footer-border {
+  background: linear-gradient(
+    256.99deg,
+    var(--green-500) 7.24%,
+    var(--green-700) 22.44%,
+    var(--green-700) 63.13%,
+    var(--green-800) 73.67%,
+    var(--green-500) 86.87%
+  );
+}
+
+.usecase-card-gradient {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.0784314) 0%, rgba(16, 185, 129, 0.0392157) 100%);
+}
+
+.landing-hero-bg {
+  background: linear-gradient(240deg, rgba(6, 22, 17, 0) 1.27%, #061611 80.08%);
+}
+
+.main-title-color {
+  background: linear-gradient(179.44deg, #cacaca 10.88%, #808d89 108.17%);
+}
+
+.landing-sea-cargo-card-bg {
+  background: linear-gradient(180deg, #0c251f 0%, #071712 100%);
+}
+
+.primary-btn-gradient {
+  background: var(--color-btn-gradient);
+}
+
+.bg-circle-gradient {
+  border-radius: 585px;
+  background: url('/assets/images/landingPage/bg-blur-image-one.png') lightgray 50% / cover no-repeat;
+  filter: blur(151.9499969482422px);
+}
+
+.bg-circle-gradient-2 {
+  background: linear-gradient(180deg, #0c251f 0%, #071712 100%);
+}
+
+.bg-container-gradient {
+  background: linear-gradient(180deg, #0c251f 0%, #071712 100%);
+}
+
+.feature-card-shadow {
+  box-shadow: 0px 4px 25px 0px #07220f;
+}
+
+.plan-card-bg {
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.video-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 100) 100%);
+}
+
+.testimonial-footer-bg {
+  background: linear-gradient(89.9deg, #0c2a20 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.toggle-button-bg {
+  background: linear-gradient(257.84deg, #0e5605 -27.69%, #023116 51.69%);
+}
+
+.toggle-button-slider {
+  background: linear-gradient(257.84deg, #3f8245 -27.69%, #165a25 51.69%);
+}
+
+.sea-cargo-bg {
+  border: 1px solid #1e5547;
+  background: linear-gradient(180deg, #0c251f 0%, #071712 100%);
+}
+
+.team-hero-bg {
+  background: linear-gradient(179deg, rgba(6, 22, 17, 0.02) 37.93%, rgba(6, 22, 17, 0.94) 90.81%);
+}
+
+.legal-hub-bg {
+  background: linear-gradient(269.71deg, rgba(8, 50, 21, 0.7) 2.02%, #061611 77.46%);
+}
+
+.nav-option-bg {
+  background: linear-gradient(142.48deg, #062019 35.38%, #083415 78.28%);
+}
+
+.technology-section-bg {
+  background: #061611e3;
+}
+
+.pagination-btn-bg {
+  background: var(--color-pagination-btn-bg);
+}
+
+.testimonial-video-bg {
+  background: linear-gradient(180deg, rgba(18, 37, 24, 0.55) 0%, rgba(7, 23, 18, 0.55) 100%);
+}
+
+.gradient-border-box {
+  border: 4px solid transparent;
+  border-image: linear-gradient(to right, #2ed960, #164234, #164234, #185038, #2ed960) 1;
+  background-clip: padding-box;
+  background-origin: border-box;
+  border-radius: 20px;
+}
+
+/* Left side darkening gradient */
+.gradient-left {
+  background: linear-gradient(285.43deg, rgba(6, 22, 17, 0) 3.27%, #061611 76.08%);
+}
+
+/* Bottom darkening gradient */
+.gradient-bottom {
+  background: linear-gradient(to top, #061611 0%, rgba(6, 22, 17, 0) 50%);
+}
+
+/* Overall dark overlay */
+.overlay-dark {
+  background: rgba(6, 22, 17, 0.4);
+}
+
+.filter-section-shadow {
+  box-shadow: 0px 0px 16.4px 0px #022e0f;
+}

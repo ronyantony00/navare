@@ -1,0 +1,450 @@
+:root {
+  /* Base spacing scale */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem; /* 2px */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-1-5: 0.375rem; /* 6px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-2-5: 0.625rem; /* 10px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-3-5: 0.875rem; /* 14px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-4-5: 1.125rem; /* 18px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-5-5: 1.375rem; /* 22px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-6-5: 1.625rem; /* 26px */
+  --spacing-7: 1.75rem; /* 28px */
+  --spacing-7-5: 1.875rem; /* 30px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-8-5: 2.125rem; /* 34px */
+  --spacing-9: 2.25rem; /* 36px */
+  --spacing-9-5: 2.375rem; /* 38px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-10-5: 2.625rem; /* 42px */
+  --spacing-11: 2.75rem; /* 44px */
+  --spacing-11-5: 2.875rem; /* 46px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-12-5: 3.125rem; /* 50px */
+  --spacing-13: 3.25rem; /* 52px */
+  --spacing-13-5: 3.375rem; /* 54px */
+  --spacing-14: 3.5rem; /* 56px */
+  --spacing-14-5: 3.625rem; /* 58px */
+  --spacing-15: 3.75rem; /* 60px */
+  --spacing-15-5: 3.875rem; /* 62px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-16-5: 4.125rem; /* 66px */
+  --spacing-17: 4.25rem; /* 68px */
+  --spacing-17-5: 4.375rem; /* 70px */
+  --spacing-18: 4.5rem; /* 72px */
+  --spacing-18-5: 4.625rem; /* 74px */
+  --spacing-19: 4.75rem; /* 76px */
+  --spacing-19-5: 4.875rem; /* 78px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-20-5: 5.125rem; /* 82px */
+  --spacing-21: 5.25rem; /* 84px */
+  --spacing-21-5: 5.375rem; /* 86px */
+  --spacing-22: 5.5rem; /* 88px */
+  --spacing-22-5: 5.625rem; /* 90px */
+  --spacing-23: 5.75rem; /* 92px */
+  --spacing-23-5: 5.875rem; /* 94px */
+  --spacing-24: 6rem; /* 96px */
+  --spacing-24-5: 6.125rem; /* 98px */
+  --spacing-25: 6.25rem; /* 100px */
+  --spacing-25-5: 6.375rem; /* 102px */
+  --spacing-26: 6.5rem; /* 104px */
+  --spacing-26-5: 6.625rem; /* 106px */
+  --spacing-27: 6.75rem; /* 108px */
+  --spacing-27-5: 6.875rem; /* 110px */
+  --spacing-28: 7rem; /* 112px */
+  --spacing-28-5: 7.125rem; /* 114px */
+  --spacing-29: 7.25rem; /* 116px */
+  --spacing-29-5: 7.375rem; /* 118px */
+  --spacing-30: 7.5rem; /* 120px */
+  --spacing-30-5: 7.625rem; /* 122px */
+  --spacing-31: 7.75rem; /* 124px */
+  --spacing-31-5: 7.875rem; /* 126px */
+  --spacing-32: 8rem; /* 128px */
+  --spacing-32-5: 8.125rem; /* 130px */
+  --spacing-33: 8.25rem; /* 132px */
+  --spacing-33-5: 8.375rem; /* 134px */
+  --spacing-34: 8.5rem; /* 136px */
+  --spacing-34-5: 8.625rem; /* 138px */
+  --spacing-35: 8.75rem; /* 140px */
+  --spacing-35-5: 8.875rem; /* 142px */
+  --spacing-36: 9rem; /* 144px */
+  --spacing-36-5: 9.125rem; /* 146px */
+  --spacing-37: 9.25rem; /* 148px */
+  --spacing-37-5: 9.375rem; /* 150px */
+  --spacing-38: 9.5rem; /* 152px */
+  --spacing-38-5: 9.625rem; /* 154px */
+  --spacing-39: 9.75rem; /* 156px */
+  --spacing-39-5: 9.875rem; /* 158px */
+  --spacing-40: 10rem; /* 160px */
+  --spacing-40-5: 10.125rem; /* 162px */
+  --spacing-41: 10.25rem; /* 164px */
+  --spacing-41-5: 10.375rem; /* 166px */
+  --spacing-42: 10.5rem; /* 168px */
+  --spacing-42-5: 10.625rem; /* 170px */
+  --spacing-43: 10.75rem; /* 172px */
+  --spacing-43-5: 10.875rem; /* 174px */
+  --spacing-44: 11rem; /* 176px */
+  --spacing-44-5: 11.125rem; /* 178px */
+  --spacing-45: 11.25rem; /* 180px */
+  --spacing-45-5: 11.375rem; /* 182px */
+  --spacing-46: 11.5rem; /* 184px */
+  --spacing-46-5: 11.625rem; /* 186px */
+  --spacing-47: 11.75rem; /* 188px */
+  --spacing-47-5: 11.875rem; /* 190px */
+  --spacing-48: 12rem; /* 192px */
+  --spacing-48-5: 12.125rem; /* 194px */
+  --spacing-49: 12.25rem; /* 196px */
+  --spacing-49-5: 12.375rem; /* 198px */
+  --spacing-50: 12.5rem; /* 200px */
+
+  /* Base percentage spacing scale */
+  --pct-2: 2%;
+  --pct-4: 4%;
+  --pct-5: 5%;
+  --pct-10: 10%;
+  --pct-14: 14%;
+  --pct-15: 15%;
+  --pct-17: 17%;
+  --pct-18: 18%;
+  --pct-20: 20%;
+  --pct-25: 25%;
+  --pct-30: 30%;
+  --pct-35: 35%;
+  --pct-36: 36%;
+  --pct-40: 40%;
+  --pct-46: 46%;
+  --pct-50: 50%;
+  --pct-55: 55%;
+  --pct-60: 60%;
+  --pct-65: 65%;
+  --pct-68: 68%;
+  --pct-70: 70%;
+  --pct-75: 75%;
+  --pct-80: 80%;
+  --pct-85: 85%;
+  --pct-90: 90%;
+  --pct-95: 95%;
+  --pct-98: 98%;
+  --pct-100: 100%;
+
+  /* random custom dimentions scale new mr values */
+  --size-custom-10: 13.5rem; /* 216px */
+  --size-custom-20: 13.75rem; /* 220px */
+  --size-custom-30: 14.125rem; /* 226px */
+  --size-custom-40: 14.375rem; /* 230px */
+  --size-custom-50: 15rem; /* 240px */
+  --size-custom-55: 15.125rem; /* 242px */
+  --size-custom-60: 15.625rem; /* 250px */
+  --size-custom-70: 15.875rem; /* 254px */
+  --size-custom-73: 16.5rem; /* 264px */
+  --size-custom-75: 17.25rem; /* 276px */
+  --size-custom-76: 17.5rem; /* 280px */
+  --size-custom-78: 18rem; /* 288px */
+  --size-custom-80: 18.125rem; /* 290px */
+  --size-custom-90: 18.375rem; /* 294px */
+
+  --size-custom-100: 18.75rem; /* 300px */
+  --size-custom-110: 19.875rem; /* 318px */
+  --size-custom-120: 20rem; /* 320px */
+  --size-custom-130: 21rem; /* 336px */
+  --size-custom-140: 21.25rem; /* 340px */
+  --size-custom-150: 21.75rem; /* 348px */
+  --size-custom-160: 21.875rem; /* 350px */
+  --size-custom-170: 22.125rem; /* 354px */
+  --size-custom-180: 23.125rem; /* 370px */
+  --size-custom-184: 23.375rem; /* 374px */
+  --size-custom-190: 23.875rem; /* 382px */
+
+  --size-custom-200: 25rem; /* 400px */
+  --size-custom-210: 27rem; /* 432px */
+  --size-custom-220: 27.5rem; /* 440px */
+  --size-custom-230: 28.125rem; /* 450px */
+  --size-custom-240: 29.125rem; /* 466px */
+  --size-custom-260: 30rem; /* 480px */
+  --size-custom-270: 30.625rem; /* 490px */
+  --size-custom-274: 30.875rem; /* 494px */
+
+  --size-custom-300: 31.25rem; /* 500px */
+  --size-custom-310: 34rem; /* 544px */
+
+  --size-custom-320: 37.5rem; /* 600px */
+  --size-custom-330: 40rem; /* 640px */
+  --size-custom-335: 40.75rem; /* 652px */
+  --size-custom-339: 43.124rem; /* 690px */
+
+  --size-custom-340: 43.75rem; /* 700px */
+  --size-custom-350: 44.75rem; /* 716px */
+  --size-custom-360: 46.875rem; /* 750px */
+  --size-custom-370: 47.5rem; /* 760px */
+
+  --size-custom-400: 50rem; /* 800px */
+  --size-custom-405: 54.0625rem; /* 865px */
+  --size-custom-410: 56.125rem; /* 898px */
+
+  --size-custom-420: 58.125rem; /* 930px */
+  --size-custom-422: 59.375rem; /* 950px */
+  --size-custom-430: 69.5rem; /* 1112px */
+  --size-custom-438: 73.125rem; /* 1170px */
+  --size-custom-440: 75.5rem; /* 1208px */
+  --size-custom-450: 77.5rem; /* 1240px */
+}
+
+@theme {
+  /* Extra Small Dimensions (200-299px) */
+  --spacing-xs-10: var(--size-custom-10); /* 216px */
+  --spacing-xs-20: var(--size-custom-20); /* 220px */
+  --spacing-xs-30: var(--size-custom-30); /* 226px */
+  --spacing-xs-40: var(--size-custom-40); /* 230px */
+  --spacing-xs-50: var(--size-custom-50); /* 240px */
+  --spacing-xs-55: var(--size-custom-55); /* 242px */
+  --spacing-xs-60: var(--size-custom-60); /* 250px */
+  --spacing-xs-70: var(--size-custom-70); /* 254px */
+  --spacing-xs-73: var(--size-custom-73); /* 264px */
+  --spacing-xs-75: var(--size-custom-75); /* 276px */
+  --spacing-xs-76: var(--size-custom-76); /* 280px */
+  --spacing-xs-78: var(--size-custom-78); /* 288px */
+  --spacing-xs-80: var(--size-custom-80); /* 290px */
+  --spacing-xs-90: var(--size-custom-90); /* 294px */
+
+  /* Small Dimensions (300-399px) */
+  --spacing-sm-10: var(--size-custom-100); /* 300px */
+  --spacing-sm-20: var(--size-custom-110); /* 318px */
+  --spacing-sm-30: var(--size-custom-120); /* 320px */
+  --spacing-sm-40: var(--size-custom-130); /* 336px */
+  --spacing-sm-50: var(--size-custom-140); /* 340px */
+  --spacing-sm-60: var(--size-custom-150); /* 348px */
+  --spacing-sm-70: var(--size-custom-160); /* 350px */
+  --spacing-sm-80: var(--size-custom-170); /* 354px */
+  --spacing-sm-90: var(--size-custom-180); /* 370px */
+  --spacing-sm-94: var(--size-custom-184); /* 374px */
+  --spacing-sm-100: var(--size-custom-190); /* 382px */
+
+  /* Medium Dimensions (400-599px) */
+  --spacing-md-10: var(--size-custom-200); /* 400px */
+  --spacing-md-20: var(--size-custom-210); /* 432px */
+  --spacing-md-30: var(--size-custom-220); /* 440px */
+  --spacing-md-40: var(--size-custom-230); /* 450px */
+  --spacing-md-45: var(--size-custom-240); /* 466px */
+  --spacing-md-50: var(--size-custom-260); /* 480px */
+  --spacing-md-55: var(--size-custom-270); /* 490px */
+  --spacing-md-56: var(--size-custom-274); /* 494px */
+  --spacing-md-60: var(--size-custom-300); /* 500px */
+  --spacing-md-70: var(--size-custom-310); /* 544px */
+
+  /* Large Dimensions (600-799px) */
+  --spacing-lg-10: var(--size-custom-320); /* 600px */
+  --spacing-lg-20: var(--size-custom-330); /* 640px */
+  --spacing-lg-25: var(--size-custom-335); /* 650px */
+  --spacing-lg-29: var(--size-custom-339); /* 690px */
+  --spacing-lg-30: var(--size-custom-340); /* 700px */
+  --spacing-lg-40: var(--size-custom-350); /* 716px */
+  --spacing-lg-50: var(--size-custom-360); /* 750px */
+  --spacing-lg-60: var(--size-custom-370); /* 760px */
+
+  /* Extra Large Dimensions (800px+) */
+  --spacing-xl-10: var(--size-custom-400); /* 800px */
+  --spacing-xl-15: var(--size-custom-405); /* 865px */
+  --spacing-xl-20: var(--size-custom-410); /* 898px */
+  --spacing-xl-30: var(--size-custom-420); /* 930px */
+  --spacing-xl-35: var(--size-custom-422); /* 950px */
+  --spacing-xl-40: var(--size-custom-430); /* 1112px */
+  --spacing-xl-45: var(--size-custom-438); /* 1170px */
+  --spacing-xl-50: var(--size-custom-440); /* 1208px */
+  --spacing-xl-60: var(--size-custom-450); /* 1240px */
+
+  /* ===PERCENTAGE SEMANTIC TOKENS === */
+  --spacing-pct-002: var(--pct-2); /* 2% */
+  --spacing-pct-004: var(--pct-4); /* 4% */
+  --spacing-pct-005: var(--pct-5); /* 5% */
+  --spacing-pct-010: var(--pct-10); /* 10% */
+  --spacing-pct-014: var(--pct-14); /* 14% */
+  --spacing-pct-015: var(--pct-15); /* 15% */
+  --spacing-pct-017: var(--pct-17); /* 17% */
+  --spacing-pct-018: var(--pct-18); /* 18% */
+  --spacing-pct-020: var(--pct-20); /* 20% */
+  --spacing-pct-025: var(--pct-25); /* 25% */
+  --spacing-pct-030: var(--pct-30); /* 30% */
+  --spacing-pct-035: var(--pct-35); /* 35% */
+  --spacing-pct-036: var(--pct-36); /* 36% */
+  --spacing-pct-040: var(--pct-40); /* 40% */
+  --spacing-pct-046: var(--pct-46); /* 46% */
+  --spacing-pct-050: var(--pct-50); /* 50% */
+  --spacing-pct-055: var(--pct-55); /* 55% */
+  --spacing-pct-060: var(--pct-60); /* 60% */
+  --spacing-pct-065: var(--pct-65); /* 65% */
+  --spacing-pct-068: var(--pct-68); /* 68% */
+  --spacing-pct-070: var(--pct-70); /* 70% */
+  --spacing-pct-075: var(--pct-75); /* 75% */
+  --spacing-pct-080: var(--pct-80); /* 80% */
+  --spacing-pct-085: var(--pct-85); /* 85% */
+  --spacing-pct-090: var(--pct-90); /* 90% */
+  --spacing-pct-095: var(--pct-95); /* 95% */
+  --spacing-pct-098: var(--pct-98); /* 98% */
+  --spacing-pct-100: var(--pct-100); /* 100% */
+
+  /* ===SPACING SEMANTIC TOKENS === */
+  --spacing-space-00: var(--spacing-0); /* 0px */
+  --spacing-space-1: var(--spacing-px); /* 1px */
+  --spacing-space-01: var(--spacing-0-5); /* 2px */
+  --spacing-space-02: var(--spacing-1); /* 4px */
+  --spacing-space-03: var(--spacing-1-5); /* 6px */
+  --spacing-space-04: var(--spacing-2); /* 8px */
+  --spacing-space-05: var(--spacing-2-5); /* 10px */
+  --spacing-space-06: var(--spacing-3); /* 12px */
+  --spacing-space-07: var(--spacing-3-5); /* 14px */
+  --spacing-space-08: var(--spacing-4); /* 16px */
+  --spacing-space-09: var(--spacing-4-5); /* 18px */
+  --spacing-space-10: var(--spacing-5); /* 20px */
+  --spacing-space-11: var(--spacing-5-5); /* 22px */
+  --spacing-space-12: var(--spacing-6); /* 24px */
+  --spacing-space-13: var(--spacing-6-5); /* 26px */
+  --spacing-space-14: var(--spacing-7); /* 28px */
+  --spacing-space-15: var(--spacing-7-5); /* 30px */
+  --spacing-space-16: var(--spacing-8); /* 32px */
+  --spacing-space-17: var(--spacing-8-5); /* 34px */
+  --spacing-space-18: var(--spacing-9); /* 36px */
+  --spacing-space-19: var(--spacing-9-5); /* 38px */
+  --spacing-space-20: var(--spacing-10); /* 40px */
+  --spacing-space-21: var(--spacing-10-5); /* 42px */
+  --spacing-space-22: var(--spacing-11); /* 44px */
+  --spacing-space-23: var(--spacing-11-5); /* 46px */
+  --spacing-space-24: var(--spacing-12); /* 48px */
+  --spacing-space-25: var(--spacing-12-5); /* 50px */
+  --spacing-space-26: var(--spacing-13); /* 52px */
+  --spacing-space-27: var(--spacing-13-5); /* 54px */
+  --spacing-space-28: var(--spacing-14); /* 56px */
+  --spacing-space-29: var(--spacing-14-5); /* 58px */
+  --spacing-space-30: var(--spacing-15); /* 60px */
+  --spacing-space-31: var(--spacing-15-5); /* 62px */
+  --spacing-space-32: var(--spacing-16); /* 64px */
+  --spacing-space-33: var(--spacing-16-5); /* 66px */
+  --spacing-space-34: var(--spacing-17); /* 68px */
+  --spacing-space-35: var(--spacing-17-5); /* 70px */
+  --spacing-space-36: var(--spacing-18); /* 72px */
+  --spacing-space-37: var(--spacing-18-5); /* 74px */
+  --spacing-space-38: var(--spacing-19); /* 76px */
+  --spacing-space-39: var(--spacing-19-5); /* 78px */
+  --spacing-space-40: var(--spacing-20); /* 80px */
+  --spacing-space-41: var(--spacing-20-5); /* 82px */
+  --spacing-space-42: var(--spacing-21); /* 84px */
+  --spacing-space-43: var(--spacing-21-5); /* 86px */
+  --spacing-space-44: var(--spacing-22); /* 88px */
+  --spacing-space-45: var(--spacing-22-5); /* 90px */
+  --spacing-space-46: var(--spacing-23); /* 92px */
+  --spacing-space-47: var(--spacing-23-5); /* 94px */
+  --spacing-space-48: var(--spacing-24); /* 96px */
+  --spacing-space-49: var(--spacing-24-5); /* 98px */
+  --spacing-space-50: var(--spacing-25); /* 100px */
+  --spacing-space-51: var(--spacing-25-5); /* 102px */
+  --spacing-space-52: var(--spacing-26); /* 104px */
+  --spacing-space-53: var(--spacing-26-5); /* 106px */
+  --spacing-space-54: var(--spacing-27); /* 108px */
+  --spacing-space-55: var(--spacing-27-5); /* 110px */
+  --spacing-space-56: var(--spacing-28); /* 112px */
+  --spacing-space-57: var(--spacing-28-5); /* 114px */
+  --spacing-space-58: var(--spacing-29); /* 116px */
+  --spacing-space-59: var(--spacing-29-5); /* 118px */
+  --spacing-space-60: var(--spacing-30); /* 120px */
+  --spacing-space-61: var(--spacing-30-5); /* 122px */
+  --spacing-space-62: var(--spacing-31); /* 124px */
+  --spacing-space-63: var(--spacing-31-5); /* 126px */
+  --spacing-space-64: var(--spacing-32); /* 128px */
+  --spacing-space-65: var(--spacing-32-5); /* 130px */
+  --spacing-space-66: var(--spacing-33); /* 132px */
+  --spacing-space-67: var(--spacing-33-5); /* 134px */
+  --spacing-space-68: var(--spacing-34); /* 136px */
+  --spacing-space-69: var(--spacing-34-5); /* 138px */
+  --spacing-space-70: var(--spacing-35); /* 140px */
+  --spacing-space-71: var(--spacing-35-5); /* 142px */
+  --spacing-space-72: var(--spacing-36); /* 144px */
+  --spacing-space-73: var(--spacing-36-5); /* 146px */
+  --spacing-space-74: var(--spacing-37); /* 148px */
+  --spacing-space-75: var(--spacing-37-5); /* 150px */
+  --spacing-space-76: var(--spacing-38); /* 152px */
+  --spacing-space-77: var(--spacing-38-5); /* 154px */
+  --spacing-space-78: var(--spacing-39); /* 156px */
+  --spacing-space-79: var(--spacing-39-5); /* 158px */
+  --spacing-space-80: var(--spacing-40); /* 160px */
+  --spacing-space-81: var(--spacing-40-5); /* 162px */
+  --spacing-space-82: var(--spacing-41); /* 164px */
+  --spacing-space-83: var(--spacing-41-5); /* 166px */
+  --spacing-space-84: var(--spacing-42); /* 168px */
+  --spacing-space-85: var(--spacing-42-5); /* 170px */
+  --spacing-space-86: var(--spacing-43); /* 172px */
+  --spacing-space-87: var(--spacing-43-5); /* 174px */
+  --spacing-space-88: var(--spacing-44); /* 176px */
+  --spacing-space-89: var(--spacing-44-5); /* 178px */
+  --spacing-space-90: var(--spacing-45); /* 180px */
+  --spacing-space-91: var(--spacing-45-5); /* 182px */
+  --spacing-space-92: var(--spacing-46); /* 184px */
+  --spacing-space-93: var(--spacing-46-5); /* 186px */
+  --spacing-space-94: var(--spacing-47); /* 188px */
+  --spacing-space-95: var(--spacing-47-5); /* 190px */
+  --spacing-space-96: var(--spacing-48); /* 192px */
+  --spacing-space-97: var(--spacing-48-5); /* 194px */
+  --spacing-space-98: var(--spacing-49); /* 196px */
+  --spacing-space-99: var(--spacing-49-5); /* 198px */
+  --spacing-space-100: var(--spacing-50); /* 200px */
+  --spacing-xs-neg: -0.25rem;
+
+  --spacing-space-smallest: 0.545em;
+  --spacing-space-small: 1.375em;
+
+  /* =================== SPACING COMPONENT TOKENS =================== */
+  /* Card component */
+  --spacing-card-padding-y: var(--spacing-padding-lg); /* 24px */
+  --spacing-card-padding-x: var(--spacing-padding-3xl); /* 48px */
+  --spacing-card-padding-xl: var(--spacing-padding-xl); /* 32px */
+  --spacing-card-gap: var(--spacing-gap-sm-2); /* 10px */
+  --spacing-card-gap-md: var(--spacing-gap-md-4); /* 22px */
+
+  /* Button components */
+  --spacing-section-main-padding-xs: var(--spacing-space-08); /* 16px */
+  --spacing-section-main-padding-sm: var(--spacing-space-14); /* 28px */
+  --spacing-section-main-padding-md: var(--spacing-space-28); /* 56px */
+  --spacing-section-main-padding-lg: var(--spacing-space-40); /* 80px */
+  --spacing-section-main-padding-xl: var(--spacing-space-52); /* 104px */
+
+  --spacing-section-padding-y-md: var(--spacing-space-30); /* 60px */
+  --spacing-section-padding-y-sm: var(--spacing-space-15); /* 30px */
+
+  --spacing-section-hero-y: var(--spacing-space-40); /* 80px */
+}
+
+/* padding: top right bottom left; */
+
+.section-padding-y {
+  padding-top: var(--spacing-space-20);
+  padding-bottom: var(--spacing-space-20);
+
+  @media (min-width: 768px) {
+    padding-top: var(--spacing-space-30);
+    padding-bottom: var(--spacing-space-30);
+  }
+}
+
+.section-padding-x {
+  padding-left: var(--spacing-space-08);
+  padding-right: var(--spacing-space-08);
+
+  @media (min-width: 640px) {
+    padding-left: var(--spacing-space-15);
+    padding-right: var(--spacing-space-15);
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: var(--spacing-space-20);
+    padding-right: var(--spacing-space-20);
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: var(--spacing-space-40);
+    padding-right: var(--spacing-space-40);
+  }
+}

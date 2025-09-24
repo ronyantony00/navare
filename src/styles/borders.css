@@ -1,0 +1,68 @@
+:root {
+  --radius-0: 0;
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;
+  --radius-4: 12px;
+  --radius-5: 14px;
+  --radius-6: 24px;
+  --radius-7: 28px;
+  --radius-8: 50px;
+  --radius-999: 999px;
+
+  --degree-16: 16deg;
+  --degree-16-neg: -16deg;
+}
+
+@theme {
+  /* ------Border radius semantic-tokens------ */
+  --radius-none: var(--radius-0); /* 0px */
+  --radius-xxs: var(--radius-1); /* 2px */
+  --radius-2xs: var(--radius-2); /* 4px */
+  --radius-xs: var(--radius-3); /* 8px */
+  --radius-xs-2: 0.625rem; /* 10px */
+  --radius-sm: var(--radius-4); /* 12px */
+  --radius-md: var(--radius-5); /* 14px */
+  --radius-md-2: 16px;
+  --radius-md-3: 1.25rem; /* 20px */
+  --radius-lg: var(--radius-6); /* 24px */
+  --radius-xl: var(--radius-7); /* 28px */
+  --radius-full: var(--radius-999); /* 999px */
+
+  /* === COMPONENT TOKENS === */
+  --radius-banner-degree: var(--degree-12); /* 12deg */
+
+  --radius-card-sm: var(--radius-sm); /* 12px */
+  --radius-card-md: var(--radius-md); /* 14px */
+  --radius-card-xl: var(--radius-lg); /* 24px */
+
+  --radius-faqitem-radius: var(--radius-lg); /* 24px */
+
+  --radius-button-radius-sm: var(--radius-2xs); /* 4px */
+  --radius-button-radius-lg: var(--radius-xl); /* 50px */
+}
+
+.skew-x-banner-degree {
+  transform: skewX(var(--degree-16));
+}
+
+.skew-x-banner-degree-neg {
+  transform: skewX(var(--degree-16-neg));
+}
+
+/* Custom border classes */
+.border-thin-01 {
+  border-width: 0.1px;
+}
+
+.gradient-border-corners {
+  background:
+    radial-gradient(300px circle at top right, #2ed960, #164234 70%, transparent 60%),
+    radial-gradient(300px circle at bottom left, #2ed960, #164234 70%, transparent 60%), #164234;
+}
+
+.gradient-border-corners-footer {
+  background:
+    radial-gradient(500px circle at top right, #2ed960, #164234 70%, transparent 60%),
+    radial-gradient(500px circle at bottom left, #2ed960, #164234 70%, transparent 60%), #164234;
+}

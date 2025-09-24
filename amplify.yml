@@ -1,0 +1,88 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 20
+        - export NODE_ENV=production
+        - export NEXT_TELEMETRY_DISABLED=1
+        - export HUSKY_SKIP_INSTALL=1
+        - export HUSKY=0
+        - export CI=true
+        - npm ci --include=optional --no-audit --no-fund
+        - npm install qs @types/qs --save
+        - npm rebuild sharp --verbose
+        # 🔥 CRITICAL: Clear caches to prevent corruption
+        - rm -rf .next/cache
+        - rm -rf node_modules/.cache
+        - echo "Creating PostCSS config for Tailwind v4..."
+        - |
+          cat > postcss.config.mjs << 'EOF'
+          /** @type {import('postcss-load-config').Config} */
+          const config = {
+            plugins: {
+              '@tailwindcss/postcss': {},
+              autoprefixer: {},
+            },
+          };
+
+          export default config;
+          EOF
+    build:
+      commands:
+        - npm run build
+        # Clean up large binaries (stay under 220MB)
+        - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
+        - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      # 🚫 DON'T cache .next/cache - causes ISR bugs
+
+  # 🎯 Perfect CloudFront Behaviors
+  customHeaders:
+    # ISR Pages - Short cache with aligned TTLs
+    - pattern: /**
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=0, s-maxage=10, stale-while-revalidate=60'
+        - key: X-Content-Type-Options
+          value: nosniff
+
+    - pattern: '**/*.html'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=0, s-maxage=10, stale-while-revalidate=60'
+
+    # Static Assets - Long cache with immutable
+    - pattern: '/_next/static/**'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=31536000, immutable'
+
+    - pattern: '**/*.{js,css}'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=31536000, immutable'
+
+    # Images - Medium cache
+    - pattern: '**/*.{jpg,jpeg,png,gif,webp,avif,svg,ico}'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=2592000'
+
+    # Next.js Image Optimization
+    - pattern: '/_next/image*'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=2592000'
+
+    # ISR Data Files (JSON)
+    - pattern: '/_next/data/**'
+      headers:
+        - key: Cache-Control
+          value: 'public, max-age=0, s-maxage=10, stale-while-revalidate=60'

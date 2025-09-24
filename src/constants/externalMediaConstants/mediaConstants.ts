@@ -1,0 +1,15 @@
+export const ExternalMediaConstants = {
+  LandingHeroVideo: 'http://d9ouozp3mq81k.cloudfront.net/media/landing-hero-media.mp4',
+  InsightsHeroVideo: 'http://d9ouozp3mq81k.cloudfront.net/media/insights-hero-media.mp4',
+  TestimonialHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/testimonial-hero-bg.svg',
+  FaqHeroVideo: 'http://d9ouozp3mq81k.cloudfront.net/media/faq-hero-media.mp4',
+  AboutUsHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/about-page-new-bg.svg',
+  CareerHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/career-hero-bg.svg',
+  SolutionHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/solution-hero-bg.svg',
+  UseCaseHeroVideo: 'http://d9ouozp3mq81k.cloudfront.net/media/usecase-hero-media.mp4',
+  TeamsHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/teams-hero-bg.svg',
+  BlogDetailHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/blog-detail-hero.svg',
+  CareerFormBackgroundImage: 'http://d9ouozp3mq81k.cloudfront.net/media/career-form-bg.svg',
+  LegalHubHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/legal-hero-bg.jpg',
+  UsecaseChallengesImage: 'http://d9ouozp3mq81k.cloudfront.net/media/challanges.png',
+};

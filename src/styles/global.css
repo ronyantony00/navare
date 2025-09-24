@@ -1,0 +1,433 @@
+@import 'tailwindcss';
+
+/* Your custom theme - consolidated into one @theme block */
+@theme {
+  /* Fonts */
+  --font-aeonik: var(--font-aeonik) sans-serif;
+  --font-fira: var(--font-fira) sans-serif;
+  --font-firaLight: var(--font-firaLight) sans-serif;
+  --font-gabarito: var(--font-gabarito) sans-serif;
+  --font-manrope: var(--font-manrope) sans-serif;
+  --font-comme: var(--font-comme) sans-serif;
+  --font-satoshi: var(--font-satoshi) sans-serif;
+
+  /* Colors */
+  --color-primary-hover: #bd00ffa3;
+  --shadow-card-hover: 0 0 25px 5px;
+
+  /* Background Images */
+  --bg-image-train: url('/assets/images/serviceSection/footerTrain.avif');
+  --bg-image-card: url('/assets/images/serviceSection/bgCard.avif');
+  --bg-image-mega-menu: url('/assets/images/green-molecules.svg');
+  --bg-popular-plan: url('/assets/images/usecases/popularCardbg.jpg');
+  --bg-about-us-hero-image: url('/assets/backgroundImage/about-page-new-bg.svg');
+  --bg-about-us-our-vision-bg: url('/assets/backgroundImage/about-page-who-we-bg.svg');
+  --bg-integrations-hero-image: url('/assets/backgroundImage/integrations-hero-bg.svg');
+  --bg-solution-testimonial-new-bg: url('/assets/backgroundImage/solution-testimonial-new-bg.svg');
+  --bg-team-new-bg: url('/assets/backgroundImage/team-new-bg.svg');
+  --bg-team-hover-overlay: url('/assets/backgroundImage/team-hover-overlay.svg');
+  --bg-testimonial-new-hero-bg: url('/assets/backgroundImage/testimonial-hero.svg');
+  --bg-testimonial-second-section-bg: url('/assets/backgroundImage/testimonial-second-section-bg.svg');
+  --bg-image-testimonial-bg: url('/assets/images/green-bg.jpg');
+  --bg-demo-page-background: url('/assets/images/ScheduleDemo/demo-page-bg.jpg');
+  --bg-contact-info-card: url('/assets/images/CommonAssets/meeting-bg.jpg');
+  --bg-landing-page-seacargo: url('/assets/images/landingPage/sea-cargo-bg.svg');
+  --bg-landing-news-insights-bg: url('/assets/images/landingPage/stories-bg.jpg');
+  --bg-solutions-hero-image: url('/assets/backgroundImage/solution-hero-image.svg');
+  --bg-logistics-bg: url('/assets/images/serviceSection/dot-background.svg');
+  --bg-usecase-hero-image: url('/assets/images/usecases/Hero.svg');
+  --bg-technology-section-bg: url('/assets/backgroundImage/eco-system-bg.svg');
+  --bg-error-page-bg: url('/assets/images/error-page/404.svg');
+  --bg-service-section-mobile-bg: url('/assets/backgroundImage/service-section-mobile-bg.svg');
+  --bg-green-circle: url('/assets/backgroundImage/green-circle.svg');
+  --bg-service-section-bg: url('/assets/backgroundImage/service-section-bg.svg');
+  --bg-career-detail-bg: url('/assets/images/career/career-page-illustration.svg');
+  --bg-career-detail-hero-image: url('/assets/backgroundImage/career-detail-hero-new-bg.svg');
+  --bg-usecase-solutions-bg: url('/assets/images/usecases/SolutionSectionBlur.svg');
+  --bg-usecase-phone-image: url('/assets/images/usecases/phone-image.png');
+  --bg-challenges-section-bg: url('/assets/images/usecases/greenPolygon.png');
+  --bg-testimonial-section-bg: url('/assets/images/usecases/usecase-testimonial-blur.png');
+  --bg-blog-detail-hero-image: url('/assets/backgroundImage/blog-detail-hero.svg');
+
+  /* Effects */
+  --ease-in-circle: cubic-bezier(0, 0, 0, 1);
+  --opacity-40: 0.4;
+  --opacity-80: 0.8;
+  --duration-sm: 300ms;
+
+  /* Gradients */
+  --color-hero-text-gradient: linear-gradient(180deg, #ffffff 0%, #a4aeab 100%);
+  --color-form-bg-gradient: linear-gradient(180deg, #122518 0%, #071712 100%);
+  --color-nav-option-hover: linear-gradient(142deg, #062019 35.38%, #083415 78.28%);
+
+  /* Blur */
+  --blur-intensity: 125px;
+  --blur-intensity-medium: 100px;
+
+  /* Background Blur */
+  --background-image-footer-blur:
+    radial-gradient(circle at 25% 25%, rgba(21, 52, 41, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(21, 52, 41, 0.3) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(21, 52, 41, 0.1) 0%, transparent 100%);
+}
+
+@import 'swiper/css';
+@import './color.css';
+@import './typography.css';
+@import './spacing.css';
+@import './borders.css';
+@import './layouts.css';
+@import './breakpoints.css';
+
+/* Core normalization approach */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+/* Browser-specific adjustments */
+@supports (-webkit-appearance: none) and (not (-moz-appearance: none)) {
+  .safari-text {
+    font-weight: 450; /* Lighter for Safari */
+  }
+}
+
+/* High DPI responsive approach */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Hide scrollbar for mega menu panel */
+.scrollbar-hide {
+  -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important; /* Safari and Chrome */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  position: relative;
+  top: -130px;
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    top: 0px;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: gray !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
+
+/* Fix Swiper slide width issues */
+
+.animate-slow-spin {
+  animation: rotate 15s linear infinite;
+}
+
+.feature-card-border {
+  background: linear-gradient(180deg, var(--green-800) -6.07%, var(--green-900) 45.99%, var(--green-700) 97.1%);
+  border-style: solid;
+  border-width: 10px 22px 22px 22px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.testimonial-shape {
+  border-radius: 100% 0% 100% 100%;
+  overflow: hidden;
+}
+
+.shadow-inner-custom {
+  box-shadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.1)';
+}
+
+.demo-form-shadow {
+  box-shadow: 0 8px 16px #0e341366;
+}
+
+/* Component styles - converted to regular CSS for v4 compatibility */
+.card-hover-effect:hover {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) rgb(34 197 94);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.feature-card-hover {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.feature-card-hover:hover {
+  box-shadow: 0 0 40px rgba(14, 50, 20, 0.5);
+}
+
+/* Utility styles - converted from @layer to regular CSS for v4 compatibility */
+.bg-landing-page-seacargo {
+  background-image: var(--bg-landing-page-seacargo);
+}
+
+.bg-landing-our-impact {
+  background-image: var(--bg-landing-our-impact);
+}
+
+.bg-landing-news-insights-bg {
+  background-image: var(--bg-landing-news-insights-bg);
+}
+
+.bg-solutions-hero-image {
+  background-image: var(--bg-solutions-hero-image);
+}
+
+.bg-testimonial-new-hero-bg {
+  background-image: var(--bg-testimonial-new-hero-bg);
+}
+
+.bg-blog-detail-hero-size {
+  background-size: 818px 460px;
+}
+
+.responsive-padding {
+  padding-left: var(--space-15);
+  padding-right: var(--space-15);
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding-left: var(--space-40);
+    padding-right: var(--space-40);
+    padding-top: var(--space-30);
+    padding-bottom: var(--space-30);
+  }
+}
+
+/*
+#smooth-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+#smooth-content {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: auto;
+}
+
+.gradient-text {
+  background: var(--color-hero-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.usecase-card-shadow {
+  box-shadow: 14px 14px 100px #dbdbf01a;
+}
+
+.system-card-gradient {
+  background: linear-gradient(to bottom, var(--neutral-800), #090c24 84%, #171b3c);
+}
+
+.contact-info-gradient {
+  background: linear-gradient(180deg, transparent 0%, rgba(21, 63, 27, 0.9) 100%);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  animation-play-state: running;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.gradient-text {
+  background: var(--color-hero-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.stories-card-bg {
+  /* border: 1px solid #1e5547; */
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.navare-green-gradient {
+  background: linear-gradient(180deg, #0c251f 0%, #071712 100%);
+}
+
+.blog-detail-bg-position {
+  background-position: -250px 0px;
+}
+
+.border-main-color {
+  border: 1px solid #1e5547;
+}
+
+.footer-phone-image-position {
+  background-position: 50px 100px;
+}
+
+.blog-detail-hero-position {
+  background-position: 0px -60px;
+}
+
+.form-bg-gradient {
+  background: var(--color-form-bg-gradient);
+}
+
+.nav-option-hover {
+  background: var(--color-nav-option-hover);
+}
+
+.nav-option-hover-hover {
+  background: linear-gradient(142.48deg, #062019 35.38%, #083415 78.28%);
+}
+
+.plan-card-bg {
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.navoption:hover {
+  background-image: linear-gradient(142.48deg, #062019 35.38%, #083415 78.28%);
+}
+
+.marquee-card-bg {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.12) 0%, rgba(16, 185, 129, 0.0392157) 100%);
+}
+
+.key-metric-card-bg {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.0784314) 0%, rgba(16, 185, 129, 0.0392157) 100%);
+}
+
+.hero-overlay {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(6, 22, 17, 0.95) 0%,
+    rgba(6, 22, 17, 0.3) 50%,
+    rgba(6, 22, 17, 0.95) 100%
+  );
+}
+
+.dynamic-blur {
+  backdrop-filter: blur(var(--blur-intensity));
+}
+
+.dynamic-blur-2 {
+  backdrop-filter: blur(var(--blur-intensity-medium));
+}
+
+.service-card-new-bg {
+  border-radius: var(--Corner-Large-increased, 20px);
+  border: 1px solid #1e5547;
+  background: linear-gradient(180deg, #122518 0%, #071712 100%);
+}
+
+.marquee-overlay {
+  background: linear-gradient(100.83deg, rgba(6, 22, 17, 0) 16.07%, #061611 98.25%);
+}
+
+.marquee-shadow {
+  background: linear-gradient(90deg, #061611 0%, rgba(6, 22, 17, 0) 100%);
+}
+.hero-overlay {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(6, 22, 17, 0.95) 0%,
+    rgba(6, 22, 17, 0.3) 50%,
+    rgba(6, 22, 17, 0.95) 100%
+  );
+}
+
+.custom-checkbox {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #a8b5ad;
+  background: transparent;
+  accent-color: unset;
+  appearance: none;
+  outline: none;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid #a8b5ad;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.border-hairline {
+  box-shadow: 0 0 0 0.2px rgb(209 213 219);
+}
+
+.challenge-clip-path {
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+}

@@ -1,0 +1,474 @@
+{
+  "RootLayout": {
+    "home_link": "Home",
+    "about_link": "About",
+    "counter_link": "Counter",
+    "portfolio_link": "Portfolio",
+    "sign_in_link": "Sign in",
+    "sign_up_link": "Sign up"
+  },
+  "BaseTemplate": {
+    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
+    "made_with": "Made with <author></author>."
+  },
+  "Index": {
+    "meta_title": "Next.js Boilerplate Presentation",
+    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework.",
+    "sponsors_title": "Sponsors"
+  },
+  "Counter": {
+    "meta_title": "Counter",
+    "meta_description": "An example of DB operation",
+    "loading_counter": "Loading counter...",
+    "security_powered_by": "Security, bot detection and rate limiting powered by"
+  },
+  "CounterForm": {
+    "presentation": "The counter is stored in the database and incremented by the value you provide.",
+    "label_increment": "Increment by",
+    "button_increment": "Increment"
+  },
+  "CurrentCount": {
+    "count": "Count: {count}"
+  },
+  "FeatureCard": {
+    "small_title": "Use Case",
+    "title": "For Importers",
+    "description": "Track and manage your containers from the cargo ready date until the container is empty returned"
+  },
+  "CtaContentOne": {
+    "title": "See how CLM helps logistics team stay ahead",
+    "description": "Track, manage, and take action across your containers with the Container Lifecycle Management® Platform—no switching tools or chasing updates.",
+    "tag_line": "Get a Personalized Demo",
+    "button_text": "Schedule a Demo"
+  },
+  "FreightSection": {
+    "title": "Do you already have an existing system?",
+    "description": "No problem! Gnosis Freight delivers the most accurate and comprehensive API to enhance your existing system.",
+    "tag_line": "Get a Personalized Demo",
+    "buttonTextOne": "Gnosis Freight Data & API"
+  },
+  "ImageWithContent": {
+    "title": "Discover the Right Plan for",
+    "span_text": "Your Business",
+    "button_text": "Book Now",
+    "no_plans": "No Plans are Available for now",
+    "key_features": "Key Features",
+    "right_plan": "Discover the perfect AI plan for your business",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "features": "FEATURES"
+  },
+  "ImageWithContentMain": {
+    "title": "Process Improvements & helpful",
+    "span_text": "Automations",
+    "description": "Reduce or eliminate time-consuming manual tasks and the risk of human error so you can dedicate your energy to growing your business.",
+    "button_text": "Book Now"
+  },
+  "CalculatorSection": {
+    "title": "Gnosis Savings Calculator",
+    "span_text": "Automations",
+    "description": "Discover the value of the Container Lifecycle Management® platform. These metrics are derived from industry averages and customer case studies.",
+    "buttonTextOne": "Calculate Your Savings"
+  },
+  "TestimonialSection": {
+    "title": "“Most vendors come in and pitch.",
+    "extraTitle": "Gnosis came in and listened.”",
+    "description": "Rated #1 for most likelihood to recommend and ease of use on G2"
+  },
+  "PremiumOnboarding": {
+    "title": "Dedicated Account Management Team",
+    "banner_text": "Premium Onboarding & Support",
+    "description": "As a CLM customer, you will have a dedicated account management team to guide you through the onboarding process and provide ongoing support throughout your usage of the CLM platform. Your team is comprised of experts with diverse skill sets, dedicated to assisting you in enhancing your company's supply chain and logistics operations, and ensuring your success with the CLM platform. Your account management team includes:",
+    "customer": "Customer Success Manager",
+    "clm": "CLM Solutions Engineer",
+    "data_support": "Data Support Specialist",
+    "data_scientist": "Data Scientist"
+  },
+  "SeamleassIntegration": {
+    "title": "Seamless Integration",
+    "banner_text": "We can integrate with the platforms you use",
+    "description": "Streamline your operations and improve efficiency by leveraging the Container Lifecycle Management® platform's connectivity capabilities. Our platform allows for seamless integration with your trading partners and vendors, eliminating the need for manual data entry."
+  },
+  "AllInOnePlatform": {
+    "title": "All-In-One Platform to",
+    "extra_title": "Track & Manage Your Shipments",
+    "description": "Stop copying & pasting container data into spreadsheets, searching carrier websites for hours, and sending emails back and forth to get the most up-to-date data."
+  },
+  "SolutionsOurCase": {
+    "mainTitle": "One Platform, Multiple",
+    "mainSpan": "Use Cases",
+    "cardSmallTitle": "Container lifecycle Management",
+    "cardTitle": "Unlock The Full Potential of Your Supply Chain.",
+    "cardDescription": "Together, we'll unlock the full potential of your end-to-end container logistics processes."
+  },
+  "SolutionsPlatformSection": {
+    "mainTitle": "A look inside the",
+    "mainSpan": "‍CLM Platform.",
+    "mainDescription": "The Container Lifecycle Management® (CLM) Platform automates the gathering and formatting of fragmented container tracking data across all milestones and modes, delivering real-time visibility and allowing logistics teams to spot exceptions faster and act on them sooner.",
+    "bottomTitle": "Across the planet in one platform. Making decisions together, in real-time. Become the logistics partner you have always wanted."
+  },
+  "SolutionsHeroSection": {
+    "title": "Experience a smarter way",
+    "spanText": "‍track & manage",
+    "extraTitle": "your containers.",
+    "bannerText": "Container Lifecycle Management® Platform",
+    "description": "Gain access to the most complete and accurate container tracking data, collaborate seamlessly with all your logistics partners in a single platform, and initiate tracking with just the Master Bill of Lading (MBL) Number.",
+    "buttonTextOne": "Get Started",
+    "buttonTextTwo": "Schedule a Demo"
+  },
+  "HeroSectionMain": {
+    "title": "We design impactful strategies and experiences for leaders and organizations. We design impactful strategies and experiences for leaders and organizations.",
+    "buttonText": "Let's Talk",
+    "heroSectionArrowAlt": "Hero section arrow",
+    "heroSectionDownArrowAlt": "Hero section down arrow"
+  },
+  "Footer": {
+    "navare": "Navare is a New Zealand owned logistics management solution provider delivering latest technology innovation in Transport Management Systems and associated products.",
+    "copyrightOne": "Copyright © 2024 Navare Solutions",
+    "copyrightTwo": "All Rights Reserved."
+  },
+  "PageIntroBlock": {
+    "buttonTextOne": "Get Started",
+    "buttonTextTwo": "Schedule a Demo"
+  },
+  "CtaContent": {
+    "title": "Get a Personalized Demo",
+    "description": "Track, manage, and take action across your containers with the Container Lifecycle Management® Platform—no switching tools or chasing updates.",
+    "tag_line": "See how CLM helps logistics team stay ahead",
+    "button_text": "Schedule a Demo"
+  },
+  "JobCard": {
+    "location": "Location",
+    "employment_type": "Employment Type"
+  },
+
+  "FaqListingSection": {
+    "no_faq_found": "No FAQ items found"
+  },
+  "FaqHeroSection": {
+    "still_have_question": "Still have a question? Please don't hesitate to",
+    "contact_us": "Contact Us.",
+    "description": "Find answers to frequently asked questions about our products, services, policies, and more. Our experts have curated FAQs, organized them for convenience, and provided clear explanations for informed decisions.",
+    "title": "Frequently",
+    "spanText": "Asked Questions",
+    "Have_question": "Have a question?"
+  },
+  "BlogCard": {
+    "no_Video_available": "No Video available",
+    "read_more": "read more",
+    "read_less": "read less",
+    "expand_title": "Expand title",
+    "collapse_title": "Collapse title",
+    "learn_more": "Learn More"
+  },
+  "TestimonialHeroSection": {
+    "title1": "What top-tier brands say about",
+    "title2": "our products",
+    "description": "At Gnosis Freight, we're dedicated to unlocking the full potential of your supply chain. Our customers include many of the world's largest brands and service commodities such as electronics, consumer goods, fresh produce, furniture & home décor, building materials, equipment, and fashion & apparel. Every review shown below is submitted by a real Gnosis Freight customer."
+  },
+  "LegalSection": {
+    "title": "Legal Hub",
+    "description": "At Gnosis Freight, we're dedicated to unlocking the full potential of your supply chain. Our customers include many of the world's largest brands and service commodities such as electronics, consumer goods, fresh produce, furniture & home décor, building materials, equipment, and fashion & apparel. Every review shown below is submitted by a real Gnosis Freight customer.",
+    "fallbackTitle": "Compliance & Legal",
+    "fallbackDescription": "At Navare, we believe strong digital systems are built on a foundation of transparency and trust. As part of our commitment to responsible technology, this section provides access to all essential legal and compliance information related to our platform and services.",
+    "fallbackFooterTitle": "Need Help with a Legal or Compliance Query?",
+    "fallbackButtonText": "Explore Our FAQ's"
+  },
+  "DemoBookingPage": {
+    "mainTitle": "See How Container Lifecycle Management Can Work For You",
+    "subTitle": "What can I expect from a demo?",
+    "formTitlePrefix": "See",
+    "formTitleHighlight": "Navare",
+    "formTitleSuffix": "in action",
+    "formSubtitle": "See how the CLM platform can provide deeper visibility into your supply chain, automate manual, time-consuming tracking processes, and drive significant cost savings",
+    "formFooterLineOne": "By submitting the form, you agree to Navare's",
+    "formFooterLineTwo": "Privacy Policy",
+    "submitting": "Submitting...",
+    "validation": {
+      "required": "Required",
+      "telInvalid": "Phone number must be at least 7 digits",
+      "pleaseEnterValidTel": "Please enter a valid phone number",
+      "emailnvalid": "Invalid Email",
+      "messageWarning": "At least 20 characters are required",
+      "min2Chars": "Minimum 2 characters required",
+      "nameFormat": "Only letters, spaces, hyphens, and apostrophes are allowed. No leading or trailing spaces.",
+      "min5Chars": "min 5 characters",
+      "max254Chars": "max 254 characters",
+      "companyMin2Chars": "Company name must be at least 2 characters",
+      "companyMax100Chars": "Company name must not exceed 100 characters",
+      "companyMustHaveLetter": "Company name must contain at least one letter",
+      "messageMax1000Chars": "Message must not exceed 1000 characters",
+      "messageInvalidChars": "Message contains invalid characters"
+    },
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "companyName": "Company Name",
+    "containers": "Containers Per Year",
+    "joinBuisness": "Join Businesses Like:",
+    "bookDemo": "Submit Form",
+    "errorMessage": "An error occured!Please try again later.",
+    "headerTitle": "See How Container Lifecycle Management Can Work For You",
+    "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers."
+  },
+  "aboutUs": {
+    "heroTitle": "The story behind our company",
+    "description": "Navare is a New Zealand based Transport Management Solution (TMS) provider & integration specialist, focused on producing and implementing business efficiency solutions. We pride ourselves in creating tailored TMS systems for freight and logistics providers around the globe.",
+    "heroButtonText": "Book a Demo",
+    "WhoWeAre": {
+      "WhoWeAre": "Who we are",
+      "description": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt suspendisse ultrices gravida risus",
+      "titlePrefix": "Reducing costs and increasing",
+      "titleHighlight": "efficiency"
+    },
+    "Our mission": {
+      "Our mission": "Our Mission and Vision",
+      "description": "Our customers told us they were tired of countless spreadsheets and emails, and we listened! The Container Lifecycle Management™ platform gives our customers one place to seamlessly collaborate and share data with their partners. Gnosis Freight removes data out of its previous 'silos', opening the floodgates for improved ways of doing business. Each module and feature of the Container Lifecycle Management™ platform was inspired by a specific customer's request or pain point.",
+      "titlePrefix": "Meet Our Special ",
+      "titleHighlight": " Service",
+      "buttonText": "Read More"
+    },
+    "revolution": "Gnosis Freight is taking a revolutionary step in the logistics industry",
+    "testimonial": {
+      "titlePrefix": "Long Time User and Customer",
+      "titleHighlight": "Customer",
+      "testimonial": "Gnosis can provide a tailored platform for any part of your supply chain. The team there works hard and also I have found they bring solutions to problems that I did not even know I had. The team is responsive and explains complex issues to me in a manner that I can understand and relay to my team in an ever changing logistics world.",
+      "author": "Chandler Brown",
+      "position": "Director of Procurement"
+
+    }
+  },
+  "contactUsPage": {
+    "title": "Contact Us",
+    "subtitle": "Want to get in touch? We'd love to hear from you. Send us a message and we will be in touch within one business day.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company Name",
+      "aboutus": "How Did You Hear About Us?",
+      "message": "Message",
+      "required": "Required"
+    }
+  },
+  "ContactUsNew": {
+    "tagText": "contact",
+    "getInTouch": "Get in touch",
+    "whatPeopleSay": "What people say about us",
+    "faqTitle": "An answer to your questions",
+    "moreAnswers": "I need more answers",
+    "iAccept": "I accept your",
+    "privatePolicy": "Private Policy",
+    "wentWrong": "Something went wrong! Please try again later",
+    "contactUsTitle": "Contact Us",
+    "defaultTitle": "Let's build something awesome for your startup",
+    "defaultDescription": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.",
+    "submittingText": "Submitting...",
+    "sendMessageText": "Send Message",
+    "defaultEmail": "contact@talentbridge.com",
+    "defaultAddress": "123 Main St, Anytown, USA",
+    "allFieldsRequired": "All fields are required",
+    "submissionFailed": "Submission failed. Please try again.",
+    "firstName": "First Name"
+  },
+  "successPopup": {
+    "title": "Thank you!",
+    "successDescription": "Your message has been submitted. Someone from our team will contact you shortly.",
+    "failed": "Submission Failed",
+    "failedDescription": "Something went wrong while submitting your form. Please try again in a few moments.",
+    "contactSupport": "If the issue persists, contact support.!",
+    "error": "Error",
+    "buttonSuccessText": "Done",
+    "buttonFailedText": "Try Again",
+    "cookieTitle": "Cookie Preferences",
+    "cookieDescription": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.",
+    "cookieAccept": "Accept",
+    "cookieReject": "Reject"
+  },
+  "DemoPage": {
+    "titleOne": "See How Container Lifecycle Management Can Work For You",
+    "titleTwo": "What can I expect from a demo?"
+  },
+  "CareersJobListing": {
+    "open_positions": "Open Positions",
+    "contact_us": "Contact Us",
+    "no_new_opening_available": "No new opening available!",
+    "applyNow": "Apply Now",
+    "title": "Let's Build the Future of ",
+    "spanText": "Logistics Together",
+    "description": "Join us in transforming global logistics through innovation, technology, and meaningful collaboration today.",
+    "buttonOneText": "View All Jobs",
+    "smallText": "Open Positions",
+    "SearchIconText": "Find your next opportunity",
+    "loading": "Loading...",
+    "view_more": "View More",
+    "error_occurred": "An error occurred",
+    "no_jobs_found": "No jobs found",
+    "no_jobs_search_and_filters": "No jobs found matching your search and filters",
+    "no_jobs_search": "No jobs found matching your search",
+    "no_jobs_filters": "No jobs found matching your filters",
+    "try_different_search": "Try adjusting your search criteria or filters"
+  },
+  "CareerForm": {
+    "title": "Looking For Something That’s ",
+    "spanText": "Not Listed?",
+    "description": "Navare is always on the lookout for forward-thinkers and problem-solvers. If you believe your skills align with our mission to simplify and modernize global freight, send us your details.",
+    "loading": "Submit Form",
+    "submissionFailed": "Submission failed. Please try again.",
+    "submittingText": "Submitting...",
+    "sendMessageText": "Send Message"
+  },
+  "CareersSection": {
+    "title": "Careers",
+    "description": "At Gnosis Freight, you will work with a talented team of engineers, creatives, and thought leaders – all problem solvers - to shape the future of logistics technology. Our customers include many of the world's largest brands and service commodities such as electronics, consumer goods, fresh produce, furniture & home décor, building materials, equipment, and fashion & apparel.",
+    "button_text": "Join Our Team"
+  },
+  "Integration": {
+    "Hero": {
+      "title": "Seamless Integrations for Smarter Management",
+      "description": "Our solutions are built to integrate effortlessly with the platforms and tools your business already relies on - from customer relationship management systems and ecommerce platforms to real-time asset tracking and analytics services.",
+      "Integrate": "Integrate",
+      "with": "with Navare",
+      "integrations_error": "Error loading integrations"
+    },
+    "faq": {
+      "title": "Frequestly asked questions",
+      "no_faq": "No contents available at this moment."
+    },
+    "reportcard": {
+      "title": "The 2024 State of Shipping Report",
+      "subtitle": "Get an exclusive view into the current shipping and delivery landscape of the Australian retail industry, plus hear from ecommerce experts Nathan Bush and Paul Waddy on opportunities for you to stay ahead of the pack.",
+      "download": "Download Report"
+    },
+    "marquee": {
+      "title": "Technologies That Power Our",
+      "spanText": "Solutions",
+      "description": "Navare connects with industry-leading tools to bring together logistics, finance, and ecommerce - all in one system."
+    },
+    "annualreport": {
+      "title": "The 2024 State of Shipping Report",
+      "subtitle": "Get an exclusive view into the current shipping and delivery landscape of the Australian retail industry, plus hear from ecommerce experts Nathan Bush and Paul Waddy on opportunities for you to stay ahead of the pack.",
+      "download": "Download Report"
+    },
+    "error": {
+      "title": "Unable to Load Integrations"
+    },
+    "no_integrations": "No Integrations are available Now.",
+    "showMore": "Show More",
+    "not_found": "Not Found !",
+    "load_more": "Load More",
+    "loading": "Loading...",
+    "searching": "Searching..."
+  },
+  "TermsOfUseSection": {
+    "header": "Website Terms of Use",
+    "lastModifiedLabel": "Last Modified:",
+    "download": "Download",
+    "feedbackContact": "All feedback, comments, requests for technical support, and other communications relating to the Website should be directed to ",
+    "no_content_found": "No content found"
+  },
+  "PrivacyPolicySection": {
+    "header": "Gnosis Freight Privacy Policy",
+    "lastModifiedLabel": "Last Modified:",
+    "download": "Download",
+    "no_content_found": "No content found"
+  },
+  "CareersJobDetail": {
+    "introduction": "Introduction",
+    "description": "Description:",
+    "aboutTheRole": "About the Role",
+    "whatYoullDo": "What You'll Do",
+    "whatYoullBring": "What You'll Bring",
+    "bonus": "Bonus",
+    "whyBuildYourCareer": "Why Build Your Career at Gnosis Freight?",
+    "jobDetails": "Job Details",
+
+    "notFoundTitle": "Job Not Found",
+    "notFoundDescription": "This job could not be found. Explore more opportunities at Navare.",
+    "backToCareers": "Back to Careers",
+    "applyNow": "Apply Now",
+    "city": "City",
+    "department": "Department",
+    "jobLevel": "Job Level",
+    "employmentType": "Employment Type",
+    "aboutCompany": "About Gnosis Freight",
+    "aboutCompanyDescription": "Gnosis Freight is revolutionizing the freight and container tracking industry, delivered through our Marlo container tracking engine (data infrastructure) and Container Lifecycle Management (CLM) Platform (platform infrastructure). Our team has cracked the code on container tracking, creating an unparalleled product that leads the market. We're passionate about what we do and the impact we have on the global shipping industry. Gnosis Freight has undergone rapid growth in recent years, boasting a 300% increase in headcount, all while remaining fully bootstrapped and ensuring employees retain meaningful levels of autonomy.",
+    "jobDescription": "Job Description",
+    "details": "Details:",
+    "easyApply": "Easy apply on Linkedin by",
+    "clickingHere": "clicking here",
+    "others": "Others:",
+    "noJobDescription": "No job description",
+    "noJobDetails": "No job details",
+    "noOtherDetails": "No other details"
+  },
+  "LandingPageSeaCargo": {
+    "need_help": "Need help?"
+  },
+  "wentWrong": "Something went wrong! Please try again later.",
+  "error_page": {
+    "oops": "Oops! Something went wrong.",
+    "try_again": "Please try again later."
+  },
+  "usecaseTestimonialsection": {
+    "readcasestudy": "Read case study",
+    "no_testimonials": "No testimonials available at the moment"
+
+  },
+  "commonMessages": {
+    "no_content_found": "No content found",
+    "Book_Demo": "Book a Demo",
+    "Schedule_demo": "Schedule a Demo",
+    "book_demo": "Book Demo",
+    "learn_more": "Learn More",
+    "read_full_review": "Read the full review",
+    "noStoriesFound": "No stories found",
+    "noLogosAvailable": "No logos available"
+  },
+  "errorPage": {
+    "errorMessage": "An error occured!Please try again later."
+  },
+  "articlespage": {
+    "no_news": "No News are currently available.",
+    "no_blogs": "No Blogs are currently available.",
+    "news_and_insights": "News & Insights",
+    "hero_description": "Discover the latest news, gain valuable insights, dive into intriguing case studies, stay updated with industry developments, listen to podcasts, explore engaging webinars, access exclusive reports, and much more.",
+    "blogs_title": "Latest Blogs",
+    "view_all": "View All",
+    "our_blogs": "Our Blogs",
+    "learn_more": "Learn More",
+    "no_news_found": "No news found",
+    "no_blogs_found": "No blogs found",
+    "next": "Next",
+    "load_more": "Load More",
+    "loading": "Loading..."
+  },
+  "BlogCategoryList": {
+    "main_categories": "Main Categories",
+    "tableOfContents": "Table Of Contents"
+  },
+  "BlogDetailPage": {
+    "heroSection": {
+      "title": "Enhancing Customer Experience | Executive Interview",
+      "description": "Introducing the Container Lifecycle Management® Platform, the world's first supply chain platform focused on the full lifecycle of your shipping containers."
+    },
+    "blogDataSection": {
+      "title": "Easy Tracking System is Changing",
+      "spanText": "Modern Logistics",
+      "dummyText": "Enhancing Customer Experience | Executive Interview\n\nIn today’s competitive market, enhancing customer experience (CX) has become a top priority for businesses aiming to build lasting relationships and drive growth. In this executive interview, we explore how industry leaders are rethinking customer engagement, using data-driven insights, innovative technology, and personalized service strategies to exceed expectations at every touchpoint. From streamlining digital interfaces to fostering a culture of customer-centricity within their teams, these executives share their perspectives on what it takes to create seamless, meaningful, and memorable experiences that foster loyalty and set brands apart.",
+      "NoBlog": "No Blog content available at the moment."
+
+    },
+    "landingPageStories": {
+      "smallText": "News & Insights",
+      "titlePrefix": "Explore Latest Insights & ",
+      "titleHighlight": "Stories."
+    }
+  },
+  "404page": {
+    "not_found": "OOPS! PAGE NOT FOUND",
+    "message": "Oops! it could be you or us, there is no page here. It might have been moved or deleted.",
+    "button": "Back to Home"
+  }
+}

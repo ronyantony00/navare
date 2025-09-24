@@ -1,0 +1,16 @@
+:root {
+  /* === PRIMITIVE SHADOW TOKENS === */
+  --shadow-subtle-overlay: 0px 0px 21px 0px #d1d1d19e;
+  --shadow-inset-light: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  --shadow-tailwind-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-tailwind-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+@theme {
+  /* === SEMANTIC SHADOW TOKENS === */
+  --shadow-surface: var(--shadow-subtle-overlay);
+  --shadow-pressed: var(--shadow-inset-light);
+  --shadow-raised: var(--shadow-tailwind-md);
+  --shadow-elevated: var(--shadow-tailwind-lg);
+}

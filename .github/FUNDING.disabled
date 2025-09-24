@@ -1,0 +1,7 @@
+# 🚫 This workflow is part of the boilerplate but currently disabled.
+# Rename back to .yml (remove .disabled) and update if you want to activate it.
+
+github: ixartz
+custom:
+  - 'https://nextjs-boilerplate.com/pro-saas-starter-kit'
+  - 'https://nextlessjs.com'

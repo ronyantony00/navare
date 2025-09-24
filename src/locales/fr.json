@@ -1,0 +1,461 @@
+{
+  "RootLayout": {
+    "home_link": "Accueil",
+    "about_link": "A propos",
+    "counter_link": "Compteur",
+    "portfolio_link": "Portfolio",
+    "sign_in_link": "Se connecter",
+    "sign_up_link": "S'inscrire"
+  },
+  "BaseTemplate": {
+    "description": "Code de démarrage pour Next.js avec Tailwind CSS",
+    "made_with": "Fait avec <author></author>."
+  },
+  "Index": {
+    "meta_title": "Présentation de Next.js Boilerplate",
+    "meta_description": "Next js Boilerplate est le code de démarrage parfait pour votre projet. Construisez votre application React avec le framework Next.js.",
+    "sponsors_title": "Partenaires"
+  },
+  "Counter": {
+    "meta_title": "Compteur",
+    "meta_description": "Un exemple d'opération DB",
+    "loading_counter": "Chargement du compteur...",
+    "security_powered_by": "Sécurité, détection de bot et rate limiting propulsés par"
+  },
+  "CounterForm": {
+    "presentation": "Le compteur est stocké dans la base de données et incrémenté par la valeur que vous fournissez.",
+    "label_increment": "Incrémenter de",
+    "button_increment": "Incrémenter"
+  },
+  "CurrentCount": {
+    "count": "Nombre : {count}"
+  },
+  "FeatureCard": {
+    "small_title": "Cas d'usage",
+    "title": "Pour les importateurs",
+    "description": "Suivez et gérez vos conteneurs depuis la date de préparation du fret jusqu'au retour du conteneur vide"
+  },
+  "CtaContentOne": {
+    "title": "Découvrez comment CLM aide les équipes logistiques à rester en avance",
+    "description": "Suivez, gérez et agissez sur vos conteneurs avec la plateforme Container Lifecycle Management® — sans changer d'outils ou courir après les mises à jour.",
+    "tag_line": "Obtenir une démo personnalisée",
+    "button_text": "Planifier une démo"
+  },
+  "FreightSection": {
+    "title": "Avez-vous déjà un système existant ?",
+    "description": "Aucun problème ! Gnosis Freight fournit l'API la plus précise et complète pour améliorer votre système existant.",
+    "tag_line": "Obtenir une démo personnalisée",
+    "buttonTextOne": "Données et API Gnosis Freight"
+  },
+  "ImageWithContent": {
+    "title": "Découvrez le bon plan pour",
+    "span_text": "votre entreprise",
+    "button_text": "Réserver maintenant",
+    "no_plans": "Aucun plan disponible pour le moment",
+    "key_features": "Fonctionnalités clés",
+    "right_plan": "Découvrez le plan IA parfait pour votre entreprise",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "features": "FONCTIONNALITÉS"
+  },
+  "ImageWithContentMain": {
+    "title": "Améliorations des processus et",
+    "span_text": "automatisations utiles",
+    "description": "Réduisez ou éliminez les tâches manuelles chronophages et le risque d'erreur humaine afin de pouvoir consacrer votre énergie à développer votre entreprise.",
+    "button_text": "Réserver maintenant"
+  },
+  "CalculatorSection": {
+    "title": "Calculateur d'économies Gnosis",
+    "span_text": "Automatisations",
+    "description": "Découvrez la valeur de la plateforme Container Lifecycle Management®. Ces métriques sont dérivées des moyennes de l'industrie et des études de cas clients.",
+    "buttonTextOne": "Calculer vos économies"
+  },
+  "TestimonialSection": {
+    "title": "\"La plupart des fournisseurs viennent et font un pitch.",
+    "extraTitle": "Gnosis est venu et a écouté.\"",
+    "description": "Classé #1 pour la probabilité de recommander et la facilité d'utilisation sur G2"
+  },
+  "PremiumOnboarding": {
+    "title": "Équipe de gestion de compte dédiée",
+    "banner_text": "Intégration et support premium",
+    "description": "En tant que client CLM, vous aurez une équipe de gestion de compte dédiée pour vous guider tout au long du processus d'intégration et fournir un support continu tout au long de votre utilisation de la plateforme CLM. Votre équipe est composée d'experts aux compétences diverses, dédiés à vous aider à améliorer les opérations de chaîne d'approvisionnement et de logistique de votre entreprise, et à assurer votre succès avec la plateforme CLM. Votre équipe de gestion de compte comprend :",
+    "customer": "Responsable de la réussite client",
+    "clm": "Ingénieur solutions CLM",
+    "data_support": "Spécialiste du support des données",
+    "data_scientist": "Scientifique des données"
+  },
+  "SeamleassIntegration": {
+    "title": "Intégration transparente",
+    "banner_text": "Nous pouvons nous intégrer aux plateformes que vous utilisez",
+    "description": "Rationalisez vos opérations et améliorez l'efficacité en tirant parti des capacités de connectivité de la plateforme Container Lifecycle Management®. Notre plateforme permet une intégration transparente avec vos partenaires commerciaux et fournisseurs, éliminant le besoin de saisie manuelle de données."
+  },
+  "AllInOnePlatform": {
+    "title": "Plateforme tout-en-un pour",
+    "extra_title": "suivre et gérer vos expéditions",
+    "description": "Arrêtez de copier et coller les données de conteneurs dans des feuilles de calcul, de rechercher pendant des heures sur les sites Web des transporteurs, et d'envoyer des e-mails pour obtenir les données les plus récentes."
+  },
+  "SolutionsOurCase": {
+    "mainTitle": "Une plateforme, plusieurs",
+    "mainSpan": "cas d'usage",
+    "cardSmallTitle": "Gestion du cycle de vie des conteneurs",
+    "cardTitle": "Libérez le plein potentiel de votre chaîne d'approvisionnement.",
+    "cardDescription": "Ensemble, nous libérerons le plein potentiel de vos processus logistiques de conteneurs de bout en bout."
+  },
+  "SolutionsPlatformSection": {
+    "mainTitle": "Un aperçu de la",
+    "mainSpan": "plateforme CLM.",
+    "mainDescription": "La plateforme Container Lifecycle Management® (CLM) automatise la collecte et le formatage des données de suivi de conteneurs fragmentées à travers tous les jalons et modes, offrant une visibilité en temps réel et permettant aux équipes logistiques de repérer les exceptions plus rapidement et d'agir plus tôt.",
+    "bottomTitle": "À travers la planète sur une seule plateforme. Prendre des décisions ensemble, en temps réel. Devenez le partenaire logistique que vous avez toujours voulu."
+  },
+  "SolutionsHeroSection": {
+    "title": "Découvrez une façon plus intelligente de",
+    "spanText": "suivre et gérer",
+    "extraTitle": "vos conteneurs.",
+    "bannerText": "Plateforme Container Lifecycle Management®",
+    "description": "Accédez aux données de suivi de conteneurs les plus complètes et précises, collaborez de manière transparente avec tous vos partenaires logistiques sur une seule plateforme, et initiez le suivi avec juste le numéro de connaissement principal (MBL).",
+    "buttonTextOne": "Commencer",
+    "buttonTextTwo": "Planifier une démo"
+  },
+  "HeroSectionMain": {
+    "title": "Nous concevons des stratégies et des expériences percutantes pour les dirigeants et les organisations. Nous concevons des stratégies et des expériences percutantes pour les dirigeants et les organisations.",
+    "buttonText": "Parlons-en",
+    "heroSectionArrowAlt": "Flèche de la section héro",
+    "heroSectionDownArrowAlt": "Flèche vers le bas de la section héro"
+  },
+  "Footer": {
+    "navare": "Navare est un fournisseur néo-zélandais de solutions de gestion logistique, proposant des innovations technologiques de pointe dans les systèmes de gestion du transport et les produits associés.",
+    "copyrightOne": "Droits d'auteur © 2024 Navare Solutions",
+    "copyrightTwo": "Tous droits réservés."
+  },
+  "PageIntroBlock": {
+    "buttonTextOne": "Commencer",
+    "buttonTextTwo": "Planifier une démo"
+  },
+  "CtaContent": {
+    "title": "Obtenir une démo personnalisée",
+    "description": "Suivez, gérez et agissez sur vos conteneurs avec la plateforme Container Lifecycle Management® — sans changer d'outils ou courir après les mises à jour.",
+    "tag_line": "Découvrez comment CLM aide les équipes logistiques à rester en avance",
+    "button_text": "Planifier une démo"
+  },
+  "JobCard": {
+    "location": "Lieu",
+    "employment_type": "Type d'emploi"
+  },
+  "FaqListingSection": {
+    "no_faq_found": "Aucun élément FAQ trouvé pour {tab}"
+  },
+  "FaqHeroSection": {
+    "still_have_question": "Vous avez encore une question ? N'hésitez pas à nous",
+    "contact_us": "contacter.",
+    "description": "Trouvez des réponses aux questions fréquemment posées sur nos produits, services, politiques et plus encore. Nos experts ont organisé les FAQ, les ont organisées pour plus de commodité et fourni des explications claires pour des décisions éclairées.",
+    "title": "Questions",
+    "spanText": "fréquemment posées",
+    "Have_question": "Vous avez une question ?"
+  },
+  "BlogCard": {
+    "no_Video_available": "Aucune vidéo disponible",
+    "read_more": "lire plus",
+    "read_less": "lire moins",
+    "expand_title": "Développer le titre",
+    "collapse_title": "Réduire le titre",
+    "learn_more": "En savoir plus"
+  },
+  "TestimonialHeroSection": {
+    "title1": "Ce que les marques de premier plan disent de",
+    "title2": "nos produits",
+    "description": "Chez Gnosis Freight, nous nous engageons à libérer tout le potentiel de votre chaîne d'approvisionnement. Nos clients comprennent bon nombre des plus grandes marques mondiales et nous desservons des secteurs tels que l'électronique, les biens de consommation, les produits frais, les meubles et la décoration intérieure, les matériaux de construction, les équipements, ainsi que la mode et l'habillement. Chaque avis ci-dessous a été soumis par un véritable client de Gnosis Freight."
+  },
+  "LegalSection": {
+    "title": "Centre juridique",
+    "description": "Chez Gnosis Freight, nous nous engageons à libérer tout le potentiel de votre chaîne d'approvisionnement. Nos clients comprennent bon nombre des plus grandes marques mondiales et nous desservons des secteurs tels que l'électronique, les biens de consommation, les produits frais, les meubles et la décoration intérieure, les matériaux de construction, les équipements, ainsi que la mode et l'habillement. Chaque avis ci-dessous a été soumis par un véritable client de Gnosis Freight.",
+    "fallbackTitle": "Conformité et juridique",
+    "fallbackDescription": "Chez Navare, nous croyons que des systèmes numériques solides sont construits sur une base de transparence et de confiance. Dans le cadre de notre engagement envers une technologie responsable, cette section fournit l'accès à toutes les informations juridiques et de conformité essentielles liées à notre plateforme et à nos services.",
+    "fallbackFooterTitle": "Besoin d'aide pour une question juridique ou de conformité ?",
+    "fallbackButtonText": "Explorer nos FAQ"
+  },
+  "DemoBookingPage": {
+    "mainTitle": "Découvrez comment la gestion du cycle de vie des conteneurs peut fonctionner pour vous",
+    "subTitle": "Que puis-je attendre d'une démo ?",
+    "formTitlePrefix": "Voir",
+    "formTitleHighlight": "Navare",
+    "formTitleSuffix": "en action",
+    "formSubtitle": "Découvrez comment la plateforme CLM peut offrir une meilleure visibilité sur votre chaîne d'approvisionnement, automatiser les processus de suivi manuels et chronophages, et générer des économies importantes",
+    "formFooterLineOne": "En soumettant le formulaire, vous acceptez la",
+    "formFooterLineTwo": "Politique de confidentialité de Navare",
+    "submitting": "Envoi en cours...",
+    "validation": {
+      "required": "Requis",
+      "telInvalid": "Le numéro de téléphone doit comporter au moins 7 chiffres",
+      "pleaseEnterValidTel": "Veuillez entrer un numéro de téléphone valide",
+      "emailnvalid": "Email invalide",
+      "messageWarning": "Au moins 20 caractères sont requis",
+      "min2Chars": "Minimum 2 caractères requis",
+      "nameFormat": "Seules les lettres, espaces, tirets et apostrophes sont autorisés. Pas d'espaces en début ou fin.",
+      "min5Chars": "minimum 5 caractères",
+      "max254Chars": "maximum 254 caractères",
+      "companyMin2Chars": "Le nom de l'entreprise doit comporter au moins 2 caractères",
+      "companyMax100Chars": "Le nom de l'entreprise ne doit pas dépasser 100 caractères",
+      "companyMustHaveLetter": "Le nom de l'entreprise doit contenir au moins une lettre",
+      "messageMax1000Chars": "Le message ne doit pas dépasser 1000 caractères",
+      "messageInvalidChars": "Le message contient des caractères invalides"
+    },
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "email": "Email",
+    "phoneNumber": "Numéro de téléphone",
+    "companyName": "Nom de l'entreprise",
+    "containers": "Conteneurs par an",
+    "joinBuisness": "Rejoignez des entreprises comme :",
+    "bookDemo": "Soumettre le formulaire",
+    "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard.",
+    "headerTitle": "Découvrez comment la gestion du cycle de vie des conteneurs peut fonctionner pour vous",
+    "mainHeading": "Présentation de la plateforme Container Lifecycle Management®, la première au monde de vos conteneurs d'expédition."
+  },
+  "aboutUs": {
+    "heroTitle": "L'histoire de notre entreprise",
+    "description": "Navare est un fournisseur de solutions de gestion des transports (TMS) basé en Nouvelle-Zélande et un spécialiste de l'intégration, axé sur la production et la mise en œuvre de solutions d'efficacité opérationnelle. Nous sommes fiers de créer des systèmes TMS sur mesure pour les prestataires de fret et de logistique du monde entier.",
+    "heroButtonText": "Réserver une démo",
+    "WhoWeAre": {
+      "WhoWeAre": "Qui nous sommes",
+      "description": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt suspendisse ultrices gravida risus",
+      "titlePrefix": "Réduire les coûts et augmenter",
+      "titleHighlight": "l'efficacité"
+    },
+    "Our mission": {
+      "Our mission": "Notre mission et vision",
+      "description": "Nos clients nous ont dit qu'ils en avaient assez des innombrables feuilles de calcul et e‑mails, et nous les avons écoutés ! La plateforme Container Lifecycle Management™ offre à nos clients un seul endroit pour collaborer sans couture et partager des données avec leurs partenaires. Gnosis Freight supprime les données de leurs anciens « silos », ouvrant la voie à de nouvelles façons d'améliorer les pratiques commerciales. Chaque module et fonctionnalité de la plateforme Container Lifecycle Management™ a été inspiré par une demande ou un point de douleur précis d'un client.",
+      "titlePrefix": "Rencontrez notre ",
+      "titleHighlight": "service spécial",
+      "buttonText": "Lire plus"
+    },
+    "revolution": "Gnosis Freight fait un pas révolutionnaire dans l'industrie de la logistique",
+    "testimonial": {
+      "titlePrefix": "Utilisateur de longue date et",
+      "titleHighlight": "client",
+      "testimonial": "Gnosis peut fournir une plateforme personnalisée pour toute partie de votre chaîne logistique. L'équipe travaille dur et j'ai constaté qu'elle apporte des solutions à des problèmes dont je n'avais même pas conscience. L'équipe est réactive et m'explique des sujets complexes d'une manière que je peux comprendre et transmettre à mon équipe dans un monde logistique en constante évolution.",
+      "author": "Chandler Brown",
+      "position": "Directeur des approvisionnements"
+    }
+  },
+  "contactUsPage": {
+    "title": "Contactez-nous",
+    "subtitle": "Vous souhaitez nous contacter ? Nous serions ravis de vous entendre. Envoyez-nous un message et nous vous répondrons dans un délai d'un jour ouvrable.",
+    "form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "company": "Nom de l'entreprise",
+      "aboutus": "Comment avez-vous entendu parler de nous ?",
+      "message": "Message",
+      "required": "Requis"
+    }
+  },
+  "ContactUsNew": {
+    "tagText": "contact",
+    "getInTouch": "Entrer en contact",
+    "whatPeopleSay": "Ce que les gens disent de nous",
+    "faqTitle": "Une réponse à vos questions",
+    "moreAnswers": "J'ai besoin de plus de réponses",
+    "iAccept": "J'accepte votre",
+    "privatePolicy": "Politique de confidentialité",
+    "wentWrong": "Quelque chose s'est mal passé ! Veuillez réessayer plus tard",
+    "contactUsTitle": "Contactez-nous",
+    "defaultTitle": "Construisons quelque chose d'incroyable pour votre startup",
+    "defaultDescription": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.",
+    "submittingText": "Envoi en cours...",
+    "sendMessageText": "Envoyer le message",
+    "defaultEmail": "contact@talentbridge.com",
+    "defaultAddress": "123 Main St, Anytown, USA",
+    "allFieldsRequired": "Tous les champs sont requis",
+    "submissionFailed": "L'envoi a échoué. Veuillez réessayer."
+  },
+  "successPopup": {
+    "title": "Merci !",
+    "successDescription": "Votre message a été soumis. Quelqu'un de notre équipe vous contactera bientôt.",
+    "failed": "Échec de la soumission",
+    "failedDescription": "Quelque chose s'est mal passé lors de la soumission de votre formulaire. Veuillez réessayer dans quelques instants.",
+    "contactSupport": "Si le problème persiste, contactez le support !",
+    "error": "Erreur",
+    "buttonSuccessText": "Terminé",
+    "buttonFailedText": "Réessayer",
+    "cookieTitle": "Préférences de cookies",
+    "cookieDescription": "Nous utilisons des cookies pour améliorer votre expérience. En continuant à visiter ce site, vous acceptez notre utilisation de cookies.",
+    "cookieAccept": "Accepter",
+    "cookieReject": "Rejeter"
+  },
+  "DemoPage": {
+    "titleOne": "Découvrez comment la gestion du cycle de vie des conteneurs peut vous être utile",
+    "titleTwo": "Que puis-je attendre d'une démonstration ?"
+  },
+  "CareersJobListing": {
+    "open_positions": "Postes ouverts",
+    "contact_us": "Contactez-nous",
+    "no_new_opening_available": "Aucune nouvelle ouverture disponible !",
+    "applyNow": "Postuler maintenant",
+    "title": "Construisons ensemble l'avenir de la",
+    "spanText": "logistique",
+    "description": "Rejoignez-nous pour transformer la logistique mondiale grâce à l'innovation, la technologie et une collaboration significative dès aujourd'hui.",
+    "buttonOneText": "Voir tous les emplois",
+    "smallText": "Postes ouverts",
+    "SearchIconText": "Trouvez votre prochaine opportunité",
+    "loading": "Chargement...",
+    "view_more": "Voir plus",
+    "error_occurred": "Une erreur s'est produite",
+    "no_jobs_found": "Aucun emploi trouvé",
+    "no_jobs_search_and_filters": "Aucun emploi trouvé correspondant à votre recherche et à vos filtres",
+    "no_jobs_search": "Aucun emploi trouvé correspondant à votre recherche",
+    "no_jobs_filters": "Aucun emploi trouvé correspondant à vos filtres",
+    "try_different_search": "Essayez d'ajuster vos critères de recherche ou vos filtres"
+  },
+  "CareerForm": {
+    "title": "Vous cherchez quelque chose qui",
+    "spanText": "n'est pas listé ?",
+    "description": "Navare est toujours à la recherche de penseurs avant-gardistes et de résolveurs de problèmes. Si vous pensez que vos compétences s'alignent sur notre mission de simplifier et moderniser le fret mondial, envoyez-nous vos détails.",
+    "loading": "Soumettre le formulaire",
+    "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
+    "submittingText": "Envoi en cours...",
+    "sendMessageText": "Envoyer le message"
+  },
+  "CareersSection": {
+    "title": "Carrières",
+    "description": "Chez Gnosis Freight, vous travaillerez avec une équipe talentueuse d'ingénieurs, de créatifs et de penseurs — tous résolveurs de problèmes — pour façonner l'avenir de la technologie logistique. Nos clients comprennent bon nombre des plus grandes marques mondiales et nous desservons des secteurs tels que l'électronique, les biens de consommation, les produits frais, les meubles et la décoration intérieure, les matériaux de construction, les équipements, ainsi que la mode et l'habillement.",
+    "button_text": "Rejoindre notre équipe"
+  },
+  "Integration": {
+    "Hero": {
+      "title": "Intégrations transparentes pour une gestion plus intelligente",
+      "description": "Nos solutions sont conçues pour s'intégrer facilement aux plateformes et outils sur lesquels votre entreprise s'appuie déjà — des systèmes de gestion de la relation client et plateformes de commerce électronique aux services de suivi d'actifs en temps réel et d'analyse.",
+      "Integrate": "Intégrer",
+      "with": "avec Navare",
+      "integrations_error": "Erreur lors du chargement des intégrations"
+    },
+    "faq": {
+      "title": "Questions fréquemment posées",
+      "no_faq": "Aucun contenu disponible pour le moment."
+    },
+    "reportcard": {
+      "title": "Le rapport 2024 sur l'état de l'expédition",
+      "subtitle": "Obtenez un aperçu exclusif du paysage actuel de l'expédition et de la livraison dans le secteur du commerce de détail australien, et écoutez les experts du commerce électronique Nathan Bush et Paul Waddy sur les opportunités pour garder une longueur d'avance.",
+      "download": "Télécharger le rapport"
+    },
+    "marquee": {
+      "title": "Technologies qui alimentent nos",
+      "spanText": "solutions",
+      "description": "Navare se connecte avec des outils de pointe de l'industrie pour rassembler la logistique, la finance et le commerce électronique — le tout dans un seul système."
+    },
+    "annualreport": {
+      "title": "Le rapport 2024 sur l'état de l'expédition",
+      "subtitle": "Obtenez un aperçu exclusif du paysage actuel de l'expédition et de la livraison dans le secteur du commerce de détail australien, et écoutez les experts du commerce électronique Nathan Bush et Paul Waddy sur les opportunités pour garder une longueur d'avance.",
+      "download": "Télécharger le rapport"
+    },
+    "error": {
+      "title": "Impossible de charger les intégrations"
+    },
+    "no_integrations": "Aucune intégration n'est disponible actuellement.",
+    "showMore": "Afficher plus",
+    "not_found": "Introuvable !",
+    "load_more": "Charger plus",
+    "loading": "Chargement...",
+    "searching": "Recherche..."
+  },
+  "TermsOfUseSection": {
+    "header": "Conditions d'utilisation du site Web",
+    "lastModifiedLabel": "Dernière modification :",
+    "download": "Télécharger",
+    "feedbackContact": "Tous les retours, commentaires, demandes d'assistance technique et autres communications concernant le site Web doivent être adressés à ",
+    "no_content_found": "Aucun contenu trouvé"
+  },
+  "PrivacyPolicySection": {
+    "header": "Politique de confidentialité de Gnosis Freight",
+    "lastModifiedLabel": "Dernière modification :",
+    "download": "Télécharger",
+    "no_content_found": "Aucun contenu trouvé"
+  },
+  "CareersJobDetail": {
+    "introduction": "Introduction",
+    "description": "Description :",
+    "aboutTheRole": "À propos du rôle",
+    "whatYoullDo": "Ce que vous ferez",
+    "whatYoullBring": "Ce que vous apporterez",
+    "bonus": "Bonus",
+    "whyBuildYourCareer": "Pourquoi construire votre carrière chez Gnosis Freight ?",
+    "jobDetails": "Détails du poste",
+    "notFoundTitle": "Emploi non trouvé",
+    "notFoundDescription": "Cet emploi n'a pas pu être trouvé. Explorez plus d'opportunités chez Navare.",
+    "backToCareers": "Retour aux carrières",
+    "applyNow": "Postuler maintenant",
+    "city": "Ville",
+    "department": "Département",
+    "jobLevel": "Niveau du poste",
+    "employmentType": "Type d'emploi",
+    "aboutCompany": "À propos de Gnosis Freight",
+    "aboutCompanyDescription": "Gnosis Freight révolutionne l'industrie du fret et du suivi des conteneurs, grâce à notre moteur de suivi Marlo (infrastructure de données) et à la plateforme de gestion du cycle de vie des conteneurs (CLM) (infrastructure de plateforme). Notre équipe a percé le secret du suivi des conteneurs, créant un produit inégalé qui domine le marché. Nous sommes passionnés par notre travail et par l'impact que nous avons sur l'industrie mondiale du transport maritime. Gnosis Freight a connu une croissance rapide ces dernières années, avec une augmentation de 300 % de ses effectifs, tout en restant entièrement autofinancée et en garantissant à ses employés un haut niveau d'autonomie.",
+    "jobDescription": "Description du poste",
+    "details": "Détails :",
+    "easyApply": "Postulez facilement sur Linkedin en",
+    "clickingHere": "cliquant ici",
+    "others": "Autres :",
+    "noJobDescription": "Aucune description de poste",
+    "noJobDetails": "Aucun détail sur le poste",
+    "noOtherDetails": "Aucun autre détail"
+  },
+  "LandingPageSeaCargo": {
+    "need_help": "Besoin d'aide ?"
+  },
+  "wentWrong": "Quelque chose s'est mal passé ! Veuillez réessayer plus tard.",
+  "error_page": {
+    "oops": "Oops ! Quelque chose s'est mal passé.",
+    "try_again": "Veuillez réessayer plus tard."
+  },
+  "usecaseTestimonialsection": {
+    "readcasestudy": "Lire l'étude de cas",
+    "no_testimonials": "Aucun témoignage disponible pour le moment"
+  },
+  "commonMessages": {
+    "no_content_found": "Aucun contenu trouvé",
+    "Book_Demo": "Réserver une démo",
+    "Schedule_demo": "Planifier une démo",
+    "book_demo": "Réserver une démo",
+    "learn_more": "En savoir plus",
+    "read_full_review": "Lire l'avis complet sur Nav2",
+    "noStoriesFound": "Aucune histoire trouvée",
+    "noLogosAvailable": "Aucun logo disponible"
+  },
+  "errorPage": {
+    "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard."
+  },
+  "articlespage": {
+    "no_news": "Aucune actualité n'est actuellement disponible.",
+    "news_and_insights": "Actualités et perspectives",
+    "hero_description": "Découvrez les dernières actualités, obtenez des perspectives précieuses, plongez dans des études de cas intrigantes, restez à jour avec les développements de l'industrie, écoutez des podcasts, explorez des webinaires engageants, accédez à des rapports exclusifs, et bien plus encore.",
+    "blogs_title": "Derniers blogs",
+    "view_all": "Voir tout",
+    "our_blogs": "Nos blogs",
+    "learn_more": "En savoir plus"
+  },
+  "BlogCategoryList": {
+    "main_categories": "Catégories principales",
+    "tableOfContents": "Table des matières"
+  },
+  "BlogDetailPage": {
+    "heroSection": {
+      "title": "Améliorer l'expérience client | Entretien avec un dirigeant",
+      "description": "Présentation de la plateforme Container Lifecycle Management®, la première plateforme logistique au monde axée sur le cycle de vie complet de vos conteneurs d'expédition."
+    },
+    "blogDataSection": {
+      "title": "Le système de suivi simplifié évolue",
+      "spanText": "Logistique moderne",
+      "dummyText": "Améliorer l'expérience client | Entretien avec un dirigeant\n\nDans un marché concurrentiel, l'amélioration de l'expérience client (CX) est devenue une priorité pour les entreprises souhaitant bâtir des relations durables et stimuler leur croissance. Dans cet entretien avec un dirigeant, nous explorons comment les leaders du secteur repensent l'engagement client en s'appuyant sur des données, des technologies innovantes et des stratégies de service personnalisées pour dépasser les attentes à chaque point de contact. De la simplification des interfaces numériques à la promotion d'une culture centrée sur le client, ces dirigeants partagent leur vision de ce qu'il faut pour créer des expériences fluides, pertinentes et mémorables, générant ainsi fidélité et différenciation de marque."
+    },
+    "landingPageStories": {
+      "smallText": "Actualités & Perspectives",
+      "titlePrefix": "Explorez les dernières perspectives & ",
+      "titleHighlight": "histoires."
+    }
+  },
+  "404page": {
+    "not_found": "OOPS ! PAGE NON TROUVÉE",
+    "message": "Oops ! il peut s'agir de vous ou de nous, il n'y a pas de page ici. Il a peut-être été déplacé ou supprimé.",
+    "button": "Retour à l'accueil"
+  }
+}
