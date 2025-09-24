@@ -85,7 +85,7 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
       </div>
       {/* <RiveNavigation className="h-fit aspect-video hidden lg:block" /> */}
       <RiveTextController
-        src="/assets/animation/NAVARE_LANDING_ANIMATION.riv.riv"
+        src="/assets/animation/NAVARE_LANDING_ANIMATION.riv"
         className="h-fit aspect-video hidden lg:block"
         cardData={cardData}
       />
