@@ -28,7 +28,7 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
   // const articleSlug = articleToShowNavData?.[0]?.slug;
   const resourceCompanyData = resourceCompanyNavbarData?.navbar;
   // const articleThumbnail = articleToShowNavData?.[0]?.thumbnail?.url;
-  console.warn('articleToShowNavData', articleToShowNavData?.[0]?.thumbnail?.url);
+  // console.warn('articleToShowNavData', articleToShowNavData?.[0]?.thumbnail?.url);
 
   const { isMobile, isTouchDevice } = useDeviceDetection();
   const t = useTranslations('commonMessages');

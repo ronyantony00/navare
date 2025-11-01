@@ -18,7 +18,7 @@ interface BlogCardProps {
 }
 
 const NewsCard: React.FC<BlogCardProps> = ({ date, title, desc, videoUrl, link, blogImg }) => {
-  console.warn('videoUrl', videoUrl);
+  // console.warn('videoUrl', videoUrl);
   const t = useTranslations('BlogCard');
   const video = getImageUrl(videoUrl as string);
 

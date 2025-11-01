@@ -46,9 +46,9 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
       }
 
       // Submit form using the new client-side API function
-      const response = await submitContactFormClient(formFields);
+      // const response = await submitContactFormClient(formFields);
 
-      console.warn('Contact form submission successful:', response);
+      // console.warn('Contact form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 

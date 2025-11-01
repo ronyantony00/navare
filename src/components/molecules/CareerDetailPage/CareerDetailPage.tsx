@@ -12,7 +12,7 @@ interface CareerdetailPageProps {
 }
 
 const CareerDetailPage = ({ job }: CareerdetailPageProps) => {
-  console.warn('JOB DATA:', job);
+  // console.warn('JOB DATA:', job);
   const t = useTranslations('CareersJobDetail');
   return (
     <div className="w-full  flex flex-col items-center justify-center bg-landing-hero-bg-color">

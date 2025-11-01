@@ -17,7 +17,7 @@ interface BlogsSectionProps {
 const BlogsSection = ({ title, tag, blogs, error, paginationMeta }: BlogsSectionProps) => {
   const t = useTranslations('articlespage');
 
-  console.warn('ARTCLE OR BLOGS', blogs);
+  // console.warn('ARTCLE OR BLOGS', blogs);
 
   if (!blogs || blogs.length === 0 || error) {
     return (

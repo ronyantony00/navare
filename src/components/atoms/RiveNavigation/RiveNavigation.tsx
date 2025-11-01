@@ -26,11 +26,11 @@ export default function RiveNavigation({ className }: RiveNavigationProps) {
     }
 
     const handler = (e: any) => {
-      console.warn('Rive Event:', e);
+      // console.warn('Rive Event:', e);
       const event = events.find(event => event.name === e.data?.name);
       if (event) {
         router.push(`/solutions/${event.path}`);
-        console.warn('Rive Event:', event);
+        // console.warn('Rive Event:', event);
       }
     };
 

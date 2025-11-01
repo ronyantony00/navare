@@ -26,7 +26,7 @@ const page = async ({ searchParams }: PageProps) => {
     notFound();
   }
 
-  console.warn('pageDetails', pageDetails);
+  // console.warn('pageDetails', pageDetails);
   return (
     <div className="bg-landing-hero-bg-color">
       <TermsOfUse pageDetails={pageDetails} />

@@ -16,7 +16,7 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
   const t = useTranslations('TermsOfUseSection');
   const pageContent = pageDetails?.[0];
 
-  console.warn('pageContent', pageContent?.updatedAt);
+  // console.warn('pageContent', pageContent?.updatedAt);
 
   const handleDownloadPDF = () => {
     if (!pageContent) {

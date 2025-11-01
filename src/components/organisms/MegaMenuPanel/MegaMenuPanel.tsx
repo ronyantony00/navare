@@ -63,7 +63,7 @@ const MegaMenuPanel = ({ options, promoCardImage, promoCardDescription, linkOnCa
         </div>
 
         {/* promo card */}
-        { promoCardVisible && (
+        { promoCardVisible && promoCardImage && (
           <div className="hidden 2md:flex 2md:w-1/2 2md:justify-end">
             <div className="max-w-space-290 w-full z-10">
               <NavBarPromoCard

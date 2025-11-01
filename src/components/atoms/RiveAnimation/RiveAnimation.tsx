@@ -1,65 +1,155 @@
 'use client';
-import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
-import { useEffect, useRef } from 'react';
 
-interface RiveAnimationProps {
-  url: string;
-  fitVal?: Fit;
-  alignmentVal?: Alignment;
-  isTrue?: boolean;
-  delay?: number;
+import type { SolutionCard } from '@/components/molecules/LandingPageServiceSection/LandingPageServiceSection';
+import { useRive } from '@rive-app/react-canvas';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useMemo, useState } from 'react';
+
+interface RiveNavigationProps {
+  className?: string;
+  text?: string;
+  textInputName?: string;
+  title?: string;
+  textInputTitle?: string;
+  src?: string;
+  solutionSectionCard?: SolutionCard[];
 }
 
-const RiveAnimation = ({ url, fitVal = Fit.Contain, alignmentVal = Alignment.BottomLeft, isTrue = true, delay = 0 }: RiveAnimationProps) => {
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { RiveComponent, rive } = useRive({
-    src: url,
+export default function RiveNavigation({ solutionSectionCard, className = 'relative', text, textInputName, title, textInputTitle, src }: RiveNavigationProps) {
+  const router = useRouter();
+  const [isHovering, setIsHovering] = useState(false);
+  const STATE_MACHINE = 'State Machine 1';
+
+  // Map link values to their corresponding text input names in the Rive file
+  const textInputNameMap: Record<string, string> = {
+    NAVONETMS: 'NAVONE TRANSPORT TEXT',
+    NAVONECMS: 'NAVONE CONTAINER TEXT',
+    NAVBRIDGE: 'NAVBRIDGE TEXT',
+    NAVSCAN: 'NAVSCAN TEXT',
+    CUSTOMISED: 'CUSTOMISED TEXT',
+  };
+
+  // Map link values to their corresponding title input names in the Rive file
+  const textInputTitleMap: Record<string, string> = {
+    NAVONETMS: 'NAVONE TRANSPORT TITLE',
+    NAVONECMS: 'NAVONE CONTAINER TITLE',
+    NAVBRIDGE: 'NAVBRIDGE TITLE',
+    NAVSCAN: 'NAVSCAN TITLE',
+    NAVLOGIC: 'NAVLOGIC TITLE',
+    CUSTOMISED: 'CUSTOMISED TITLE',
+  };
+
+  const textOverrides = useMemo(() => {
+    const overrideEntries = solutionSectionCard?.reduce<{ text: string; textInputName: string }[]>((acc, card) => {
+      if (!card.link) {
+        return acc;
+      }
+
+      // Add description text if available
+      if (card.description) {
+        const textInputName = textInputNameMap[card.link];
+        if (textInputName) {
+          acc.push({
+            text: card.description,
+            textInputName,
+          });
+        }
+      }
+
+      // Add solution name (title) if available
+      if (card.solution_name) {
+        const textInputTitle = textInputTitleMap[card.link];
+        if (textInputTitle) {
+          acc.push({
+            text: card.solution_name,
+            textInputName: textInputTitle,
+          });
+        }
+      }
+
+      return acc;
+    }, []) ?? [];
+
+    if (overrideEntries.length > 0) {
+      return overrideEntries;
+    }
+
+    // Fallback to manual props if no cards provided
+    const fallbackEntries = [];
+    if (text && textInputName) {
+      fallbackEntries.push({ text, textInputName });
+    }
+    if (title && textInputTitle) {
+      fallbackEntries.push({ text: title, textInputName: textInputTitle });
+    }
+    return fallbackEntries;
+  }, [solutionSectionCard, text, textInputName, title, textInputTitle]);
+  const events = [
+    { name: 'NAVONE-EVENT', path: '/navone' },
+    { name: 'NAVSCAN-EVENT', path: '/navscan' },
+    { name: 'NAVAIR&OCEAN-EVENT', path: '/navairandocean' },
+    { name: 'NAVBRIDGE-EVENT', path: '/navbridge' },
+  ];
+
+  const { rive, RiveComponent } = useRive({
+    src,
+    stateMachines: STATE_MACHINE,
     autoplay: true,
-    stateMachines: 'State Machine 1',
-    layout: new Layout({
-      fit: fitVal,
-      alignment: alignmentVal,
-    }),
   });
 
   useEffect(() => {
     if (!rive) {
       return;
     }
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
 
-    if (isTrue) {
-      if (delay > 0) {
-        timeoutRef.current = setTimeout(() => {
-          rive.play();
-        }, delay);
-      } else {
-        rive.play();
+    const handler = (e: any) => {
+      // console.warn('Rive Event:', e);
+      const eventName = e.data?.name;
+      if (!eventName) {
+        return;
       }
-    } else {
-      rive.pause();
-      rive.reset();
-    }
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+
+      if (eventName.includes('HOVER')) {
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
+
+      const event = events.find(event => event.name === eventName);
+      if (event) {
+        router.push(`/solutions/${event.path}`);
       }
     };
-  }, [isTrue, rive, delay]);
+
+    rive.on('riveevent' as any, handler);
+    return () => rive.off('riveevent' as any, handler);
+  }, [rive, router]);
+
+  useEffect(() => {
+    if (!rive || textOverrides.length === 0) {
+      return;
+    }
+
+    const update = () => {
+      textOverrides.forEach(({ text: overrideText, textInputName: overrideTextInputName }) => {
+        try {
+          rive.setTextRunValue(overrideTextInputName, overrideText);
+          // console.warn(`Text "${overrideText}" set to text field "${overrideTextInputName}"`);
+        } catch (error) {
+          console.warn(`TextRun "${overrideTextInputName}" not found or error occurred:`, error);
+        }
+      });
+    };
+
+    const timer = setTimeout(update, 100);
+    return () => clearTimeout(timer);
+  }, [rive, textOverrides]);
 
   return (
-    <div className="w-full h-full relative">
-      <RiveComponent
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-        }}
-      />
+    <div className={className} style={{ cursor: isHovering ? 'pointer' : 'default' }}>
+      <div className="w-full h-full" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+        <RiveComponent />
+      </div>
     </div>
   );
-};
-
-export default RiveAnimation;
+}

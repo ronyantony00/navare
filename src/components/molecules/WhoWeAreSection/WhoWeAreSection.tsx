@@ -30,8 +30,8 @@ interface AboutContentProps {
 
 const WhoWeAreSection = ({ titleSection, highlightFeatures, benefitPoints, mainImage, subImage, mainTextOnImage, smallTextOnImage }: AboutContentProps) => {
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(titleSection?.title);
-  console.warn('MAIN IMAGE:', mainImage);
-  console.warn('SUB IMAGE:', subImage);
+  // console.warn('MAIN IMAGE:', mainImage);
+  // console.warn('SUB IMAGE:', subImage);
   return (
     <div className="max-w-maxwidth mx-auto section-padding-x section-padding-y flex flex-col-reverse items-center justify-center 2md:flex-row gap-space-20 lg:gap-space-40 relative 2k:overflow-visible overflow-hidden">
       <Image src="/assets/images/about-us/Combined-Shape.svg" alt="about content" width={200} height={200} className="top-0 right-0 absolute z-10 rotate-270" />

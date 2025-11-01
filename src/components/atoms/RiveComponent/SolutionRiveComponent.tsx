@@ -29,7 +29,7 @@ const RiveTextController = ({ text, className, textInputName, src }: RiveTextCon
       try {
         // Try to set the text value
         rive.setTextRunValue(TEXT_INPUT_NAME, text);
-        console.warn(`Text "${text}" set to text field "${TEXT_INPUT_NAME}"`);
+        // console.warn(`Text "${text}" set to text field "${TEXT_INPUT_NAME}"`);
       } catch (error) {
         console.warn(`TextRun "${TEXT_INPUT_NAME}" not found or error occurred:`, error);
       }

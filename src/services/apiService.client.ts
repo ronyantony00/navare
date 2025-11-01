@@ -262,8 +262,6 @@ export async function getCareersDataClientPaginated(
     params['filters[jobTitle][$containsi]'] = searchTerm.trim();
   }
 
-  // console.log('API Params being sent:', params); // Keep this for debugging
-
   const response = await clientApiClient.get('/api/careers?sort=createdAt:DESC', { params });
   return response.data;
 }
@@ -426,13 +424,10 @@ export async function getNewsDataServer(page: number = 1, pageSize: number = 4):
     'pagination[page]': page,
     'pagination[pageSize]': pageSize,
     'pagination[withCount]': true,
-    'populate': '*',
-    'sort': 'createdAt:desc',
-    'filters[articleType][$eq]': 'news',
   } as Record<string, unknown>;
 
   return makeClientApiRequest<Article[]>(
-    '/api/articles',
+    API_ENDPOINTS.NEWS,
     'Failed to fetch news data',
     { method: 'GET', params },
   );
@@ -443,13 +438,10 @@ export async function getBlogsDataServer(page: number = 1, pageSize: number = 10
     'pagination[page]': page,
     'pagination[pageSize]': pageSize,
     'pagination[withCount]': true,
-    'populate': '*',
-    'sort': 'createdAt:desc',
-    'filters[articleType][$eq]': 'blog',
   } as Record<string, unknown>;
 
   return makeClientApiRequest<Article[]>(
-    '/api/articles',
+    API_ENDPOINTS.BLOGS,
     'Failed to fetch blogs data',
     { method: 'GET', params },
   );

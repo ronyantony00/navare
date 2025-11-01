@@ -24,7 +24,7 @@ export interface LandingPageTestimonialProps {
 }
 
 const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, description, testimonialData, videoUrl, className, descClass, textClass, mainClass }: LandingPageTestimonialProps) => {
-  console.warn('Rendering LandingPageTestimonial with testimonialData:', testimonialData);
+  // console.warn('Rendering LandingPageTestimonial with testimonialData:', testimonialData);
   return (
     <div className="w-full flex flex-col items-center justify-center section-padding-y relative overflow-hidden">
       <span className="w-space-75 h-space-75 bg-secondary-blur blur-[80px] opacity-80 absolute top-space-150 right-space-00"></span>

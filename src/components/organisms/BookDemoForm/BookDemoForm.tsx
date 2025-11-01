@@ -52,9 +52,9 @@ const BookDemoForm = ({
       }
 
       // Submit form using the new client-side API function
-      const response = await submitDemoBookingFormClient(formFields);
+      // const response = await submitDemoBookingFormClient(formFields);
 
-      console.warn('Demo booking form submission successful:', response);
+      // console.warn('Demo booking form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 

@@ -42,12 +42,12 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     try {
       if (filter === 'all') {
         // Fetch all integrations for first page
-        const response = await getIntegrationsDataClientPaginated(1, 9);
+        const response = await getIntegrationsDataClientPaginated(1, 10);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       } else {
         // Fetch filtered integrations for first page
-        const response = await getFilteredIntegrationsDataClientPaginated(filter, 1, 9);
+        const response = await getFilteredIntegrationsDataClientPaginated(filter, 1, 10);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       }
@@ -66,11 +66,11 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     if (!query.trim()) {
       // If search is cleared, revert to current filter
       if (activeFilter === 'all') {
-        const response = await getIntegrationsDataClientPaginated(1, 9);
+        const response = await getIntegrationsDataClientPaginated(1, 10);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       } else {
-        const response = await getFilteredIntegrationsDataClientPaginated(activeFilter, 1, 9);
+        const response = await getFilteredIntegrationsDataClientPaginated(activeFilter, 1, 10);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       }
@@ -83,7 +83,7 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     setCurrentPage(1);
 
     try {
-      const response = await getSearchIntegrationsDataClientPaginated(query, 1, 9);
+      const response = await getSearchIntegrationsDataClientPaginated(query, 1, 10);
       setIntegrations(response.data);
       setTotalPages(response.meta?.pagination?.pageCount ?? 1);
     } catch (error) {
@@ -107,13 +107,13 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
       let response;
       if (searchQuery.trim()) {
         // Load more search results
-        response = await getSearchIntegrationsDataClientPaginated(searchQuery, nextPage, 9);
+        response = await getSearchIntegrationsDataClientPaginated(searchQuery, nextPage, 10);
       } else if (activeFilter === 'all') {
         // Load more all integrations
-        response = await getIntegrationsDataClientPaginated(nextPage, 9);
+        response = await getIntegrationsDataClientPaginated(nextPage, 10);
       } else {
         // Load more filtered integrations
-        response = await getFilteredIntegrationsDataClientPaginated(activeFilter, nextPage, 9);
+        response = await getFilteredIntegrationsDataClientPaginated(activeFilter, nextPage, 10);
       }
 
       // Append new integrations to the existing list

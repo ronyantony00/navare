@@ -15,7 +15,7 @@ interface FooterSectionProps {
 
 const FooterSection = ({ title, description, buttonText, buttonLink, image }: FooterSectionProps) => {
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
-  console.warn('FOOTER IMAGE', image);
+  // console.warn('FOOTER IMAGE', image);
   return (
     <div className="max-w-maxwidth mx-auto section-padding-y section-padding-x">
       <div className="rounded-md-3 border-b border-border-color w-full w-full relative overflow-hidden">

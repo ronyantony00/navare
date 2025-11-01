@@ -60,7 +60,7 @@ const Page = async (props: BlogDetailPageProps) => {
   const articlesDataResponse = await getArticlesDataServer(3, params.slug);
   const articlesData = articlesDataResponse?.data;
 
-  console.warn('blog', blog?.articleTitle);
+  // console.warn('blog', blog?.articleTitle);
 
   return (
     <div>

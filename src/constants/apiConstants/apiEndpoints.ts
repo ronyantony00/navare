@@ -22,7 +22,7 @@ export const API_ENDPOINTS = {
   VIDEO_TESTIMONIALS: '/api/testimonials?filters[thumbnailVideo][$notNull]=true&populate=thumbnailVideo&sort=priority:asc',
   USECASE_TESTIMONIALS: '/api/testimonials?pagination[page]=1&pagination[pageSize]=6&populate=*',
   TESTIMONIALS_TO_SHOW: '/api/testimonials?pagination[page]=1&pagination[pageSize]=9&populate=*',
-  ARTICLE_TO_SHOW_NAV: '/api/articles?populate=*&sort=createdAt:desc',
+  ARTICLE_TO_SHOW_NAV: '/api/articles?populate=*&sort=publishedOn:desc',
   TESTIMONIALS_PAGE: '/api/testimonial-page?populate=*',
   CLIENT_LOGO: '/api/client-logos?sort=priority:ASC&populate=*&pagination[pageSize]=50',
   CASE_STUDY: '/api/case-studies?populate=*',
@@ -32,9 +32,9 @@ export const API_ENDPOINTS = {
   LANDING_PAGE: '/api/home-page?populate=*',
   INTEGRATION_PAGE: '/api/integration-page?populate=*',
   INTEGRATIONS: '/api/integrations?populate=*',
-  ARTICLES: '/api/articles?populate=*&sort=createdAt:desc',
-  NEWS: '/api/articles?populate=*&sort=createdAt:desc&filters[articleType][$eq]=news',
-  BLOGS: '/api/articles?populate=*&sort=createdAt:desc&filters[articleType][$eq]=blog',
+  ARTICLES: '/api/articles?populate=*&sort=publishedOn:desc',
+  NEWS: '/api/articles?populate=*&sort=publishedOn:desc&filters[articleType][$eq]=news',
+  BLOGS: '/api/articles?populate=*&sort=publishedOn:desc&filters[articleType][$eq]=blog',
   INSIGHTS_PAGE: '/api/news-and-insight?populate=*',
   SCHEDULE_DEMO_FORM: '/api/demo-booking-requests',
   INTEGRATION_TAGS: '/api/integration-tags?populate=*',
@@ -57,6 +57,7 @@ export const API_ENDPOINTS = {
   SOCIAL_LINKS: '/api/social-medias?populate[socialMediaLink][populate]=*',
   FOOTER_TEXT: '/api/footer-texts?populate=*',
   TAWK_TO: '/api/tawk-to?populate=*',
+  LATEST_ARTICLES_3: '/api/articles?pagination[page]=1&pagination[pageSize]=3&populate=*&sort=publishedOn:desc',
 
   TERMS_OF_USE: (slug: string) => `/api/legal-documents?filters[slug][$eq]=${slug}&populate=*`,
 
@@ -78,10 +79,10 @@ export const API_ENDPOINTS = {
     `/api/testimonials?pagination[page]=1&pagination[pageSize]=6&populate=*&filters[use_case_tags][useCaseName][$eq]=${slug}&sort=priority:ASC`
   ),
   ARTICLES_TO_SHOW: (count: number) => (
-    `/api/articles?pagination[page]=1&pagination[pageSize]=${count}&populate=*&sort=createdAt:desc`
+    `/api/articles?pagination[page]=1&pagination[pageSize]=${count}&populate=*&sort=publishedOn:desc`
   ),
   ARTICLES_EXCLUDE_BLOG: (blogName: string, count: number) => (
-    `/api/articles?pagination[page]=1&pagination[pageSize]=${count}&populate=*&sort=createdAt:desc&filters[slug][$ne]=${blogName}`
+    `/api/articles?pagination[page]=1&pagination[pageSize]=${count}&populate=*&sort=publishedOn:desc&filters[slug][$ne]=${blogName}`
   ),
   CAREER_DETAIL: (slug: string) => (
     `/api/careers?filters[slug][$eq]=${slug}&populate[department]=true&populate[employmentType]=true&populate[job_level]=true`

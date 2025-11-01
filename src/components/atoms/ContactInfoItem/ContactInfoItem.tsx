@@ -9,7 +9,7 @@ interface InfoItemProps {
 }
 
 const ContactInfoItem = ({ city, address, email, phone, mapEmbedUrl }: InfoItemProps) => {
-  console.warn('MAP EMBED URL:', mapEmbedUrl);
+  // console.warn('MAP EMBED URL:', mapEmbedUrl);
   return (
     <div className="rounded-md-3 p-space-10 md:px-space-29 md:py-space-15 feature-card-bg md:max-h-space-150 border border-border-color relative overflow-hidden">
       <span className="absolute top-space-89 w-space-200 h-space-100 right-space-10 bg-primary-blur blur-[80px] opacity-80"></span>
