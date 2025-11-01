@@ -88,13 +88,13 @@ const TextCombo = ({ spanClass, title, description, spanText, className, titleCl
   return (
     <div className={`flex flex-col ${className}`}>
       {bannerImage && (
-        <div className="bg-white h-14 flex items-center rounded-2xs p-space-05 w-fit overflow-hidden mb-space-05">
+        <div className="bg-white h-14 object-contain flex items-center rounded-2xs p-space-05 w-fit overflow-hidden mb-space-05">
           <Image
             src={getImageUrl(bannerImage)}
             alt="logo"
             width={131}
             height={29}
-            className="h-full w-full"
+            className="h-full w-full object-contain"
           />
         </div>
       )}
