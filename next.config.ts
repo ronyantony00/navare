@@ -31,19 +31,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_API_BASE_URL?.replace('https://', '') || 'localhost',
+        hostname:
+          process.env.NEXT_PUBLIC_API_BASE_URL?.replace('https://', '') || 'localhost',
         port: '',
         pathname: '/uploads/**',
       },
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_CLOUDFRONT_HOSTNAME?.replace('https://', '') || 'localhost',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: 'd9ouozp3mq81k.cloudfront.net',
+        hostname:
+          process.env.NEXT_PUBLIC_CLOUDFRONT_HOSTNAME?.replace('https://', '') ||
+          'localhost',
         port: '',
         pathname: '/**',
       },
@@ -51,38 +48,19 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: [
-      'react-icons',
-      '@mui/material',
-      'gsap',
-      'swiper',
-    ],
+    optimizePackageImports: ['react-icons', '@mui/material', 'gsap', 'swiper'],
   },
 
-  // 🔥 CRITICAL: Perfect Cache Headers + Security Headers
   async headers() {
     return [
-      // Static assets - Cache forever (immutable with hash)
       {
         source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
-      // Next.js optimized images - 30 days
       {
         source: '/_next/image(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=2592000',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=2592000' }],
       },
-      // ISR pages - Align with CDN TTLs
       {
         source: '/((?!_next/static|_next/image|api|favicon.ico).*)',
         headers: [
@@ -90,63 +68,47 @@ const nextConfig: NextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=0, s-maxage=10, stale-while-revalidate=60',
           },
-          {
-            key: 'Vary',
-            value: 'Accept',
-          },
+          { key: 'Vary', value: 'Accept' },
         ],
       },
-      // API routes - Never cache
       {
         source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
-          },
-        ],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }],
       },
-      // Security headers for all routes
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
         ],
       },
     ];
   },
 };
 
-export default withSentryConfig(
-  withNextIntl(nextConfig),
-  {
-    org: process.env.SENTRY_ORG || 'nextjs-boilerplate-org',
-    project: process.env.SENTRY_PROJECT || 'nextjs-boilerplate',
-    authToken: process.env.SENTRY_AUTH_TOKEN,
-    silent: !process.env.CI,
-    widenClientFileUpload: true,
-    reactComponentAnnotation: {
-      enabled: true,
-    },
-    tunnelRoute: '/monitoring',
-    hideSourceMaps: true,
-    disableLogger: true,
-    automaticVercelMonitors: true,
-    telemetry: false,
+export default withSentryConfig(withNextIntl(nextConfig), {
+  org: process.env.SENTRY_ORG || 'nextjs-boilerplate-org',
+  project: process.env.SENTRY_PROJECT || 'nextjs-boilerplate',
+
+  // You can keep this, but it won’t matter since upload is disabled
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // ✅ These options silence the “No auth token” warnings
+  sourcemaps: {
+    disable: true, // don’t generate/upload sourcemaps
   },
-);
+  release: {
+    create: false, // skip Sentry release creation
+  },
+
+  silent: true,
+  widenClientFileUpload: true,
+  reactComponentAnnotation: { enabled: true },
+  tunnelRoute: '/monitoring',
+  hideSourceMaps: true,
+  disableLogger: true,
+  automaticVercelMonitors: true,
+  telemetry: false,
+});
