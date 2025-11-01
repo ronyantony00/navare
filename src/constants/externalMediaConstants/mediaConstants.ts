@@ -8,8 +8,9 @@ export const ExternalMediaConstants = {
   SolutionHeroImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/solution_hero_image_37996c4661.svg',
   UseCaseHeroVideo: 'https://d34r8pme58tb21.cloudfront.net/uploads/earth_globe_ced7c24a32.mp4',
   TeamsHeroImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/team_new_bg_d17ac6f61d.svg',
-  BlogDetailHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/blog-detail-hero.svg',
-  CareerFormBackgroundImage: 'http://d9ouozp3mq81k.cloudfront.net/media/career-form-bg.svg',
+
+  BlogDetailHeroImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/blog_detail_5ad4bf3733.jpg',
+  CareerFormBackgroundImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/career_form_bg_image_0925d32a33.svg',
   LegalHubHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/legal-hero-bg.jpg',
   UsecaseChallengesImage: 'http://d9ouozp3mq81k.cloudfront.net/media/challanges.png',
 };
