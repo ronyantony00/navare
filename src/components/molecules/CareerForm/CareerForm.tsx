@@ -41,9 +41,9 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
       }
 
       // Submit form using the new client-side API function
-      // const response = await submitCareerFormClient(formFields);
+      const response = await submitCareerFormClient(formFields);
 
-      // console.warn('Career form submission successful:', response);
+      console.warn('Career form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 
