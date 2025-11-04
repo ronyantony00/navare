@@ -1,5 +1,3 @@
-'use client';
-
 import type { CaseStudy, FreightSectionProps, HeadingDataItem, SolutionUseCaseAPIResponse, Testimonial } from '@/types/commonTypes';
 import AllInOnePlatform from '@/components/molecules/AllInOnePlatform/AllInOnePlatform';
 import FreightSection from '@/components/molecules/FreightSection/FreightSection';
