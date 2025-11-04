@@ -1,5 +1,5 @@
-// src\app\[locale]\insights\error.tsx
 'use client';
+
 import React from 'react';
 import ErrorPage from '@/components/atoms/ErrorPage/ErrorPage';
 
