@@ -10,6 +10,7 @@ import NavBarMain from '@/components/organisms/NavBarMain/NavBarMain';
 import { comme, manrope, satoshi } from '@/fonts/fonts';
 import { routing } from '@/libs/i18nNavigation';
 import QueryProvider from '@/providers/QueryClientProvider';
+import { getTawkToDataServer } from '@/services/apiService';
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
@@ -74,6 +75,16 @@ export default async function RootLayout(props: {
   // Using internationalization in Client Components
   const messages = await getMessages();
 
+  // Fetch TawkTo data server-side
+  let tawkToLink = '';
+  try {
+    const tawkToData = await getTawkToDataServer();
+    tawkToLink = tawkToData.data?.tawkToLink || '';
+  } catch (error) {
+    // Log error but don't break the page if TawkTo fails to load
+    console.error('Failed to fetch TawkTo data:', error);
+  }
+
   // The `suppressHydrationWarning` attribute in <body> is used to prevent hydration errors caused by Sentry Overlay,
   // which dynamically adds a `style` attribute to the body tag.
 
@@ -86,7 +97,7 @@ export default async function RootLayout(props: {
               <NavBarMain />
               {props.children}
               <Footer />
-              <TawkToScript />
+              {tawkToLink && <TawkToScript tawkToLink={tawkToLink} />}
               <CookiePopup />
             </PostHogProvider>
           </QueryProvider>

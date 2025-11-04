@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-import { getTawkToDataServer } from '@/services/apiService';
+import { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
@@ -10,15 +9,23 @@ declare global {
   }
 }
 
-const [TawkToData] = await Promise.all([
-  getTawkToDataServer(),
-]);
+interface TawkToScriptProps {
+  tawkToLink: string;
+}
 
-const TawkToLink = TawkToData.data.tawkToLink;
+export default function TawkToScript({ tawkToLink }: TawkToScriptProps) {
+  const [isMounted, setIsMounted] = useState(false);
+  const propertyId = tawkToLink;
 
-export default function TawkToScript() {
-  const propertyId = TawkToLink;
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || !propertyId) {
+      return;
+    }
+
     // Initialize Tawk.to globals
     window.Tawk_API = window.Tawk_API || {};
     window.Tawk_LoadStart = new Date();
@@ -52,7 +59,7 @@ export default function TawkToScript() {
         }
       });
     };
-  }, []);
+  }, [isMounted, propertyId]);
 
   return null;
 }
