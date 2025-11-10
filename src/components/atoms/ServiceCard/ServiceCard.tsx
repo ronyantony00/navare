@@ -22,7 +22,7 @@ const ServiceCard = ({ className, title, description, image, link }: ServiceCard
             {image
               && (
                 <div className="flex items-center pt-space-04 justify-between w-full">
-                  <div className="bg-white h-space-12 flex items-center rounded-2xs p-space-02">
+                  <div className="h-space-12 flex items-center rounded-2xs p-space-02">
                     <Image
                       src={image}
                       alt="Navlogic"
