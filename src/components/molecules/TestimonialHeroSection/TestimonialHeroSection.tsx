@@ -24,8 +24,8 @@ const TestimonialHeroSection = ({ loading, titlePrefix, description }: Testimoni
         src={ExternalMediaConstants.TestimonialHeroImage}
         priority
         alt="Testimonial Hero Background"
-        width={1000}
-        height={1000}
+        width={1440}
+        height={650}
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
       <div className="max-w-maxwidth flex flex-col items-center justify-center section-padding-x section-padding-y relative z-10">
