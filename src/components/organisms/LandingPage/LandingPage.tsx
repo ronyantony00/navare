@@ -68,7 +68,7 @@ const LandingPage = ({ landingPageDataServer, clientDataServer, testimonialDataS
   const ourImpactTag = useMemo(() => ourImpactSection?.tag, [ourImpactSection]);
   const metricComponentRepeatable = useMemo(() => ourImpactSection?.metrics, [ourImpactSection]);
 
-  const footerButtonText = useMemo(() => footerData?.impactSection?.footerSection?.ctaButton?.button_label || '', [footerData]);
+  const footerButtonText = useMemo(() => footerData?.impactSection?.footerSection?.cta_button?.button_label || '', [footerData]);
   const footerDescription = useMemo(() => footerData?.impactSection?.footerSection?.description || '', [footerData]);
   const footerSectionTitle = useMemo(() => footerData?.impactSection?.footerSection?.title, [footerData]);
 
@@ -77,6 +77,7 @@ const LandingPage = ({ landingPageDataServer, clientDataServer, testimonialDataS
   const imageTwoUrl = useMemo(() => getImageUrl(images[1]), [images]);
   const imageThreeUrl = useMemo(() => getImageUrl(images[2]), [images]);
   const generalMediaImageUrl = useMemo(() => getImageUrl(generalMedia), [generalMedia]);
+  const generalMediaIsVideo = useMemo(() => generalMedia?.mime?.startsWith('video/'), [generalMedia]);
   const testimonialVideoUrl = landingPageData?.testimonialSection?.testimonialVideo?.url;
 
   const { titlePrefix: ecosystemTitlePrefix, titleHighlight: ecosystemTitleHighlight } = useMemo(() => extractTitleParts(ecosystemSectionTitle), [ecosystemSectionTitle]);
@@ -123,6 +124,7 @@ const LandingPage = ({ landingPageDataServer, clientDataServer, testimonialDataS
             metricValue={metricValue}
             metricContext={metricContext}
             generalImageUrl={generalMediaImageUrl}
+            generalMediaIsVideo={generalMediaIsVideo}
           />
         </div>
         <div className="bg-[image:var(--bg-technology-section-bg)] bg-no-repeat bg-center bg-cover w-full">
