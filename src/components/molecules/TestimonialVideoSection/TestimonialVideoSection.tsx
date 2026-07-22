@@ -1,10 +1,12 @@
 'use client';
 import type { Testimonial } from '@/types/apiTypes';
-import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import React, { useEffect, useRef, useState } from 'react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@/components/atoms/CustomButton/Button';
 import VideoComponent from '@/components/atoms/VideoComponent/VideoComponent';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 import { formatDateToLongString } from '@/utils/textUtils';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -22,6 +24,14 @@ interface VideoPopupProps {
 }
 
 const VideoPopup: React.FC<VideoPopupProps> = ({ isOpen, onClose, videoUrl }) => {
+  const t = useTranslations('VideoPlayer');
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playbackErrorKey, setPlaybackErrorKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPlaybackErrorKey(null);
+  }, [videoUrl]);
+
   if (!isOpen) {
     return null;
   }
@@ -29,16 +39,40 @@ const VideoPopup: React.FC<VideoPopupProps> = ({ isOpen, onClose, videoUrl }) =>
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 pt-[140px] px-space-10">
       <div className="relative lg:w-[60%] w-full max-w-4xl max-h-[600px] bg-black rounded-lg overflow-hidden">
-        {/* Video Container */}
         <div className="relative w-full h-full bg-black">
           <video
+            ref={videoRef}
             src={videoUrl}
             className="w-full h-full object-contain"
             controls
             autoPlay
+            playsInline
+            preload="metadata"
+            onError={() => {
+              const code = videoRef.current?.error?.code;
+              if (code === MediaError.MEDIA_ERR_DECODE) {
+                setPlaybackErrorKey('decodeError');
+              } else if (code === MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED) {
+                setPlaybackErrorKey('formatNotSupported');
+              } else if (code === MediaError.MEDIA_ERR_NETWORK) {
+                setPlaybackErrorKey('networkError');
+              } else {
+                setPlaybackErrorKey('playbackError');
+              }
+            }}
           >
             <track kind="captions" />
           </video>
+          {playbackErrorKey && (
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center gap-space-04 bg-black/90 p-space-10 text-center"
+              role="alert"
+            >
+              <div className="text-size-3xs font-semibold text-primary">{t('unavailableTitle')}</div>
+              <p className="text-size-4xs text-desc-text max-w-pct-090">{t(playbackErrorKey)}</p>
+              <p className="text-size-4xs text-placeholder-text max-w-pct-090">{t('formatHint')}</p>
+            </div>
+          )}
         </div>
 
         {/* Close Button - Floating in top-right corner */}
@@ -90,12 +124,15 @@ const TestimonialVideoSection = ({ testimonialData }: TestimonialVideoSectionPro
             },
           }}
         >
-          {testimonialData?.map((item, index) => (
+          {testimonialData?.map((item, index) => {
+            const resolvedVideoUrl = getImageUrl(item?.thumbnailVideo?.url);
+
+            return (
             <SwiperSlide key={index} className="!h-full flex flex-col">
               <div className="flex flex-col gap-space-10 p-0 h-full scale-90 hover:scale-100 transition-all duration-300">
                 <div
                   onClick={() => handleVideoClick(
-                    (item?.thumbnailVideo?.url) || '',
+                    resolvedVideoUrl,
                     item?.authorName || 'Unknown',
                     item?.authorTitle || 'Unknown',
                   )}
@@ -106,7 +143,7 @@ const TestimonialVideoSection = ({ testimonialData }: TestimonialVideoSectionPro
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       handleVideoClick(
-                        (item?.thumbnailVideo?.url) || '',
+                        resolvedVideoUrl,
                         item?.authorName || 'Unknown',
                         item?.authorTitle || 'Unknown',
                       );
@@ -114,7 +151,7 @@ const TestimonialVideoSection = ({ testimonialData }: TestimonialVideoSectionPro
                   }}
                 >
                   <VideoComponent
-                    videoUrl={(item?.thumbnailVideo?.url) || ''}
+                    videoUrl={resolvedVideoUrl}
                     author={item?.authorName}
                     designation={item?.authorTitle}
                     className="sm:h-space-125"
@@ -129,7 +166,8 @@ const TestimonialVideoSection = ({ testimonialData }: TestimonialVideoSectionPro
                 </div>
               </div>
             </SwiperSlide>
-          ))}
+            );
+          })}
         </Swiper>
         <div className="flex gap-space-10 justify-center lg:mt-space-25 mt-space-15 z-50 overflow-hidden">
           <Button

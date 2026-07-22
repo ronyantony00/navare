@@ -6,6 +6,7 @@ import Button from '@/components/atoms/CustomButton/Button';
 import TestimonialSwiperCard from '@/components/atoms/TestimonialSwiperCard/TestimonialSwiperCard';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import VideoComponent from '@/components/atoms/VideoComponent/VideoComponent';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -41,7 +42,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
           />
           {videoUrl && (
             <VideoComponent
-              videoUrl={videoUrl}
+              videoUrl={getImageUrl(videoUrl)}
               className="rounded-lg overflow-hidden border border-border-color lg:max-h-space-150 aspect-video lg:max-w-space-270 w-full lg:ml-auto lg:mx-0 mx-auto"
               videoOverLay="testimonial-video-bg"
               autoPlay={true}

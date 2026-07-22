@@ -1,6 +1,7 @@
 import type { ResourceCompanyNavbarData, SocialLinksData, SolutionsNavbarData } from '@/types/commonTypes';
 import FooterLinkGroup from '@/components/molecules/FooterLinkGroup/FooterLinkGroup';
 import { linkPaths } from '@/constants/dataConstants/FooterConstants';
+import { resolveNavigationLink } from '@/utils/Helpers';
 
 interface link {
   id: number;
@@ -33,7 +34,7 @@ const FooterLinkTransformer = (socialLinks: SocialLinksData[] | undefined) => {
     links: socialLinks.map((socialLink, index) => ({
       id: index + 1,
       linkText: socialLink.socialMediaLink.text,
-      path: socialLink.socialMediaLink.link,
+      path: resolveNavigationLink(socialLink.socialMediaLink.link).href,
       icon: socialLink.socialMediaLink.icon.url,
     })),
   };

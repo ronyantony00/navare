@@ -4,7 +4,7 @@ import { useState } from 'react';
 import NotificationPopup from '@/components/atoms/SuccessPopup/SuccessPopup';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import FormComponent from '@/components/molecules/FormComponent/FormComponent';
-// import { submitContactFormClient } from '@/services/apiService';
+import { submitContactFormClient } from '@/services/apiService';
 
 interface contactSectionProps {
   title?: string;
@@ -45,10 +45,10 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
         throw new Error(t('allFieldsRequired'));
       }
 
-      // Submit form using the new client-side API function
-      // const response = await submitContactFormClient(formFields);
+      // Submit form to Strapi
+      const response = await submitContactFormClient(formFields);
 
-      // console.warn('Contact form submission successful:', response);
+      console.warn('Contact form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 
@@ -70,6 +70,7 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
       }
 
       setShowPopup(true);
+      throw error;
     } finally {
       setIsLoading(false);
     }

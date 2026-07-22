@@ -1,8 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 
 interface VideoComponentProps {
   videoUrl?: string;
@@ -12,12 +14,53 @@ interface VideoComponentProps {
   videoOverLay?: string;
   autoPlay?: boolean;
   playButtonClass?: string;
+  muted?: boolean;
+  controls?: boolean;
 }
 
-const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay = 'video-overlay', autoPlay = false, playButtonClass }: VideoComponentProps) => {
+function getPlaybackErrorKey(errorCode?: number): 'decodeError' | 'formatNotSupported' | 'networkError' | 'playbackError' {
+  switch (errorCode) {
+    case MediaError.MEDIA_ERR_DECODE:
+      return 'decodeError';
+    case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+      return 'formatNotSupported';
+    case MediaError.MEDIA_ERR_NETWORK:
+      return 'networkError';
+    default:
+      return 'playbackError';
+  }
+}
+
+const VideoComponent = ({
+  videoUrl,
+  className,
+  author,
+  designation,
+  videoOverLay = 'video-overlay',
+  autoPlay = false,
+  playButtonClass,
+  muted = true,
+  controls = false,
+}: VideoComponentProps) => {
+  const t = useTranslations('VideoPlayer');
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [overlayDismissed, setOverlayDismissed] = useState(false);
+  const [playbackErrorKey, setPlaybackErrorKey] = useState<ReturnType<typeof getPlaybackErrorKey> | null>(null);
+
+  const resolvedVideoUrl = getImageUrl(videoUrl);
+
+  useEffect(() => {
+    setPlaybackErrorKey(null);
+    setIsPlaying(autoPlay);
+    setOverlayDismissed(false);
+  }, [resolvedVideoUrl, autoPlay]);
+
+  const handlePlaybackError = (errorCode?: number) => {
+    setPlaybackErrorKey(getPlaybackErrorKey(errorCode));
+    setIsPlaying(false);
+    setOverlayDismissed(false);
+  };
 
   const pauseOtherVideos = () => {
     if (typeof window === 'undefined') {
@@ -29,19 +72,21 @@ const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay
         try {
           vid.pause();
         } catch (error) {
-          // Ignore pause errors for other videos
           console.warn('Failed to pause video:', error);
         }
       }
     });
   };
 
-  // Play video on hover
   const handleMouseEnter = async () => {
+    if (controls || playbackErrorKey) {
+      return;
+    }
+
     try {
       pauseOtherVideos();
       if (videoRef.current && !videoRef.current.paused) {
-        return; // Already playing
+        return;
       }
       if (videoRef.current) {
         await videoRef.current.play();
@@ -50,12 +95,15 @@ const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay
       }
     } catch (error) {
       console.warn('Failed to play video:', error);
-      setIsPlaying(false);
+      handlePlaybackError(videoRef.current?.error?.code);
     }
   };
 
-  // Pause video when mouse leaves
   const handleMouseLeave = () => {
+    if (controls) {
+      return;
+    }
+
     try {
       if (videoRef.current && !videoRef.current.paused) {
         videoRef.current.pause();
@@ -67,6 +115,12 @@ const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay
     }
   };
 
+  if (!resolvedVideoUrl) {
+    return null;
+  }
+
+  const showPlayOverlay = !controls && !playbackErrorKey && (!isPlaying || (autoPlay && !overlayDismissed));
+
   return (
     <div
       className={`relative ${className ?? ''}`}
@@ -75,16 +129,29 @@ const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay
     >
       <video
         ref={videoRef}
-        src={videoUrl}
-        loop
-        muted
+        src={resolvedVideoUrl}
+        loop={!controls}
+        muted={muted}
         playsInline
+        controls={controls}
+        preload="metadata"
         className="w-full h-full object-cover"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        autoPlay={autoPlay}
+        onError={() => handlePlaybackError(videoRef.current?.error?.code)}
+        autoPlay={autoPlay && !playbackErrorKey}
       />
-      {(!isPlaying || (autoPlay && !overlayDismissed)) && (
+      {playbackErrorKey && (
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-space-04 bg-black/80 p-space-10 text-center"
+          role="alert"
+        >
+          <div className="text-size-3xs font-semibold text-primary">{t('unavailableTitle')}</div>
+          <p className="text-size-4xs text-desc-text max-w-pct-090">{t(playbackErrorKey)}</p>
+          <p className="text-size-4xs text-placeholder-text max-w-pct-090">{t('formatHint')}</p>
+        </div>
+      )}
+      {showPlayOverlay && (
         <div
           className={`absolute inset-0 w-full h-full p-space-10 flex flex-col items-center justify-center ${videoOverLay}`}
           style={{ pointerEvents: 'none' }}

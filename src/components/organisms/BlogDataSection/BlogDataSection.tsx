@@ -39,7 +39,7 @@ const BlogDataSection = ({ blog, blogTitle, titleId }: blogData) => {
         if (isVideo) {
           return (
             <div className="w-full h-space-100 2xs:h-full aspect-video rounded-lg overflow-hidden mt-space-12">
-              <VideoComponent videoUrl={fullMediaUrl} className="h-full" />
+              <VideoComponent videoUrl={fullMediaUrl} className="h-full" controls muted={false} />
             </div>
           );
         } else {

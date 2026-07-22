@@ -160,6 +160,14 @@
     "collapse_title": "Réduire le titre",
     "learn_more": "En savoir plus"
   },
+  "VideoPlayer": {
+    "unavailableTitle": "Vidéo indisponible",
+    "playbackError": "Impossible de lire cette vidéo. Veuillez réessayer plus tard.",
+    "formatNotSupported": "Ce format vidéo n'est pas pris en charge par votre navigateur.",
+    "decodeError": "Ce fichier vidéo n'a pas pu être décodé. Il est peut-être corrompu ou utilise un codec non pris en charge.",
+    "networkError": "Impossible de charger la vidéo. Vérifiez votre connexion et réessayez.",
+    "formatHint": "Pour de meilleurs résultats, téléversez des fichiers MP4 (H.264) ou WebM."
+  },
   "TestimonialHeroSection": {
     "title1": "Ce que les marques de premier plan disent de",
     "title2": "nos produits",

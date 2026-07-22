@@ -110,7 +110,7 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
               ))}
           </div>
           <div className="flex flex-row flex-wrap lg:gap-space-28 pt-space-10 gap-space-10 2xs:gap-space-30">
-            <Button variant="primary" arrow={true} link="/solutions/navone" text={contactLinkText} mainClass="w-fit gap-space-05" arrowClassName="size-space-05" />
+            <Button variant="primary" arrow={true} animation link="/solutions/navone" text={contactLinkText} mainClass="w-fit gap-space-05" arrowClassName="size-space-05" />
             <a href={`tel:${contactNumber}`} className="flex items-center gap-space-10 cursor-pointer">
               <Image
                 src={ImageConstants.PhoneIcon}

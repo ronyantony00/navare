@@ -1,16 +1,44 @@
+function getMediaBaseUrl(): string {
+  const cloudfront = process.env.NEXT_PUBLIC_CLOUDFRONT_HOSTNAME;
+  if (cloudfront) {
+    const hostname = cloudfront.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    return `https://${hostname}`;
+  }
+
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+  return apiBase.replace(/\/$/, '');
+}
+
 /**
- * Generates a complete image URL by prepending the base URL to the provided image path
- * @param imagePath - The relative path to the image (e.g., '/uploads/image.jpg')
- * @returns The complete image URL
+ * Builds a full media URL from Strapi/CDN paths (e.g. `/uploads/video.mp4`).
  */
-export const getImageUrl = (imagePath: any): any => {
+export const getImageUrl = (imagePath: unknown): string => {
   if (!imagePath) {
     return '';
   }
 
-  // Remove leading slash if present to avoid double slashes
-  const cleanPath = imagePath;
+  const path = typeof imagePath === 'object' && imagePath !== null && 'url' in imagePath
+    ? (imagePath as { url?: string }).url
+    : imagePath;
 
-  // Combine base URL with image path
-  return cleanPath;
+  if (typeof path !== 'string') {
+    return '';
+  }
+
+  const trimmed = path.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const baseUrl = getMediaBaseUrl();
+  if (!baseUrl) {
+    return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  }
+
+  const normalizedPath = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  return `${baseUrl}${normalizedPath}`;
 };
