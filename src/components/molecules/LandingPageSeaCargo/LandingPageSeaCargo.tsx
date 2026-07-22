@@ -26,9 +26,10 @@ export interface LandingPageSeaCargoProps {
   metricValue?: string;
   metricContext?: string;
   generalImageUrl?: string;
+  generalMediaIsVideo?: boolean;
 }
 
-const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNumber, imageOneUrl, imageTwoUrl, imageThreeUrl, seaCargoFeatures, contactLinkText, metricValue, metricContext, generalImageUrl }: LandingPageSeaCargoProps) => {
+const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNumber, imageOneUrl, imageTwoUrl, imageThreeUrl, seaCargoFeatures, contactLinkText, metricValue, metricContext, generalImageUrl, generalMediaIsVideo }: LandingPageSeaCargoProps) => {
   const [expandedFeatureIndex, setExpandedFeatureIndex] = useState<number | null>(0); // First feature starts expanded
   const handleFeatureHover = (index: number) => {
     setExpandedFeatureIndex(index);
@@ -132,14 +133,25 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
         <div className="relative w-full max-h-[700px] lg:col-span-2 col-span-1 section-padding-x">
           <div className="absolute z-10 top-space-00 -left-space-100 size-space-200 bg-blue-circle-bg blur-3xl opacity-30 rounded-full" />
           {/* <div className="absolute z-10 bottom-space-00 -right-space-100 size-space-200 bg-secondary-blur blur-3xl opacity-30 rounded-full" /> */}
-          <Image
-            src={generalImageUrl || ''}
-            alt="SeaCargoImage"
-            width={1000}
-            height={1000}
-            priority={true}
-            className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
-          />
+          {generalMediaIsVideo ? (
+            <video
+              src={generalImageUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
+            />
+          ) : (
+            <Image
+              src={generalImageUrl || ''}
+              alt="SeaCargoImage"
+              width={1000}
+              height={1000}
+              priority={true}
+              className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
+            />
+          )}
           {/* <img src={generalImageUrl || ''} alt="SeaCargoImage" className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow" /> */}
         </div>
       </div>
