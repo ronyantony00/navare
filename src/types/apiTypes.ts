@@ -61,7 +61,7 @@ export interface Testimonial {
   authorName?: string;
   authorTitle?: string;
   authorCompany?: string;
-  author_avatar?: {
+  authorAvatar?: {
     url: string;
     name?: string;
     alternativeText?: string;
@@ -82,7 +82,7 @@ export interface Testimonial {
     name?: string;
     mime?: string;
   };
-  media?: {
+  testimonialDetailPageMedia?: {
     url: string;
   };
   createdAt?: string;

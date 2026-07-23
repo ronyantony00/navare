@@ -85,9 +85,9 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     return fallbackEntries;
   }, [solutionSectionCard, text, textInputName, title, textInputTitle]);
   const events = [
-    { name: 'NAVONE-EVENT', path: '/navone' },
+    { name: 'NAVONE-EVENT', path: '/navonecms' },
     { name: 'NAVSCAN-EVENT', path: '/navscan' },
-    { name: 'NAVAIR&OCEAN-EVENT', path: '/navairandocean' },
+    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonetms' },
     { name: 'NAVBRIDGE-EVENT', path: '/navbridge' },
   ];
 

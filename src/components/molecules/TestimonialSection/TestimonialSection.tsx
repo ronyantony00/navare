@@ -84,9 +84,9 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               description={item?.shortTestimonial}
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
-                              imageUrl={item?.author_avatar?.url}
+                              imageUrl={item?.authorAvatar?.url}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               featured={item?.featured}
@@ -106,7 +106,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               linkUrl={item?.extrernalLink}
@@ -126,7 +126,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               linkUrl={item?.extrernalLink}
