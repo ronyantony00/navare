@@ -16,15 +16,21 @@ interface VideoComponentProps {
   playButtonClass?: string;
   muted?: boolean;
   controls?: boolean;
+  /** When true (default), hover starts muted preview playback. When false, hover only reveals the play icon. */
+  playOnHover?: boolean;
 }
+
+const MEDIA_ERR_NETWORK = 2;
+const MEDIA_ERR_DECODE = 3;
+const MEDIA_ERR_SRC_NOT_SUPPORTED = 4;
 
 function getPlaybackErrorKey(errorCode?: number): 'decodeError' | 'formatNotSupported' | 'networkError' | 'playbackError' {
   switch (errorCode) {
-    case MediaError.MEDIA_ERR_DECODE:
+    case MEDIA_ERR_DECODE:
       return 'decodeError';
-    case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+    case MEDIA_ERR_SRC_NOT_SUPPORTED:
       return 'formatNotSupported';
-    case MediaError.MEDIA_ERR_NETWORK:
+    case MEDIA_ERR_NETWORK:
       return 'networkError';
     default:
       return 'playbackError';
@@ -41,31 +47,81 @@ const VideoComponent = ({
   playButtonClass,
   muted = true,
   controls = false,
+  playOnHover = true,
 }: VideoComponentProps) => {
   const t = useTranslations('VideoPlayer');
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [overlayDismissed, setOverlayDismissed] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showControls, setShowControls] = useState(controls);
   const [playbackErrorKey, setPlaybackErrorKey] = useState<ReturnType<typeof getPlaybackErrorKey> | null>(null);
 
   const resolvedVideoUrl = getImageUrl(videoUrl);
+  const usesHoverPreview = playOnHover && !controls;
 
   useEffect(() => {
     setPlaybackErrorKey(null);
-    setIsPlaying(autoPlay);
-    setOverlayDismissed(false);
-  }, [resolvedVideoUrl, autoPlay]);
+    setIsPlaying(false);
+    setShowControls(controls);
+  }, [resolvedVideoUrl, controls]);
+
+  // Keep muted in sync (required for browser autoplay policies).
+  useEffect(() => {
+    if (!videoRef.current) {
+      return;
+    }
+    videoRef.current.muted = muted;
+  }, [muted, resolvedVideoUrl]);
+
+  // Explicit play() — HTML autoPlay alone is unreliable after client-only mount.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !autoPlay || !resolvedVideoUrl) {
+      return;
+    }
+
+    let cancelled = false;
+    video.muted = true;
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+        if (!cancelled) {
+          setIsPlaying(true);
+        }
+      } catch (error) {
+        console.warn('Autoplay failed:', error);
+        if (!cancelled) {
+          setIsPlaying(false);
+        }
+      }
+    };
+
+    // Ensure enough data is buffered before play.
+    if (video.readyState >= 2) {
+      void tryPlay();
+    } else {
+      const onCanPlay = () => {
+        void tryPlay();
+      };
+      video.addEventListener('canplay', onCanPlay, { once: true });
+      video.load();
+      return () => {
+        cancelled = true;
+        video.removeEventListener('canplay', onCanPlay);
+      };
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [autoPlay, resolvedVideoUrl]);
 
   const handlePlaybackError = (errorCode?: number) => {
     setPlaybackErrorKey(getPlaybackErrorKey(errorCode));
     setIsPlaying(false);
-    setOverlayDismissed(false);
   };
 
   const pauseOtherVideos = () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
     const videos = document.querySelectorAll('video');
     videos.forEach((vid) => {
       if (vid !== videoRef.current) {
@@ -79,7 +135,17 @@ const VideoComponent = ({
   };
 
   const handleMouseEnter = async () => {
-    if (controls || playbackErrorKey) {
+    if (playbackErrorKey) {
+      return;
+    }
+
+    // Muted autoplay: reveal controls on hover so user can unmute/pause.
+    if (autoPlay && !playOnHover && !controls) {
+      setShowControls(true);
+      return;
+    }
+
+    if (!usesHoverPreview) {
       return;
     }
 
@@ -91,7 +157,6 @@ const VideoComponent = ({
       if (videoRef.current) {
         await videoRef.current.play();
         setIsPlaying(true);
-        setOverlayDismissed(true);
       }
     } catch (error) {
       console.warn('Failed to play video:', error);
@@ -100,7 +165,11 @@ const VideoComponent = ({
   };
 
   const handleMouseLeave = () => {
-    if (controls) {
+    if (autoPlay && !playOnHover && !controls) {
+      return;
+    }
+
+    if (!usesHoverPreview) {
       return;
     }
 
@@ -108,10 +177,26 @@ const VideoComponent = ({
       if (videoRef.current && !videoRef.current.paused) {
         videoRef.current.pause();
         setIsPlaying(false);
-        setOverlayDismissed(false);
       }
     } catch (error) {
       console.warn('Failed to pause video:', error);
+    }
+  };
+
+  const handlePlayClick = async () => {
+    if (playbackErrorKey || !videoRef.current) {
+      return;
+    }
+
+    try {
+      pauseOtherVideos();
+      setShowControls(true);
+      videoRef.current.muted = muted;
+      await videoRef.current.play();
+      setIsPlaying(true);
+    } catch (error) {
+      console.warn('Failed to play video:', error);
+      handlePlaybackError(videoRef.current?.error?.code);
     }
   };
 
@@ -119,27 +204,28 @@ const VideoComponent = ({
     return null;
   }
 
-  const showPlayOverlay = !controls && !playbackErrorKey && (!isPlaying || (autoPlay && !overlayDismissed));
+  const showPlayOverlay = !showControls && !playbackErrorKey && !isPlaying;
 
   return (
     <div
-      className={`relative ${className ?? ''}`}
+      className={`relative group ${className ?? ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <video
         ref={videoRef}
         src={resolvedVideoUrl}
-        loop={!controls}
+        {...(!showControls ? { loop: true } : {})}
         muted={muted}
+        {...(showControls ? { controls: true } : {})}
+        {...(autoPlay ? { autoPlay: true } : {})}
         playsInline
-        controls={controls}
-        preload="metadata"
-        className="w-full h-full object-cover"
+        preload={autoPlay ? 'auto' : 'metadata'}
+        className="w-full h-full object-cover bg-black"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onError={() => handlePlaybackError(videoRef.current?.error?.code)}
-        autoPlay={autoPlay && !playbackErrorKey}
+        suppressHydrationWarning
       />
       {playbackErrorKey && (
         <div
@@ -152,9 +238,11 @@ const VideoComponent = ({
         </div>
       )}
       {showPlayOverlay && (
-        <div
+        <button
+          type="button"
           className={`absolute inset-0 w-full h-full p-space-10 flex flex-col items-center justify-center ${videoOverLay}`}
-          style={{ pointerEvents: 'none' }}
+          onClick={handlePlayClick}
+          aria-label="Play video"
         >
           <div className="size-full flex items-center justify-center">
             <Image
@@ -172,7 +260,7 @@ const VideoComponent = ({
               <div className="text-white">{designation || 'Chief Technology Office, Bend'}</div>
             </div>
           )}
-        </div>
+        </button>
       )}
     </div>
   );

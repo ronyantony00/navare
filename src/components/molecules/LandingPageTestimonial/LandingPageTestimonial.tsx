@@ -1,15 +1,26 @@
 'use client';
+import dynamic from 'next/dynamic';
 import React from 'react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@/components/atoms/CustomButton/Button';
 import TestimonialSwiperCard from '@/components/atoms/TestimonialSwiperCard/TestimonialSwiperCard';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
-import VideoComponent from '@/components/atoms/VideoComponent/VideoComponent';
 import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+const videoClassName =
+  'rounded-lg overflow-hidden border border-border-color lg:max-h-space-150 aspect-video lg:max-w-space-270 w-full lg:ml-auto lg:mx-0 mx-auto';
+
+const VideoComponent = dynamic(
+  () => import('@/components/atoms/VideoComponent/VideoComponent'),
+  {
+    ssr: false,
+    loading: () => <div className={`${videoClassName} bg-black/10`} aria-hidden />,
+  },
+);
 
 export interface LandingPageTestimonialProps {
   smallText?: string;
@@ -25,7 +36,6 @@ export interface LandingPageTestimonialProps {
 }
 
 const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, description, testimonialData, videoUrl, className, descClass, textClass, mainClass }: LandingPageTestimonialProps) => {
-  // console.warn('Rendering LandingPageTestimonial with testimonialData:', testimonialData);
   return (
     <div className="w-full flex flex-col items-center justify-center section-padding-y relative overflow-hidden">
       <span className="w-space-75 h-space-75 bg-secondary-blur blur-[80px] opacity-80 absolute top-space-150 right-space-00"></span>
@@ -43,9 +53,12 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
           {videoUrl && (
             <VideoComponent
               videoUrl={getImageUrl(videoUrl)}
-              className="rounded-lg overflow-hidden border border-border-color lg:max-h-space-150 aspect-video lg:max-w-space-270 w-full lg:ml-auto lg:mx-0 mx-auto"
+              className={videoClassName}
               videoOverLay="testimonial-video-bg"
-              autoPlay={true}
+              autoPlay
+              muted
+              playOnHover={false}
+              playButtonClass="opacity-0 group-hover:opacity-100 transition-opacity"
             />
           )}
         </div>
@@ -57,7 +70,6 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
             autoplay={{ delay: 5000, disableOnInteraction: true }}
             navigation={{ prevEl: '.swiper-prev-btn', nextEl: '.swiper-next-btn' }}
             loop={true}
-            // pagination={{ clickable: true }}
             breakpoints={{
               640: {
                 slidesPerView: 1,
@@ -88,25 +100,25 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
                 />
               </SwiperSlide>
             ))}
-            <div className="flex gap-space-04 justify-start mt-space-25 z-50">
-              <Button
-                variant="rounded"
-                text=""
-                arrow
-                arrowDirection="left"
-                mainClass="swiper-prev-btn"
-                arrowClassName="size-space-10"
-              />
-              <Button
-                variant="rounded"
-                text=""
-                arrow
-                arrowDirection="right"
-                mainClass="swiper-next-btn"
-                arrowClassName="size-space-10"
-              />
-            </div>
           </Swiper>
+          <div className="flex gap-space-04 justify-start mt-space-25 z-50">
+            <Button
+              variant="rounded"
+              text=""
+              arrow
+              arrowDirection="left"
+              mainClass="swiper-prev-btn"
+              arrowClassName="size-space-10"
+            />
+            <Button
+              variant="rounded"
+              text=""
+              arrow
+              arrowDirection="right"
+              mainClass="swiper-next-btn"
+              arrowClassName="size-space-10"
+            />
+          </div>
         </div>
       </div>
     </div>

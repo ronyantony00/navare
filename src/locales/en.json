@@ -217,6 +217,8 @@
     "joinBuisness": "Join Businesses Like:",
     "bookDemo": "Submit Form",
     "errorMessage": "An error occured!Please try again later.",
+    "allFieldsRequired": "All fields are required",
+    "submissionFailed": "Submission failed. Please try again.",
     "headerTitle": "See How Container Lifecycle Management Can Work For You",
     "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers."
   },
@@ -323,6 +325,7 @@
     "spanText": "Not Listed?",
     "description": "Navare is always on the lookout for forward-thinkers and problem-solvers. If you believe your skills align with our mission to simplify and modernize global freight, send us your details.",
     "loading": "Submit Form",
+    "allFieldsRequired": "Name and email are required",
     "submissionFailed": "Submission failed. Please try again.",
     "submittingText": "Submitting...",
     "sendMessageText": "Send Message"
