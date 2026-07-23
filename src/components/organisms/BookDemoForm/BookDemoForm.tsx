@@ -104,6 +104,7 @@ const BookDemoForm = ({
           onSubmit={handleFormSubmit}
           fieldClass="bg-navare-green border rounded-xs"
           firstName="First Name"
+          messageOptional
         />
       </div>
       <div className="mt-space-08 text-center text-size-4xs">
