@@ -240,13 +240,13 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
               {/* Hamburger visible below 992px */}
               <button
                 type="button"
-                className="2md:hidden flex items-center cursor-pointer text-secondary-text hover:text-navare-secondary-green transition-colors duration-200"
+                className="2md:hidden flex items-center justify-center cursor-pointer text-secondary-text hover:text-navare-secondary-green transition-colors duration-200 min-w-space-22 min-h-space-22"
                 onClick={toggleMobileMenu}
                 aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
               >
-                <Image src={ImageConstants.HamburgerIcon} alt="" width={23} height={23} className="w-space-16 h-space-16" />
+                <Image src={ImageConstants.HamburgerIcon} alt="" width={23} height={23} className="w-space-16 h-space-16" aria-hidden />
               </button>
             </div>
           </div>

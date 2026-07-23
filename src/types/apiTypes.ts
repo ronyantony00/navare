@@ -269,6 +269,7 @@ export interface LegalDocument {
   Title: string;
   content: any;
   lastUpdated?: string;
+  effectiveDate?: string;
   documentType: string;
   slug?: string;
   updatedAt?: string;

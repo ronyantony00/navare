@@ -92,7 +92,14 @@ export interface CtaSection {
   subtitle?: string;
   cta_button?: CtaButton;
   title?: TitlePart[];
-  bg_image?: { url: string };
+  bg_image?: {
+    url: string;
+    formats?: {
+      large?: { url?: string };
+      medium?: { url?: string };
+      small?: { url?: string };
+    };
+  };
 }
 
 export interface ImpactSection {
