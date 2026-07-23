@@ -35,19 +35,17 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
         message: (formData.get('message') as string) ?? '',
       };
 
-      // Ensure all required fields are present (message is optional)
       if (!formFields.name || !formFields.email) {
-        throw new Error('All fields are required');
+        throw new Error(t('allFieldsRequired'));
       }
 
-      // Submit form using the new client-side API function
+      // POST → /api/job-opening-subscription-requests
       const response = await submitCareerFormClient(formFields);
 
       console.warn('Career form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 
-      // Auto-close popup after 3 seconds
       setTimeout(() => {
         setShowPopup(false);
         setSubmitStatus(false);
@@ -55,16 +53,16 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
     } catch (error) {
       console.error('Error submitting career form:', error);
 
-      // More detailed error logging
       if (error instanceof Error) {
         console.error('Error message:', error.message);
-        setError('Error submitting form');
+        setError(t('submissionFailed'));
       } else {
         console.error('Unknown error:', error);
-        setError('Error submitting form');
+        setError(t('submissionFailed'));
       }
 
       setShowPopup(true);
+      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -93,6 +91,7 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
             fields={['firstName', 'email', 'message']}
             FormButtonText={isLoading ? t('submittingText') : t('sendMessageText')}
             fieldClass="stories-card-bg rounded-md"
+            messageOptional
           />
         </div>
         <Image

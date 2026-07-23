@@ -28,9 +28,11 @@ interface FormComponentProps {
   firstName?: string;
   emailFieldClass?: string;
   phoneFieldClass?: string;
+  /** When true, empty message is allowed (career enquiry). When false, min length still applies if filled. */
+  messageOptional?: boolean;
 }
 
-const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 'grid grid-cols-2', FormButtonText, submitStatusProp, fieldClass, emailFieldClass, phoneFieldClass }: FormComponentProps) => {
+const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 'grid grid-cols-2', FormButtonText, submitStatusProp, fieldClass, emailFieldClass, phoneFieldClass, messageOptional = false }: FormComponentProps) => {
   const [submitStatus, setSubmitStatus] = useState<boolean>(Boolean(submitStatusProp));
   const [error, setError] = useState(false);
   const t = useTranslations('DemoBookingPage.validation');
@@ -126,11 +128,22 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
     validationShape.containers = Yup.string().required(t('required'));
   }
   if (activeFields.includes('message')) {
-    validationShape.message = Yup.string()
+    let messageSchema = Yup.string()
       .trim()
-      .min(20, t('messageWarning'))
       .max(1000, t('messageMax1000Chars'))
       .matches(/^[a-z0-9\s\-.,!?'"()&@#$%\u00C0-\u017F]*$/i, t('messageInvalidChars'));
+
+    if (messageOptional) {
+      // Allow empty; enforce min length only when the user typed something.
+      messageSchema = messageSchema
+        .transform((value) => (value === '' ? undefined : value))
+        .test('min-if-present', t('messageWarning'), (value) => !value || value.length >= 20)
+        .notRequired();
+    } else {
+      messageSchema = messageSchema.min(20, t('messageWarning'));
+    }
+
+    validationShape.message = messageSchema;
   }
 
   const validationSchema = Yup.object(validationShape);

@@ -161,6 +161,14 @@
     "collapse_title": "Collapse title",
     "learn_more": "Learn More"
   },
+  "VideoPlayer": {
+    "unavailableTitle": "Video unavailable",
+    "playbackError": "Unable to play this video. Please try again later.",
+    "formatNotSupported": "This video format is not supported in your browser.",
+    "decodeError": "This video file could not be decoded. It may be corrupted or use an unsupported codec.",
+    "networkError": "Unable to load the video. Please check your connection and try again.",
+    "formatHint": "For best results, upload MP4 (H.264) or WebM files."
+  },
   "TestimonialHeroSection": {
     "title1": "What top-tier brands say about",
     "title2": "our products",
@@ -209,6 +217,8 @@
     "joinBuisness": "Join Businesses Like:",
     "bookDemo": "Submit Form",
     "errorMessage": "An error occured!Please try again later.",
+    "allFieldsRequired": "All fields are required",
+    "submissionFailed": "Submission failed. Please try again.",
     "headerTitle": "See How Container Lifecycle Management Can Work For You",
     "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers."
   },
@@ -315,6 +325,7 @@
     "spanText": "Not Listed?",
     "description": "Navare is always on the lookout for forward-thinkers and problem-solvers. If you believe your skills align with our mission to simplify and modernize global freight, send us your details.",
     "loading": "Submit Form",
+    "allFieldsRequired": "Name and email are required",
     "submissionFailed": "Submission failed. Please try again.",
     "submittingText": "Submitting...",
     "sendMessageText": "Send Message"

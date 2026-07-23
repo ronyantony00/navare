@@ -17,7 +17,7 @@ export const API_ENDPOINTS = {
   FAQ_LIMITED: '/api/frequently-asked-questions?pagination[page]=1&pagination[pageSize]=8&populate=*',
   FAQ_PAGE: '/api/faq-page?populate=*',
   CONTACT_US: '/api/contact-us-page?populate[contact_info_section][populate]=*&populate[titleSection][populate]=*&populate[testimonialTitleSection][populate]=*&populate[faqSectionTitle][populate]=*',
-  CONTACT_US_FORM: '/api/contact-submissions?populate=*',
+  CONTACT_US_FORM: '/api/contact-submissions',
   TESTIMONIALS: '/api/testimonials?populate=*&sort=priority:ASC',
   VIDEO_TESTIMONIALS: '/api/testimonials?filters[thumbnailVideo][$notNull]=true&populate=thumbnailVideo&sort=priority:asc',
   USECASE_TESTIMONIALS: '/api/testimonials?pagination[page]=1&pagination[pageSize]=6&populate=*',

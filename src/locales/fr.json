@@ -160,6 +160,14 @@
     "collapse_title": "Réduire le titre",
     "learn_more": "En savoir plus"
   },
+  "VideoPlayer": {
+    "unavailableTitle": "Vidéo indisponible",
+    "playbackError": "Impossible de lire cette vidéo. Veuillez réessayer plus tard.",
+    "formatNotSupported": "Ce format vidéo n'est pas pris en charge par votre navigateur.",
+    "decodeError": "Ce fichier vidéo n'a pas pu être décodé. Il est peut-être corrompu ou utilise un codec non pris en charge.",
+    "networkError": "Impossible de charger la vidéo. Vérifiez votre connexion et réessayez.",
+    "formatHint": "Pour de meilleurs résultats, téléversez des fichiers MP4 (H.264) ou WebM."
+  },
   "TestimonialHeroSection": {
     "title1": "Ce que les marques de premier plan disent de",
     "title2": "nos produits",
@@ -208,6 +216,8 @@
     "joinBuisness": "Rejoignez des entreprises comme :",
     "bookDemo": "Soumettre le formulaire",
     "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard.",
+    "allFieldsRequired": "Tous les champs sont obligatoires",
+    "submissionFailed": "Échec de l'envoi. Veuillez réessayer.",
     "headerTitle": "Découvrez comment la gestion du cycle de vie des conteneurs peut fonctionner pour vous",
     "mainHeading": "Présentation de la plateforme Container Lifecycle Management®, la première au monde de vos conteneurs d'expédition."
   },
@@ -312,6 +322,7 @@
     "spanText": "n'est pas listé ?",
     "description": "Navare est toujours à la recherche de penseurs avant-gardistes et de résolveurs de problèmes. Si vous pensez que vos compétences s'alignent sur notre mission de simplifier et moderniser le fret mondial, envoyez-nous vos détails.",
     "loading": "Soumettre le formulaire",
+    "allFieldsRequired": "Le nom et l'e-mail sont obligatoires",
     "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
     "submittingText": "Envoi en cours...",
     "sendMessageText": "Envoyer le message"

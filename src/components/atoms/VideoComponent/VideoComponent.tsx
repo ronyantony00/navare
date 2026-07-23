@@ -1,8 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 
 interface VideoComponentProps {
   videoUrl?: string;
@@ -12,82 +14,235 @@ interface VideoComponentProps {
   videoOverLay?: string;
   autoPlay?: boolean;
   playButtonClass?: string;
+  muted?: boolean;
+  controls?: boolean;
+  /** When true (default), hover starts muted preview playback. When false, hover only reveals the play icon. */
+  playOnHover?: boolean;
 }
 
-const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay = 'video-overlay', autoPlay = false, playButtonClass }: VideoComponentProps) => {
+const MEDIA_ERR_NETWORK = 2;
+const MEDIA_ERR_DECODE = 3;
+const MEDIA_ERR_SRC_NOT_SUPPORTED = 4;
+
+function getPlaybackErrorKey(errorCode?: number): 'decodeError' | 'formatNotSupported' | 'networkError' | 'playbackError' {
+  switch (errorCode) {
+    case MEDIA_ERR_DECODE:
+      return 'decodeError';
+    case MEDIA_ERR_SRC_NOT_SUPPORTED:
+      return 'formatNotSupported';
+    case MEDIA_ERR_NETWORK:
+      return 'networkError';
+    default:
+      return 'playbackError';
+  }
+}
+
+const VideoComponent = ({
+  videoUrl,
+  className,
+  author,
+  designation,
+  videoOverLay = 'video-overlay',
+  autoPlay = false,
+  playButtonClass,
+  muted = true,
+  controls = false,
+  playOnHover = true,
+}: VideoComponentProps) => {
+  const t = useTranslations('VideoPlayer');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [overlayDismissed, setOverlayDismissed] = useState(false);
+  const [showControls, setShowControls] = useState(controls);
+  const [playbackErrorKey, setPlaybackErrorKey] = useState<ReturnType<typeof getPlaybackErrorKey> | null>(null);
 
-  const pauseOtherVideos = () => {
-    if (typeof window === 'undefined') {
+  const resolvedVideoUrl = getImageUrl(videoUrl);
+  const usesHoverPreview = playOnHover && !controls;
+
+  useEffect(() => {
+    setPlaybackErrorKey(null);
+    setIsPlaying(false);
+    setShowControls(controls);
+  }, [resolvedVideoUrl, controls]);
+
+  // Keep muted in sync (required for browser autoplay policies).
+  useEffect(() => {
+    if (!videoRef.current) {
       return;
     }
+    videoRef.current.muted = muted;
+  }, [muted, resolvedVideoUrl]);
+
+  // Explicit play() — HTML autoPlay alone is unreliable after client-only mount.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !autoPlay || !resolvedVideoUrl) {
+      return;
+    }
+
+    let cancelled = false;
+    video.muted = true;
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+        if (!cancelled) {
+          setIsPlaying(true);
+        }
+      } catch (error) {
+        console.warn('Autoplay failed:', error);
+        if (!cancelled) {
+          setIsPlaying(false);
+        }
+      }
+    };
+
+    // Ensure enough data is buffered before play.
+    if (video.readyState >= 2) {
+      void tryPlay();
+    } else {
+      const onCanPlay = () => {
+        void tryPlay();
+      };
+      video.addEventListener('canplay', onCanPlay, { once: true });
+      video.load();
+      return () => {
+        cancelled = true;
+        video.removeEventListener('canplay', onCanPlay);
+      };
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [autoPlay, resolvedVideoUrl]);
+
+  const handlePlaybackError = (errorCode?: number) => {
+    setPlaybackErrorKey(getPlaybackErrorKey(errorCode));
+    setIsPlaying(false);
+  };
+
+  const pauseOtherVideos = () => {
     const videos = document.querySelectorAll('video');
     videos.forEach((vid) => {
       if (vid !== videoRef.current) {
         try {
           vid.pause();
         } catch (error) {
-          // Ignore pause errors for other videos
           console.warn('Failed to pause video:', error);
         }
       }
     });
   };
 
-  // Play video on hover
   const handleMouseEnter = async () => {
+    if (playbackErrorKey) {
+      return;
+    }
+
+    // Muted autoplay: reveal controls on hover so user can unmute/pause.
+    if (autoPlay && !playOnHover && !controls) {
+      setShowControls(true);
+      return;
+    }
+
+    if (!usesHoverPreview) {
+      return;
+    }
+
     try {
       pauseOtherVideos();
       if (videoRef.current && !videoRef.current.paused) {
-        return; // Already playing
+        return;
       }
       if (videoRef.current) {
         await videoRef.current.play();
         setIsPlaying(true);
-        setOverlayDismissed(true);
       }
     } catch (error) {
       console.warn('Failed to play video:', error);
-      setIsPlaying(false);
+      handlePlaybackError(videoRef.current?.error?.code);
     }
   };
 
-  // Pause video when mouse leaves
   const handleMouseLeave = () => {
+    if (autoPlay && !playOnHover && !controls) {
+      return;
+    }
+
+    if (!usesHoverPreview) {
+      return;
+    }
+
     try {
       if (videoRef.current && !videoRef.current.paused) {
         videoRef.current.pause();
         setIsPlaying(false);
-        setOverlayDismissed(false);
       }
     } catch (error) {
       console.warn('Failed to pause video:', error);
     }
   };
 
+  const handlePlayClick = async () => {
+    if (playbackErrorKey || !videoRef.current) {
+      return;
+    }
+
+    try {
+      pauseOtherVideos();
+      setShowControls(true);
+      videoRef.current.muted = muted;
+      await videoRef.current.play();
+      setIsPlaying(true);
+    } catch (error) {
+      console.warn('Failed to play video:', error);
+      handlePlaybackError(videoRef.current?.error?.code);
+    }
+  };
+
+  if (!resolvedVideoUrl) {
+    return null;
+  }
+
+  const showPlayOverlay = !showControls && !playbackErrorKey && !isPlaying;
+
   return (
     <div
-      className={`relative ${className ?? ''}`}
+      className={`relative group ${className ?? ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <video
         ref={videoRef}
-        src={videoUrl}
-        loop
-        muted
+        src={resolvedVideoUrl}
+        {...(!showControls ? { loop: true } : {})}
+        muted={muted}
+        {...(showControls ? { controls: true } : {})}
+        {...(autoPlay ? { autoPlay: true } : {})}
         playsInline
-        className="w-full h-full object-cover"
+        preload={autoPlay ? 'auto' : 'metadata'}
+        className="w-full h-full object-cover bg-black"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
-        autoPlay={autoPlay}
+        onError={() => handlePlaybackError(videoRef.current?.error?.code)}
+        suppressHydrationWarning
       />
-      {(!isPlaying || (autoPlay && !overlayDismissed)) && (
+      {playbackErrorKey && (
         <div
+          className="absolute inset-0 flex flex-col items-center justify-center gap-space-04 bg-black/80 p-space-10 text-center"
+          role="alert"
+        >
+          <div className="text-size-3xs font-semibold text-primary">{t('unavailableTitle')}</div>
+          <p className="text-size-4xs text-desc-text max-w-pct-090">{t(playbackErrorKey)}</p>
+          <p className="text-size-4xs text-placeholder-text max-w-pct-090">{t('formatHint')}</p>
+        </div>
+      )}
+      {showPlayOverlay && (
+        <button
+          type="button"
           className={`absolute inset-0 w-full h-full p-space-10 flex flex-col items-center justify-center ${videoOverLay}`}
-          style={{ pointerEvents: 'none' }}
+          onClick={handlePlayClick}
+          aria-label="Play video"
         >
           <div className="size-full flex items-center justify-center">
             <Image
@@ -105,7 +260,7 @@ const VideoComponent = ({ videoUrl, className, author, designation, videoOverLay
               <div className="text-white">{designation || 'Chief Technology Office, Bend'}</div>
             </div>
           )}
-        </div>
+        </button>
       )}
     </div>
   );
