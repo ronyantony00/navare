@@ -76,6 +76,29 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
     return () => window.removeEventListener('resize', handleResize);
   }, [closeAllMenus, clearHoverTimeout]);
 
+  // Close mobile/tablet nav when the *page* scrolls — not when scrolling inside the menu/dropdown.
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const handleScroll = (event: Event) => {
+      const navbar = navbarRef.current;
+      const target = event.target;
+
+      // Keep menu open while user scrolls inside navbar / mobile dropdown content
+      if (navbar && target instanceof Node && navbar.contains(target)) {
+        return;
+      }
+
+      closeAllMenus();
+      clearHoverTimeout();
+    };
+
+    document.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    return () => document.removeEventListener('scroll', handleScroll, { capture: true });
+  }, [isMenuOpen, closeAllMenus, clearHoverTimeout]);
+
   const getDropdownData = (menuId: string) => {
     // Unified helper function to generate dynamic navigation data
     const generateNavData = (
@@ -241,11 +264,13 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — scroll inside panel so dropdown rows stay reachable without closing */}
         <div
           id="mobile-menu"
-          className={`2md:hidden absolute top-full left-0 w-full bg-navare-green z-50 transition-all duration-300 ease-in-out overflow-hidden
-            ${isMenuOpen ? 'opacity-100' : 'max-h-0 opacity-0'}
+          className={`2md:hidden absolute top-full left-0 w-full bg-navare-green z-50 transition-all duration-300 ease-in-out
+            ${isMenuOpen
+          ? 'opacity-100 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain'
+          : 'max-h-0 opacity-0 overflow-hidden'}
           `}
           role="menu"
           aria-hidden={!isMenuOpen}
