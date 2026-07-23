@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Spinner from '@/components/atoms/Spinner/Spinner';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
-import { ExternalMediaConstants } from '@/constants/externalMediaConstants/mediaConstants';
+import ImageConstants from '@/constants/imageConstants/imageConstants';
 
 interface TestimonialHeroSectionProps {
   loading: boolean;
@@ -21,7 +21,7 @@ const TestimonialHeroSection = ({ loading, titlePrefix, description }: Testimoni
   return (
     <div className="w-full flex flex-col items-center justify-center h-full base:min-h-max-height relative">
       <Image
-        src={ExternalMediaConstants.TestimonialHeroImage}
+        src={ImageConstants.TestimonialHeroBgImage}
         priority
         alt="Testimonial Hero Background"
         width={1000}
