@@ -52,7 +52,7 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
         </div>
       </div>
       <RiveNavigation
-        src="/assets/animation/rive/solution.riv"
+        src="/assets/animation/rive/archived_navera_(4).riv"
         className="h-full aspect-video hidden lg:block"
         solutionSectionCard={solutionSectionCard}
       />

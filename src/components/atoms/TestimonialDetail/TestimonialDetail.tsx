@@ -24,7 +24,7 @@ const TestimonialDetail = ({ data, title }: TestimonialDetailProps) => {
   }
 
   // Safe media access
-  const mediaUrl = testimonial?.media?.url;
+  const mediaUrl = testimonial?.testimonialDetailPageMedia?.url;
 
   const formatDate = (dateString?: string) => {
     if (!dateString) {
@@ -83,7 +83,7 @@ const TestimonialDetail = ({ data, title }: TestimonialDetailProps) => {
             <div className="flex gap-space-10">
               {true && (
                 <Image
-                  src={testimonial.author_avatar?.url ? getImageUrl(testimonial.author_avatar.url) : ImageConstants.TestimonialImage}
+                  src={testimonial.authorAvatar?.url ? getImageUrl(testimonial.authorAvatar.url) : ImageConstants.TestimonialImage}
                   alt="Testimonial Image"
                   width={100}
                   height={100}

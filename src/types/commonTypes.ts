@@ -126,7 +126,7 @@ export interface Testimonial {
   content?: BlocksContent;
   authorName?: string;
   authorCompany?: string;
-  author_avatar?: { url: string };
+  authorAvatar?: { url: string };
   companyLogo?: { url: string };
   rating?: number;
   slug?: string;
