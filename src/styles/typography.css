@@ -135,8 +135,14 @@
 
 /* Navare Classes */
 .hero-title {
-  font-size: var(--text-size-2md);
+  font-size: var(--text-size-2sm); /* 28px below 480px */
   font-weight: 700;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  @media (min-width: 480px) {
+    font-size: var(--text-size-2md); /* 40px */
+  }
 
   @media (min-width: 768px) {
     font-size: var(--text-size-xl);
@@ -153,8 +159,14 @@
 }
 
 .section-title {
-  font-size: var(--text-size-2sm-2);
+  font-size: var(--text-size-sm); /* 24px below 480px */
   font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  @media (min-width: 480px) {
+    font-size: var(--text-size-2sm-2); /* 30px */
+  }
 
   @media (min-width: 768px) {
     font-size: var(--text-size-md);

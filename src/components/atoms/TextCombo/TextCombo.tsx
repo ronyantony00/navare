@@ -86,7 +86,7 @@ const TextCombo = ({ spanClass, title, description, spanText, className, titleCl
   }, [valueText]);
 
   return (
-    <div className={`flex flex-col ${className}`}>
+    <div className={`flex flex-col min-w-0 max-w-full ${className}`}>
       {bannerImage && (
         <div className="bg-white h-14 object-contain flex items-center rounded-2xs p-space-05 w-fit overflow-hidden mb-space-05">
           <Image
@@ -100,18 +100,18 @@ const TextCombo = ({ spanClass, title, description, spanText, className, titleCl
       )}
       {bannerText && <div className="button-text hidden 2xs:block text-center px-space-08 md:px-space-14 py-space-03 md:py-space-05 border rounded-xl text-subtle-desc mb-space-12 w-fit">{bannerText}</div>}
       {smallText && <div className="very-small-heading pb-space-06 text-primary">{smallText}</div>}
-      <div className={`${textClass} inline leading-sub-title font-medium font-comme pb-space-06 lg:pb-space-12`}>
-        <span className={`${titleClass} gradient-text ${title ? 'mr-space-05' : ''}`}>
+      <div className={`${textClass} w-full max-w-full min-w-0 leading-sub-title font-medium font-comme pb-space-06 lg:pb-space-12`}>
+        <span className={`${titleClass} gradient-text break-words [overflow-wrap:anywhere] ${title ? 'mr-space-05' : ''}`}>
           {title}
           {breakText}
         </span>
         {/* {' '} */}
-        {spanText && <span className={` ${spanClass} ${titleClass} text-primary ${spanText ? 'mr-space-05' : ''}`}>{spanText}</span>}
+        {spanText && <span className={` ${spanClass} ${titleClass} text-primary break-words [overflow-wrap:anywhere] ${spanText ? 'mr-space-05' : ''}`}>{spanText}</span>}
         {/* {' '} */}
-        {extraTitle && <span className={`${titleClass} gradient-text`}>{extraTitle}</span>}
+        {extraTitle && <span className={`${titleClass} gradient-text break-words [overflow-wrap:anywhere]`}>{extraTitle}</span>}
       </div>
       {description && (
-        <div className={`leading-description primary-content text-desc-text ${descClass} pb-space-06 lg:pb-space-12`}>
+        <div className={`leading-description primary-content text-desc-text break-words [overflow-wrap:anywhere] max-w-full ${descClass} pb-space-06 lg:pb-space-12`}>
           {typeof description === 'string' ? description : <RichTextRenderer content={description} />}
         </div>
       )}

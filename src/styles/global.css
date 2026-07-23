@@ -431,3 +431,11 @@ html {
 .challenge-clip-path {
   clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
 }
+
+/* Tawk minimized icon — 50% on responsive / mobile screens */
+@media (max-width: 1023px) {
+  .tawk-min-container {
+    transform: scale(0.5) !important;
+    transform-origin: bottom right !important;
+  }
+}
