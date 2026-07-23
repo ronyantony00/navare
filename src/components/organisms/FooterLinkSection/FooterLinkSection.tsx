@@ -137,13 +137,19 @@ const FooterLinkSection = ({ FooterLinks, socialLinks, solutionsNavbarData, useC
   }
 
   return (
-    <div className="flex flex-col flex-wrap 2xs:flex-row gap-space-23">
+    <div className="grid w-full grid-cols-1 gap-y-space-16 2xs:grid-cols-2 2xs:gap-x-space-24 2xs:gap-y-space-20 2md:flex 2md:flex-1 2md:flex-row 2md:items-start 2md:justify-between 2md:gap-space-16 xl:gap-space-24">
       {linksToRender.map((obj) => {
+        const isSocial = obj.id === 5;
         return (
           <FooterLinkGroup
             key={obj.id}
             title={obj.title}
             links={obj.links}
+            className={
+              isSocial
+                ? '2xs:col-span-2 2md:col-auto pt-space-08 2xs:pt-space-04 2md:pt-space-00 border-t border-navare-green-light/30 2md:border-0'
+                : ''
+            }
           />
         );
       })}
