@@ -216,6 +216,8 @@
     "joinBuisness": "Rejoignez des entreprises comme :",
     "bookDemo": "Soumettre le formulaire",
     "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard.",
+    "allFieldsRequired": "Tous les champs sont obligatoires",
+    "submissionFailed": "Échec de l'envoi. Veuillez réessayer.",
     "headerTitle": "Découvrez comment la gestion du cycle de vie des conteneurs peut fonctionner pour vous",
     "mainHeading": "Présentation de la plateforme Container Lifecycle Management®, la première au monde de vos conteneurs d'expédition."
   },

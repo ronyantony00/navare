@@ -6,7 +6,7 @@ import { useState } from 'react';
 import NotificationPopup from '@/components/atoms/SuccessPopup/SuccessPopup';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import FormComponent from '@/components/molecules/FormComponent/FormComponent';
-// import { submitDemoBookingFormClient } from '@/services/apiService';
+import { submitDemoBookingFormClient } from '@/services/apiService';
 import { extractTitleParts } from '@/utils/utilFunctions/extractTitleParts';
 
 interface BookDemoFormProps {
@@ -48,13 +48,12 @@ const BookDemoForm = ({
 
       // Ensure all required fields are present (message is optional)
       if (!formFields.first_name || !formFields.last_name || !formFields.work_email || !formFields.phone_number) {
-        throw new Error('All fields are required');
+        throw new Error(t('allFieldsRequired'));
       }
 
-      // Submit form using the new client-side API function
-      // const response = await submitDemoBookingFormClient(formFields);
+      const response = await submitDemoBookingFormClient(formFields);
 
-      // console.warn('Demo booking form submission successful:', response);
+      console.warn('Demo booking form submission successful:', response);
       setSubmitStatus(true);
       setShowPopup(true);
 
@@ -66,16 +65,16 @@ const BookDemoForm = ({
     } catch (error) {
       console.error('Error submitting demo booking form:', error);
 
-      // More detailed error logging
       if (error instanceof Error) {
         console.error('Error message:', error.message);
-        setError('Submission failed. Please try again.');
+        setError(t('submissionFailed'));
       } else {
         console.error('Unknown error:', error);
-        setError('Submission failed. Please try again.');
+        setError(t('submissionFailed'));
       }
 
       setShowPopup(true);
+      throw error;
     } finally {
       setIsLoading(false);
     }

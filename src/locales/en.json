@@ -217,6 +217,8 @@
     "joinBuisness": "Join Businesses Like:",
     "bookDemo": "Submit Form",
     "errorMessage": "An error occured!Please try again later.",
+    "allFieldsRequired": "All fields are required",
+    "submissionFailed": "Submission failed. Please try again.",
     "headerTitle": "See How Container Lifecycle Management Can Work For You",
     "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers."
   },
