@@ -322,6 +322,7 @@
     "spanText": "n'est pas listé ?",
     "description": "Navare est toujours à la recherche de penseurs avant-gardistes et de résolveurs de problèmes. Si vous pensez que vos compétences s'alignent sur notre mission de simplifier et moderniser le fret mondial, envoyez-nous vos détails.",
     "loading": "Soumettre le formulaire",
+    "allFieldsRequired": "Le nom et l'e-mail sont obligatoires",
     "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
     "submittingText": "Envoi en cours...",
     "sendMessageText": "Envoyer le message"

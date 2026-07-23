@@ -325,6 +325,7 @@
     "spanText": "Not Listed?",
     "description": "Navare is always on the lookout for forward-thinkers and problem-solvers. If you believe your skills align with our mission to simplify and modernize global freight, send us your details.",
     "loading": "Submit Form",
+    "allFieldsRequired": "Name and email are required",
     "submissionFailed": "Submission failed. Please try again.",
     "submittingText": "Submitting...",
     "sendMessageText": "Send Message"
