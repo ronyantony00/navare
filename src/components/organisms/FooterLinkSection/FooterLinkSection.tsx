@@ -137,7 +137,7 @@ const FooterLinkSection = ({ FooterLinks, socialLinks, solutionsNavbarData, useC
   }
 
   return (
-    <div className="grid w-full grid-cols-1 gap-y-space-16 2xs:grid-cols-2 2xs:gap-x-space-24 2xs:gap-y-space-20 2md:flex 2md:flex-1 2md:flex-row 2md:items-start 2md:justify-between 2md:gap-space-16 xl:gap-space-24">
+    <div className="grid w-full grid-cols-1 gap-y-space-16 justify-items-start max-2xs:justify-items-center 2xs:grid-cols-2 2xs:gap-x-space-24 2xs:gap-y-space-20 2md:flex 2md:flex-1 2md:flex-row 2md:items-start 2md:justify-between 2md:gap-space-16 xl:gap-space-24">
       {linksToRender.map((obj) => {
         const isSocial = obj.id === 5;
         return (
