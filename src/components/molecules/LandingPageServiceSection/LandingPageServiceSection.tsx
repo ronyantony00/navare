@@ -27,7 +27,7 @@ export interface LandingPageServiceSectionProps {
 const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, solutionSectionCard }: LandingPageServiceSectionProps) => {
   return (
     <div className="relative w-full max-w-maxwidth flex flex-col">
-      <div className="lg:pb-space-00 lg:pt-space-30 py-space-20 section-padding-x flex flex-col lg:items-start items-center lg:gap-space-00 gap-space-12 z-20 overflow-hidden">
+      <div className="lg:pb-space-00 lg:pt-space-20 py-space-16 section-padding-x flex flex-col lg:items-start items-center lg:gap-space-00 gap-space-12 z-20 overflow-hidden">
         <div className="absolute lg:block hidden top-space-50 -left-space-200 size-space-300 bg-blue-circle-bg blur-3xl opacity-30 rounded-full" />
         <Image src={ImageConstants.ServiceGreenCircleBg} width={1000} height={1000} alt="Service Section Mobile Background" className="lg:hidden absolute -top-space-125 left-0 w-full h-full opacity-90 object-cover" />
         <Image src={ImageConstants.ServiceSectionMobileBg} width={1000} height={1000} alt="Service Section Mobile Background" className="sm:hidden absolute top-0 left-0 w-full h-full object-cover" />
@@ -51,11 +51,14 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
           ))}
         </div>
       </div>
-      <RiveNavigation
-        src="/assets/animation/rive/archived_navera_(5).riv"
-        className="h-full aspect-video hidden lg:block"
-        solutionSectionCard={solutionSectionCard}
-      />
+      {/* Shorter frame + TopCenter cover crops empty artboard space under the cards */}
+      <div className="hidden lg:block w-full overflow-hidden aspect-[12/5] -mt-space-02">
+        <RiveNavigation
+          src="/assets/animation/rive/archived_navera_(5).riv"
+          className="w-full h-full"
+          solutionSectionCard={solutionSectionCard}
+        />
+      </div>
     </div>
   );
 };

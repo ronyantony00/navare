@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import Button from '@/components/atoms/CustomButton/Button';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
+import MediaContainerSkeleton from '@/components/molecules/Skeleton/MediaContainerSkeleton';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
 import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 
@@ -37,7 +38,11 @@ const VideoComponent = dynamic(
   () => import('@/components/atoms/VideoComponent/VideoComponent'),
   {
     ssr: false,
-    loading: () => <div className={`${generalVideoClassName} bg-black/10 aspect-video`} aria-hidden />,
+    loading: () => (
+      <div className={`${generalVideoClassName} aspect-video min-h-space-60`}>
+        <MediaContainerSkeleton className="rounded-xl" borderRadius={12} />
+      </div>
+    ),
   },
 );
 

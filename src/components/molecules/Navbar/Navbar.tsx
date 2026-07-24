@@ -13,6 +13,7 @@ import { useDeviceDetection } from '@/hooks/useDeviceDetection';
 import { useHoverMenu } from '@/hooks/useHoverMenu';
 import { useKeyboardNavigation } from '@/hooks/useKeyboardNavigation';
 import { useMenuState } from '@/hooks/useMenuState';
+import { usePathname } from '@/libs/i18nNavigation';
 import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 import NavlinkSection from '../NavlinkSection/NavlinkSection';
 
@@ -32,8 +33,9 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
 
   const { isMobile, isTouchDevice } = useDeviceDetection();
   const t = useTranslations('commonMessages');
+  const pathname = usePathname();
   const { isMenuOpen, hoveredMenuItem, toggleMobileMenu, closeAllMenus, setActiveMenuItem, handleMobileNavigation } = useMenuState();
-  const { handleMenuItemHover, handleMenuItemLeave, handleMenuItemClick, clearHoverTimeout } = useHoverMenu({
+  const { handleMenuItemHover, handleMenuItemLeave, handleMenuItemClick, clearHoverTimeout, closeHoverImmediately } = useHoverMenu({
     isTouchDevice,
     isMobile,
     hoveredMenuItem,
@@ -60,6 +62,17 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
   });
 
   const prevIsMobile = useRef(isMobile);
+  const prevPathname = useRef(pathname);
+
+  // Close open mega-menu / mobile nav after any route change
+  useEffect(() => {
+    if (prevPathname.current === pathname) {
+      return;
+    }
+    prevPathname.current = pathname;
+    closeAllMenus();
+    clearHoverTimeout();
+  }, [pathname, closeAllMenus, clearHoverTimeout]);
 
   // Handle resize during hover
   useEffect(() => {
@@ -233,6 +246,8 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
                   onLeave={handleMenuItemLeave}
                   hoveredMenuItem={hoveredMenuItem}
                   onItemClick={handleMenuItemClick}
+                  onNavigate={handleMobileNavigation}
+                  onCloseHover={closeHoverImmediately}
                   isTouchDevice={isTouchDevice}
                 />
               </div>
@@ -267,11 +282,11 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
         {/* Mobile menu — scroll inside panel so dropdown rows stay reachable without closing */}
         <div
           id="mobile-menu"
-          className={`2md:hidden absolute top-full left-0 w-full bg-navare-green z-50 transition-all duration-300 ease-in-out
-            ${isMenuOpen
-          ? 'opacity-100 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain'
-          : 'max-h-0 opacity-0 overflow-hidden'}
-          `}
+          className={`2md:hidden absolute top-full left-0 w-full bg-navare-green z-50 transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? 'opacity-100 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain'
+              : 'max-h-0 opacity-0 overflow-hidden'
+          }`}
           role="menu"
           aria-hidden={!isMenuOpen}
         >
@@ -282,7 +297,8 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
             onLeave={handleMenuItemLeave}
             hoveredMenuItem={hoveredMenuItem}
             onItemClick={handleMenuItemClick}
-            onMobileNavigate={handleMobileNavigation}
+            onNavigate={handleMobileNavigation}
+            onCloseHover={closeHoverImmediately}
             isTouchDevice={isTouchDevice}
           />
         </div>

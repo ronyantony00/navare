@@ -25,13 +25,23 @@ interface NavlinkProps {
   onLeave?: () => void;
   hoveredMenuItem?: string | null;
   onItemClick?: (menuId: string) => void;
-  onMobileNavigate?: () => void;
+  onNavigate?: () => void;
+  onCloseHover?: () => void;
   isTouchDevice?: boolean;
   options?: Option[];
 }
 
-const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemClick, onMobileNavigate, isTouchDevice, options }: NavlinkProps) => {
-  // Get dropdown data based on hovered menu item
+const NavlinkSection = ({
+  Navlinks,
+  onHover,
+  onLeave,
+  hoveredMenuItem,
+  onItemClick,
+  onNavigate,
+  onCloseHover,
+  isTouchDevice,
+  options,
+}: NavlinkProps) => {
   const getDropdownData = (menuId: string) => {
     return NAVBAR.dropdownData[menuId as keyof typeof NAVBAR.dropdownData] || NAVBAR.dropdownData.solutions;
   };
@@ -85,7 +95,7 @@ const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemCli
                     ButtonText={getDropdownData(link.navItem).buttonText}
                     linkOnCard={getDropdownData(link.navItem).linkOnCard}
                     onNavigate={onLeave}
-                    onMobileNavigate={onMobileNavigate}
+                    onMobileNavigate={onNavigate}
                   />
                 </div>
               )}
@@ -99,7 +109,13 @@ const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemCli
               href={link.href || ''}
               key={link.id}
               className="w-full 2md:w-fit flex items-center text-secondary-text hover:text-primary text-size-3xs px-space-12 min-h-space-22 2md:min-h-0 2md:py-space-00 2md:px-space-00"
-              onClick={onMobileNavigate}
+              onMouseEnter={() => {
+                // Close open mega-menu when hovering Integrations (desktop)
+                if (!isTouchDevice) {
+                  onCloseHover?.();
+                }
+              }}
+              onClick={() => onNavigate?.()}
               aria-label={`Navigate to ${link.text}`}
             >
               {link.text}

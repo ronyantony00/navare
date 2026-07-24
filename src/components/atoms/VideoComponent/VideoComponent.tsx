@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
+import MediaContainerSkeleton from '@/components/molecules/Skeleton/MediaContainerSkeleton';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
 import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 
@@ -53,6 +54,7 @@ const VideoComponent = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(controls);
+  const [isMediaLoading, setIsMediaLoading] = useState(true);
   const [playbackErrorKey, setPlaybackErrorKey] = useState<ReturnType<typeof getPlaybackErrorKey> | null>(null);
 
   const resolvedVideoUrl = getImageUrl(videoUrl);
@@ -62,6 +64,7 @@ const VideoComponent = ({
     setPlaybackErrorKey(null);
     setIsPlaying(false);
     setShowControls(controls);
+    setIsMediaLoading(true);
   }, [resolvedVideoUrl, controls]);
 
   // Keep muted in sync (required for browser autoplay policies).
@@ -87,16 +90,17 @@ const VideoComponent = ({
         await video.play();
         if (!cancelled) {
           setIsPlaying(true);
+          setIsMediaLoading(false);
         }
       } catch (error) {
         console.warn('Autoplay failed:', error);
         if (!cancelled) {
           setIsPlaying(false);
+          setIsMediaLoading(false);
         }
       }
     };
 
-    // Ensure enough data is buffered before play.
     if (video.readyState >= 2) {
       void tryPlay();
     } else {
@@ -119,6 +123,7 @@ const VideoComponent = ({
   const handlePlaybackError = (errorCode?: number) => {
     setPlaybackErrorKey(getPlaybackErrorKey(errorCode));
     setIsPlaying(false);
+    setIsMediaLoading(false);
   };
 
   const pauseOtherVideos = () => {
@@ -139,7 +144,6 @@ const VideoComponent = ({
       return;
     }
 
-    // Muted autoplay: reveal controls on hover so user can unmute/pause.
     if (autoPlay && !playOnHover && !controls) {
       setShowControls(true);
       return;
@@ -204,7 +208,7 @@ const VideoComponent = ({
     return null;
   }
 
-  const showPlayOverlay = !showControls && !playbackErrorKey && !isPlaying;
+  const showPlayOverlay = !showControls && !playbackErrorKey && !isPlaying && !isMediaLoading;
 
   return (
     <div
@@ -212,6 +216,7 @@ const VideoComponent = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {isMediaLoading && !playbackErrorKey && <MediaContainerSkeleton />}
       <video
         ref={videoRef}
         src={resolvedVideoUrl}
@@ -221,8 +226,13 @@ const VideoComponent = ({
         {...(autoPlay ? { autoPlay: true } : {})}
         playsInline
         preload={autoPlay ? 'auto' : 'metadata'}
-        className="w-full h-full object-cover bg-black"
-        onPlay={() => setIsPlaying(true)}
+        className={`w-full h-full object-cover bg-black transition-opacity duration-300 ${isMediaLoading ? 'opacity-0' : 'opacity-100'}`}
+        onLoadedData={() => setIsMediaLoading(false)}
+        onCanPlay={() => setIsMediaLoading(false)}
+        onPlay={() => {
+          setIsPlaying(true);
+          setIsMediaLoading(false);
+        }}
         onPause={() => setIsPlaying(false)}
         onError={() => handlePlaybackError(videoRef.current?.error?.code)}
         suppressHydrationWarning
