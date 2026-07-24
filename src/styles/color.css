@@ -89,6 +89,7 @@
   --color-base-black: var(--color-black);
   --color-secondary: var(--color-secondary);
   --color-primary: var(--color-primary);
+  --color-breadcrumb-separator: #47cc42;
   --color-tag-bg: var(--color-service-description);
   --color-btn-primary: var(--color-btn-primary);
   --color-btn-secondary: var(--color-btn-secondary);

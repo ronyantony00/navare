@@ -1,6 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import React, { useMemo } from 'react';
+import Breadcrumb from '@/components/atoms/Breadcrumb/Breadcrumb';
 import Spinner from '@/components/atoms/Spinner/Spinner';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import RichTextRenderer from '@/components/molecules/RichText/RichText';
@@ -10,6 +11,7 @@ import { sanitizeLegalContent, sanitizeLegalPlainText } from '@/utils/utilFuncti
 
 const PrivacyPolicySection = () => {
   const t = useTranslations('PrivacyPolicySection');
+  const tCommon = useTranslations('commonMessages');
 
   const { data: pageDetails, loading } = useFetch<any>(API_ENDPOINTS.PRIVACY_POLICY);
 
@@ -42,6 +44,13 @@ const PrivacyPolicySection = () => {
   }
   return (
     <div className="max-w-maxwidth mx-auto min-h-screen flex flex-col md:gap-space-15 gap-space-10 md:py-space-30 py-space-20 px-space-15 md:px-space-40">
+      <Breadcrumb
+        items={[
+          { label: tCommon('home'), href: '/' },
+          { label: tCommon('legalHub'), href: '/legal' },
+          { label: pageContent.Title },
+        ]}
+      />
       <div className="flex flex-col gap-space-10">
         <TextCombo
           title={pageContent.Title}

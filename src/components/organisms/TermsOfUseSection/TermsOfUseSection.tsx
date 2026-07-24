@@ -2,6 +2,7 @@
 import type { LegalDocument } from '@/types/apiTypes';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import Breadcrumb from '@/components/atoms/Breadcrumb/Breadcrumb';
 import Button from '@/components/atoms/CustomButton/Button';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import RichTextRenderer from '@/components/molecules/RichText/RichText';
@@ -15,6 +16,7 @@ interface TermsOfUseProps {
 
 const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
   const t = useTranslations('TermsOfUseSection');
+  const tCommon = useTranslations('commonMessages');
   const rawPageContent = pageDetails?.[0];
   const pageContent = rawPageContent
     ? {
@@ -50,6 +52,13 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
 
   return (
     <div className="max-w-maxwidth mx-auto min-h-screen flex flex-col md:gap-space-15 gap-space-10 section-padding-y section-padding-x">
+      <Breadcrumb
+        items={[
+          { label: tCommon('home'), href: '/' },
+          { label: tCommon('legalHub'), href: '/legal' },
+          { label: pageContent.Title || t('header') },
+        ]}
+      />
       <div className="flex flex-col">
         <TextCombo
           title={pageContent.Title}

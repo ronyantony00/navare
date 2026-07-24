@@ -430,7 +430,9 @@
     "learn_more": "En savoir plus",
     "read_full_review": "Lire l'avis complet sur Nav2",
     "noStoriesFound": "Aucune histoire trouvée",
-    "noLogosAvailable": "Aucun logo disponible"
+    "noLogosAvailable": "Aucun logo disponible",
+    "home": "Accueil",
+    "legalHub": "Centre juridique"
   },
   "errorPage": {
     "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard."

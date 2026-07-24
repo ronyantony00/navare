@@ -435,7 +435,9 @@
     "learn_more": "Learn More",
     "read_full_review": "Read the full review",
     "noStoriesFound": "No stories found",
-    "noLogosAvailable": "No logos available"
+    "noLogosAvailable": "No logos available",
+    "home": "Home",
+    "legalHub": "Legal Hub"
   },
   "errorPage": {
     "errorMessage": "An error occured!Please try again later."

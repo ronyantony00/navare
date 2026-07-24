@@ -1,9 +1,11 @@
 'use client';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Button from '@/components/atoms/CustomButton/Button';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 
 interface SeaCargoFeature {
   id: number;
@@ -28,6 +30,16 @@ export interface LandingPageSeaCargoProps {
   generalImageUrl?: string;
   generalMediaIsVideo?: boolean;
 }
+
+const generalVideoClassName = 'w-full h-full relative z-20 rounded-xl overflow-hidden general-image-shadow';
+
+const VideoComponent = dynamic(
+  () => import('@/components/atoms/VideoComponent/VideoComponent'),
+  {
+    ssr: false,
+    loading: () => <div className={`${generalVideoClassName} bg-black/10 aspect-video`} aria-hidden />,
+  },
+);
 
 const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNumber, imageOneUrl, imageTwoUrl, imageThreeUrl, seaCargoFeatures, contactLinkText, metricValue, metricContext, generalImageUrl, generalMediaIsVideo }: LandingPageSeaCargoProps) => {
   const [expandedFeatureIndex, setExpandedFeatureIndex] = useState<number | null>(0); // First feature starts expanded
@@ -111,7 +123,7 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
               ))}
           </div>
           <div className="flex flex-row flex-wrap lg:gap-space-28 pt-space-10 gap-space-10 2xs:gap-space-30">
-            <Button variant="primary" arrow={true} link="/solutions/navonecms" text={contactLinkText} mainClass="w-fit gap-space-05" arrowClassName="size-space-05" />
+            <Button animation variant="primary" arrow={true} link="/solutions/navonecms" text={contactLinkText} mainClass="w-fit gap-space-05" arrowClassName="size-space-05" />
             <a href={`tel:${contactNumber}`} className="flex items-center gap-space-10 cursor-pointer">
               <Image
                 src={ImageConstants.PhoneIcon}
@@ -133,26 +145,28 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
         <div className="relative w-full max-h-[700px] lg:col-span-2 col-span-1 section-padding-x">
           <div className="absolute z-10 top-space-00 -left-space-100 size-space-200 bg-blue-circle-bg blur-3xl opacity-30 rounded-full" />
           {/* <div className="absolute z-10 bottom-space-00 -right-space-100 size-space-200 bg-secondary-blur blur-3xl opacity-30 rounded-full" /> */}
-          {generalMediaIsVideo ? (
-            <video
-              src={generalImageUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
-            />
-          ) : (
-            <Image
-              src={generalImageUrl || ''}
-              alt="SeaCargoImage"
-              width={1000}
-              height={1000}
-              priority={true}
-              className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
-            />
-          )}
-          {/* <img src={generalImageUrl || ''} alt="SeaCargoImage" className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow" /> */}
+          {generalMediaIsVideo
+            ? (
+                <VideoComponent
+                  videoUrl={getImageUrl(generalImageUrl)}
+                  className={generalVideoClassName}
+                  videoOverLay="testimonial-video-bg"
+                  autoPlay
+                  muted
+                  playOnHover={false}
+                  playButtonClass="opacity-0 group-hover:opacity-100 transition-opacity"
+                />
+              )
+            : (
+                <Image
+                  src={generalImageUrl || ''}
+                  alt="SeaCargoImage"
+                  width={1000}
+                  height={1000}
+                  priority={true}
+                  className="w-full h-full object-cover relative z-20 rounded-xl general-image-shadow"
+                />
+              )}
         </div>
       </div>
     </div>

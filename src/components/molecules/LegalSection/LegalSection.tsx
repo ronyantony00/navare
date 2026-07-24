@@ -1,3 +1,4 @@
+'use client';
 import type { legalCard } from '@/types/apiTypes';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -38,7 +39,7 @@ const LegalSection = ({ title, description, legalCards, footerTitle, buttonText,
         />
         <div className="absolute top-0 left-0 w-full h-full legal-hub-bg z-10" />
         <div className="section-padding-x section-padding-y w-full max-w-maxwidth flex flex-col items-center justify-center z-20">
-          <div className="flex flex-col  gap-space-04 py-space-30">
+          <div className="flex flex-col gap-space-08 py-space-30 w-full">
             <TextCombo
               title={safeTitle}
               description={safeDescription}
