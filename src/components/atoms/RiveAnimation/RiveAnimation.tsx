@@ -1,9 +1,10 @@
 'use client';
 
-import type { SolutionCard } from '@/components/molecules/LandingPageServiceSection/LandingPageServiceSection';
-import { useRive } from '@rive-app/react-canvas';
+import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
+import type { SolutionCard } from '@/components/molecules/LandingPageServiceSection/LandingPageServiceSection';
+import MediaContainerSkeleton from '@/components/molecules/Skeleton/MediaContainerSkeleton';
 
 interface RiveNavigationProps {
   className?: string;
@@ -95,6 +96,10 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     src,
     stateMachines: STATE_MACHINE,
     autoplay: true,
+    layout: new Layout({
+      fit: Fit.Cover,
+      alignment: Alignment.TopCenter,
+    }),
   });
 
   useEffect(() => {
@@ -146,8 +151,13 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
   }, [rive, textOverrides]);
 
   return (
-    <div className={className} style={{ cursor: isHovering ? 'pointer' : 'default' }}>
-      <div className="w-full h-full" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+    <div className={`relative ${className}`} style={{ cursor: isHovering ? 'pointer' : 'default' }}>
+      {!rive && <MediaContainerSkeleton />}
+      <div
+        className={`w-full h-full transition-opacity duration-300 ${rive ? 'opacity-100' : 'opacity-0'}`}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         <RiveComponent />
       </div>
     </div>

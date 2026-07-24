@@ -13,6 +13,7 @@ interface UseHoverMenuReturn {
   handleMenuItemLeave: () => void;
   handleMenuItemClick: (menuId: string) => void;
   clearHoverTimeout: () => void;
+  closeHoverImmediately: () => void;
 }
 
 export const useHoverMenu = ({
@@ -24,7 +25,6 @@ export const useHoverMenu = ({
 }: UseHoverMenuParams): UseHoverMenuReturn => {
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Clear hover timeout helper
   const clearHoverTimeout = useCallback(() => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
@@ -32,16 +32,18 @@ export const useHoverMenu = ({
     }
   }, []);
 
-  // Clean up timeouts on unmount
+  const closeHoverImmediately = useCallback(() => {
+    clearHoverTimeout();
+    setActiveMenuItem(null);
+  }, [clearHoverTimeout, setActiveMenuItem]);
+
   useEffect(() => {
     return () => {
       clearHoverTimeout();
     };
   }, [clearHoverTimeout]);
 
-  // Handle menu item hover (desktop)
   const handleMenuItemHover = useCallback((menuId: string) => {
-    // Skip hover on touch devices
     if (isTouchDevice) {
       return;
     }
@@ -50,9 +52,7 @@ export const useHoverMenu = ({
     setActiveMenuItem(menuId);
   }, [isTouchDevice, clearHoverTimeout, setActiveMenuItem]);
 
-  // Handle menu item leave (desktop)
   const handleMenuItemLeave = useCallback(() => {
-    // Skip hover on touch devices
     if (isTouchDevice) {
       return;
     }
@@ -64,9 +64,7 @@ export const useHoverMenu = ({
     }, hoverDelay);
   }, [isTouchDevice, clearHoverTimeout, setActiveMenuItem, hoverDelay]);
 
-  // Handle menu item click (mobile/touch)
   const handleMenuItemClick = useCallback((menuId: string) => {
-    // Only handle clicks on mobile or touch devices
     if (isMobile || isTouchDevice) {
       clearHoverTimeout();
       setActiveMenuItem(hoveredMenuItem === menuId ? null : menuId);
@@ -78,5 +76,6 @@ export const useHoverMenu = ({
     handleMenuItemLeave,
     handleMenuItemClick,
     clearHoverTimeout,
+    closeHoverImmediately,
   };
 };
