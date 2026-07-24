@@ -1,3 +1,4 @@
+'use client';
 import type { legalCard } from '@/types/apiTypes';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -5,9 +6,9 @@ import React from 'react';
 import Button from '@/components/atoms/CustomButton/Button';
 import FeatureCard from '@/components/atoms/FeatureCard/FeatureCard';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
-import { ExternalMediaConstants } from '@/constants/externalMediaConstants/mediaConstants';
-// import ImageConstants from '@/constants/imageConstants/imageConstants';
+import ImageConstants from '@/constants/imageConstants/imageConstants';
 import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
+import { sanitizeLegalPlainText } from '@/utils/utilFunctions/sanitizeLegalContent';
 
 interface LegalSectionProps {
   title: string;
@@ -20,6 +21,9 @@ interface LegalSectionProps {
 
 const LegalSection = ({ title, description, legalCards, footerTitle, buttonText, buttonLink }: LegalSectionProps) => {
   const t = useTranslations('LegalSection');
+  const safeTitle = sanitizeLegalPlainText(title) || t('fallbackTitle');
+  const safeDescription = sanitizeLegalPlainText(description) || t('fallbackDescription');
+  const safeFooterTitle = sanitizeLegalPlainText(footerTitle) || t('fallbackFooterTitle');
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
@@ -27,7 +31,7 @@ const LegalSection = ({ title, description, legalCards, footerTitle, buttonText,
         <div className="absolute -bottom-space-20 left-0 w-full blur-2xl h-space-50 bg-landing-hero-bg-color opacity-60 z-20" />
         {/* Background Image */}
         <Image
-          src={ExternalMediaConstants.LegalHubHeroImage}
+          src={ImageConstants.LegalHubBg}
           alt="Legal Hub"
           fill
           priority={true}
@@ -35,10 +39,10 @@ const LegalSection = ({ title, description, legalCards, footerTitle, buttonText,
         />
         <div className="absolute top-0 left-0 w-full h-full legal-hub-bg z-10" />
         <div className="section-padding-x section-padding-y w-full max-w-maxwidth flex flex-col items-center justify-center z-20">
-          <div className="flex flex-col  gap-space-04 py-space-30">
+          <div className="flex flex-col gap-space-08 py-space-30 w-full">
             <TextCombo
-              title={title}
-              description={description}
+              title={safeTitle}
+              description={safeDescription}
               className="items-start justify-start text-left max-w-pct-090"
               titleClass="hero-title"
               descClass="lg:max-w-pct-060 sm:max-w-pct-080 pl-space-02 2md:pl-space-03"
@@ -66,7 +70,7 @@ const LegalSection = ({ title, description, legalCards, footerTitle, buttonText,
           </div>
           <div className="relative z-30 overflow-hidden w-full flex 2md:flex-row flex-col gap-space-10 justify-between items-center py-space-30 px-space-15 md:px-space-40 border border-border-color stories-card-bg">
             <div className="absolute z-10 w-space-80 h-space-200 right-space-50 md:-bottom-pct-080 -bottom-pct-070 rotate-130 rounded-full bg-testimonial-card-blur opacity-30 blur-3xl "></div>
-            <div className="card-title text-subtle-desc text-center">{footerTitle || t('fallbackFooterTitle')}</div>
+            <div className="card-title text-subtle-desc text-center">{safeFooterTitle}</div>
             <Button text={buttonText || t('fallbackButtonText')} animation variant="outline" arrow={true} mainClass="relative text-subtle-desc z-30" link={buttonLink || '/faq'} />
           </div>
         </div>

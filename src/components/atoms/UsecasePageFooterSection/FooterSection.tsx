@@ -17,9 +17,9 @@ const FooterSection = ({ title, description, buttonText, buttonLink, image }: Fo
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
   // console.warn('FOOTER IMAGE', image);
   return (
-    <div className="max-w-maxwidth mx-auto section-padding-y section-padding-x">
-      <div className="rounded-md-3 border-b border-border-color w-full w-full relative overflow-hidden">
-        <Image src={getImageUrl(image) || ImageConstants.PhoneIllustration} width={1280} height={547} alt="phone-image" className="absolute object-cover w-full h-full z-0" />
+    <div className="max-w-maxwidth mx-auto pb-space-20 md:pb-space-40 section-padding-x">
+      <div className="rounded-md-3 border-b border-border-color w-full relative overflow-hidden">
+        <Image src={getImageUrl(image) || ImageConstants.PhoneIllustration} width={1280} height={547} alt="phone-image" className="absolute object-cover w-full h-full z-0 opacity-20" />
         <div className="flex items-center justify-center py-space-20 px-space-10 2xs:p-space-20 md:py-space-40 xl:py-space-69 md:pl-space-30 lg:pl-space-45">
           <TextCombo
             title={titlePrefix || 'Unlock Efficiency Across Your '}

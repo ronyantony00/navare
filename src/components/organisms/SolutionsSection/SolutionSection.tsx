@@ -56,7 +56,7 @@ const SolutionSection = ({
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="w-full flex flex-col items-center justify-center overflow-x-clip">
         <SolutionsHeroSection
           titlePrefix={heroTitle}
           description={heroSubTitle}
@@ -64,8 +64,8 @@ const SolutionSection = ({
           buttonText={heroData?.[0]?.heroSection.buttonText ?? ''}
           buttonLink={heroData?.[0]?.heroSection.buttonLink ?? ''}
         />
-        <div className="bg-landing-hero-bg-color w-full flex flex-col items-center justify-center">
-          <div className="w-full flex flex-col items-center justify-center overflow-hidden">
+        <div className="bg-landing-hero-bg-color w-full flex flex-col items-center justify-center min-w-0">
+          <div className="w-full flex flex-col items-center justify-center overflow-x-clip min-w-0">
             <SolutionPageScanningSolutions
               description={onboardingDescription ?? ''}
               titlePrefix={onboardingTitlePrefix}

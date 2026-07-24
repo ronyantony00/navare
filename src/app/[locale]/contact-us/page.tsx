@@ -37,9 +37,9 @@ export default async function Page() {
           titlePrefix={testimonialTitlePrefix}
           titleHighlight={testimonialTitleHighlight}
           description={contactUsPageData?.testimonialTitleSection?.sectionDescription}
-          className="text-center"
+          className="w-full items-center text-center z-20"
           textClass="text-center"
-          descClass="max-w-pct-090 sm:max-w-pct-070 2md:max-w-pct-050 mx-auto"
+          descClass="max-w-pct-090 sm:max-w-pct-070 2md:max-w-pct-050 mx-auto text-center"
           testimonialData={testimonialRawData || []}
           mainClass="gap-space-08 lg:gap-space-24"
         />

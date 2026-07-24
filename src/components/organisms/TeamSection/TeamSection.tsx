@@ -5,7 +5,7 @@ import React from 'react';
 import TeamPageFooter from '@/components/molecules/TeamPageFooter/TeamPageFooter';
 import TeamPageHeroSection from '@/components/molecules/TeamPageHeroSection/TeamPageHeroSection';
 import TeamPageListingSection from '@/components/molecules/TeamPageListingSection/TeamPageListingSection';
-import { ExternalMediaConstants } from '@/constants/externalMediaConstants/mediaConstants';
+import ImageConstants from '@/constants/imageConstants/imageConstants';
 
 interface TeamSectionProps {
   teamData?: TeamPageData;
@@ -28,8 +28,15 @@ const TeamSection = ({
 }: TeamSectionProps) => {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-full flex flex-col items-center justify-center">
-        <Image src={ExternalMediaConstants.TeamsHeroImage} alt="Team New Background Image" width={1000} height={1000} className="absolute top-0 left-0 w-full h-full object-cover" />
+      <div className="w-full flex flex-col items-center justify-center relative overflow-hidden">
+        <Image
+          src={ImageConstants.TeamNewBgImage}
+          alt="Team New Background Image"
+          width={1440}
+          height={700}
+          priority
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
         <TeamPageHeroSection
           title={teamData?.Title || ''}
           description={teamData?.description || ''}

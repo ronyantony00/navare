@@ -46,7 +46,7 @@ const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemCli
   };
 
   return (
-    <div className="relative bg-navare-green 2md:bg-transparent flex flex-col h-fit 2md:flex-row gap-space-10 w-fit
+    <div className="relative bg-navare-green 2md:bg-transparent flex flex-col h-fit 2md:flex-row gap-space-10 w-full 2md:w-fit
     pb-space-06 2md:pb-space-00 min-w-0 2md:min-w-space-150 py-space-05 2md:py-space-00"
     >
       {Navlinks.map((link) => {
@@ -56,7 +56,8 @@ const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemCli
           return (
             <div key={link.id} className="w-full 2md:w-fit">
               <button
-                className="w-full 2md:w-fit text-left"
+                type="button"
+                className="w-full 2md:w-fit text-left flex items-center min-h-space-22 2md:min-h-0"
                 onMouseEnter={() => !isTouchDevice && onHover?.(link.navItem)}
                 onMouseLeave={() => !isTouchDevice && onLeave?.()}
                 onClick={() => onItemClick?.(link.navItem)}
@@ -97,8 +98,7 @@ const NavlinkSection = ({ Navlinks, onHover, onLeave, hoveredMenuItem, onItemCli
             <Link
               href={link.href || ''}
               key={link.id}
-              className="text-secondary-text hover:text-primary text-size-3xs px-space-12 pb-space-03
-              2md:py-space-00 2md:px-space-00"
+              className="w-full 2md:w-fit flex items-center text-secondary-text hover:text-primary text-size-3xs px-space-12 min-h-space-22 2md:min-h-0 2md:py-space-00 2md:px-space-00"
               onClick={onMobileNavigate}
               aria-label={`Navigate to ${link.text}`}
             >

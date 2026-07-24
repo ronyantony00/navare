@@ -58,7 +58,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
   };
 
   return (
-    <div className={`w-full relative border flex flex-col items-center justify-center gap-space-30 border-b ${borderColor}`}>
+    <div className={`w-full relative border flex flex-col items-center justify-center gap-space-00 border-b ${borderColor}`}>
       <div className="w-full max-w-maxwidth mx-auto section-padding-x">
         <div className="relative w-full">
           {variant === 'solution'
@@ -72,11 +72,13 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
               )
             : (
                 <div className="relative mx-auto max-w-maxwidth flex flex-col items-center justify-center w-full">
-                  <TestimonialVideoSection testimonialData={videoTestimonialsData} />
+                  {videoTestimonialsData && videoTestimonialsData.length > 0 && (
+                    <TestimonialVideoSection testimonialData={videoTestimonialsData} />
+                  )}
                   <div className="relative max-w-maxwidth w-full flex flex-col items-center justify-center">
                     <span className="absolute -left-space-50 top-space-200 w-space-200 h-space-200 bg-blue-circle-bg blur-[130px] rounded-full opacity-80"></span>
                     <span className="absolute right-space-10 top-space-150 w-space-300 h-space-250 bg-primary-blur blur-[100px] rounded-full opacity-60"></span>
-                    <div className="md:py-space-30 py-space-20 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-space-16">
+                    <div className="pt-space-30 pb-space-20 md:pb-space-30 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-space-16">
                       <div className="flex flex-col gap-space-16">
                         {col1.map((item, index) => (
                           <div key={index} className="h-auto">
@@ -84,9 +86,9 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               description={item?.shortTestimonial}
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
-                              imageUrl={item?.author_avatar?.url}
+                              imageUrl={item?.authorAvatar?.url}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               featured={item?.featured}
@@ -106,7 +108,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               linkUrl={item?.extrernalLink}
@@ -126,7 +128,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                               clientName={item?.authorName}
                               designation={item?.authorCompany}
                               companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.author_avatar?.url}
+                              authorAvatar={item?.authorAvatar?.url}
                               rating={item?.rating}
                               showRating={true}
                               linkUrl={item?.extrernalLink}

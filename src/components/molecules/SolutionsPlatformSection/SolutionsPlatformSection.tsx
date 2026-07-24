@@ -31,16 +31,16 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
 
       <div className="w-full border-y border-border-color">
         <div className="max-w-maxwidth mx-auto section-padding-x">
-          <div className="flex flex-col items-center justify-center lg:gap-space-24 gap-space-08 relative section-padding-y px-space-10 md:px-space-15 border-x border-border-color">
+          <div className="flex flex-col items-center justify-center lg:gap-space-24 gap-space-08 relative section-padding-y px-space-05 2xs:px-space-10 md:px-space-15 border-x border-border-color min-w-0">
             <TextCombo
               smallText={tagText}
               title={titlePrefix}
               spanText={titleHighlight}
               description={description}
               titleClass="section-title"
-              textClass=""
-              descClass="xl:w-pct-075 sm:w-pct-080"
-              className="items-center text-center w-full"
+              textClass="w-full max-w-full min-w-0"
+              descClass="w-full max-w-pct-095 sm:w-pct-080 xl:w-pct-075"
+              className="items-center text-center w-full min-w-0"
             />
             <FeatureTabs featureData={featureData} />
             {/* <div className="w-full rounded-sm"></div> */}

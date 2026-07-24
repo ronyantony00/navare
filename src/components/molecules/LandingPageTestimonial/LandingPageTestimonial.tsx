@@ -40,15 +40,19 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
     <div className="w-full flex flex-col items-center justify-center section-padding-y relative overflow-hidden">
       <span className="w-space-75 h-space-75 bg-secondary-blur blur-[80px] opacity-80 absolute top-space-150 right-space-00"></span>
       <div className={`w-full max-w-maxwidth flex flex-col items-center ${mainClass || 'lg:gap-space-40 gap-space-20'}`}>
-        <div className="lg:gap-space-40 gap-space-08 section-padding-x w-full flex lg:flex-row flex-col">
+        <div
+          className={`lg:gap-space-40 gap-space-08 section-padding-x w-full flex flex-col ${
+            videoUrl ? 'lg:flex-row lg:items-start' : 'items-center'
+          }`}
+        >
           <TextCombo
             smallText={smallText}
             title={titlePrefix}
             spanText={titleHighlight}
             description={description}
-            className={`${className || 'items-start z-20'}`}
-            textClass={`${textClass || 'lg:max-w-pct-100 md:max-w-pct-070 sm:max-w-pct-060'}`}
-            descClass={`${descClass || 'lg:max-w-pct-080 sm:max-w-pct-080'}`}
+            className={`${className || 'items-start z-20'}${!videoUrl ? ' w-full items-center text-center' : ''}`}
+            textClass={`${textClass || 'lg:max-w-pct-100 md:max-w-pct-070 sm:max-w-pct-060'}${!videoUrl ? ' text-center' : ''}`}
+            descClass={`${descClass || 'lg:max-w-pct-080 sm:max-w-pct-080'}${!videoUrl ? ' text-center mx-auto' : ''}`}
           />
           {videoUrl && (
             <VideoComponent
@@ -92,7 +96,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
                   clientName={item?.authorName}
                   designation={item?.authorCompany}
                   companyLogo={item?.companyLogo?.url}
-                  authorAvatar={item?.author_avatar?.url}
+                  authorAvatar={item?.authorAvatar?.url}
                   linkUrl={item?.extrernalLink}
                   featured={item?.featured}
                   slug={item?.slug}

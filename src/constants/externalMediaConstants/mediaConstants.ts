@@ -11,6 +11,6 @@ export const ExternalMediaConstants = {
 
   BlogDetailHeroImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/blog_detail_5ad4bf3733.jpg',
   CareerFormBackgroundImage: 'https://d34r8pme58tb21.cloudfront.net/uploads/career_form_bg_image_0925d32a33.svg',
-  LegalHubHeroImage: 'http://d9ouozp3mq81k.cloudfront.net/media/legal-hero-bg.jpg',
-  UsecaseChallengesImage: 'http://d9ouozp3mq81k.cloudfront.net/media/challanges.png',
+  // Local fallback — legacy d9ouozp3mq81k CloudFront host is unavailable
+  LegalHubHeroImage: '/assets/images/legalHub/legal_hub_bg.jpg',
 };

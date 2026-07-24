@@ -2,11 +2,13 @@
 import type { LegalDocument } from '@/types/apiTypes';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import Breadcrumb from '@/components/atoms/Breadcrumb/Breadcrumb';
 import Button from '@/components/atoms/CustomButton/Button';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import RichTextRenderer from '@/components/molecules/RichText/RichText';
 import { formatDateToLongString } from '@/utils/textUtils';
 import { generatePDF } from '@/utils/utilFunctions/pdfGenerator';
+import { sanitizeLegalContent, sanitizeLegalPlainText } from '@/utils/utilFunctions/sanitizeLegalContent';
 
 interface TermsOfUseProps {
   pageDetails: LegalDocument[];
@@ -14,16 +16,21 @@ interface TermsOfUseProps {
 
 const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
   const t = useTranslations('TermsOfUseSection');
-  const pageContent = pageDetails?.[0];
-
-  // console.warn('pageContent', pageContent?.updatedAt);
+  const tCommon = useTranslations('commonMessages');
+  const rawPageContent = pageDetails?.[0];
+  const pageContent = rawPageContent
+    ? {
+        ...rawPageContent,
+        Title: sanitizeLegalPlainText(rawPageContent.Title),
+        content: sanitizeLegalContent(rawPageContent.content),
+      }
+    : undefined;
 
   const handleDownloadPDF = () => {
     if (!pageContent) {
       return;
     }
 
-    // Use the utility function to generate PDF
     generatePDF(
       {
         title: pageContent.Title,
@@ -41,8 +48,17 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
     );
   }
 
+  const lastUpdated = pageContent.effectiveDate || pageContent.lastUpdated || pageContent.updatedAt || '';
+
   return (
     <div className="max-w-maxwidth mx-auto min-h-screen flex flex-col md:gap-space-15 gap-space-10 section-padding-y section-padding-x">
+      <Breadcrumb
+        items={[
+          { label: tCommon('home'), href: '/' },
+          { label: tCommon('legalHub'), href: '/legal' },
+          { label: pageContent.Title || t('header') },
+        ]}
+      />
       <div className="flex flex-col">
         <TextCombo
           title={pageContent.Title}
@@ -53,7 +69,7 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
         />
         <div className="flex gap-space-02 mb-space-16">
           <span className="very-small-content font-bold text-desc-text">Last Updated at:</span>
-          <span className="very-small-content text-desc-text">{formatDateToLongString(pageContent?.updatedAt || '')}</span>
+          <span className="very-small-content text-desc-text">{formatDateToLongString(lastUpdated)}</span>
         </div>
         <Button variant="primary" arrow arrowClassName="size-space-05" text={t('download')} mainClass="w-fit gap-space-05" onClick={handleDownloadPDF} />
       </div>

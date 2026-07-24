@@ -1,5 +1,6 @@
 import ImageConstants from '../imageConstants/imageConstants';
 
+/** Legacy hub stubs — live Legal Hub loads categories/docs from Strapi. */
 export const LegalConstants = [
   {
     image: ImageConstants.DataProtectionIcon,
@@ -7,7 +8,7 @@ export const LegalConstants = [
     links: [
       {
         title: 'Cookie Policy',
-        href: '#',
+        href: '/website-terms-of-use?slug=cookie-policy-1',
       },
       {
         title: 'Privacy Policy',
@@ -15,61 +16,28 @@ export const LegalConstants = [
       },
       {
         title: 'Website Terms of Use',
-        href: '/website-terms-of-use',
+        href: '/website-terms-of-use?slug=terms-of-use',
       },
     ],
   },
   {
     image: ImageConstants.PropertyIcon,
     title: 'Intellectual Property',
-    dropdownOptions: [
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-    ],
     links: [
       {
         title: 'Trademark Usage Guidelines',
-        href: '#',
+        href: '/website-terms-of-use?slug=trademark-usage',
       },
     ],
   },
   {
     image: ImageConstants.LegalIcon,
-    title: 'Legal for everyone',
-    dropdownOptions: [
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-      {
-        date: '2025-07-11',
-        link: 'https://www.google.com',
-      },
-    ],
+    title: 'Terms of Service',
     links: [
       {
         title: 'Master Service Agreement',
-        href: '#',
+        href: '/website-terms-of-use?slug=master-service-agreement',
       },
     ],
   },
-
 ];

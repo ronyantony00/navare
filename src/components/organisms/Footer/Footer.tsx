@@ -25,8 +25,8 @@ const Footer = async () => {
       <span className="absolute top-space-00 w-space-290 h-space-250 -left-space-200 bg-primary-blur rounded-full blur-[var(--blur-intensity)] opacity-60"></span>
       <div className="flex flex-col w-full mx-auto max-w-maxwidth section-padding-x relative overflow-hidden">
         <span className="absolute top-space-70 left-space-300 bg-primary-blur h-space-240 w-space-300 blur-[var(--blur-intensity)] opacity-80" />
-        <div className="flex flex-col gap-space-20 2md:flex-row 2md:justify-between items-center pt-space-30 lg:pt-space-55 pb-space-35 2xs:items-start z-10">
-          <Link href="/" className="transition-transform duration-200 active:scale-90 cursor-pointer">
+        <div className="flex flex-col gap-space-20 2md:flex-row 2md:items-start 2md:gap-space-30 xl:gap-space-40 items-start pt-space-30 lg:pt-space-55 pb-space-28 2xs:pb-space-35 z-10 w-full">
+          <Link href="/" className="transition-transform duration-200 active:scale-90 cursor-pointer shrink-0">
             <Image
               src={ImageConstants.NavareWhiteLogo}
               width={130}

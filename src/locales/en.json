@@ -176,7 +176,7 @@
   },
   "LegalSection": {
     "title": "Legal Hub",
-    "description": "At Gnosis Freight, we're dedicated to unlocking the full potential of your supply chain. Our customers include many of the world's largest brands and service commodities such as electronics, consumer goods, fresh produce, furniture & home décor, building materials, equipment, and fashion & apparel. Every review shown below is submitted by a real Gnosis Freight customer.",
+    "description": "At Navare, transparency isn't just a value — it's how we operate. This section provides clear, straightforward access to the legal and compliance documents that govern our platform and services.",
     "fallbackTitle": "Compliance & Legal",
     "fallbackDescription": "At Navare, we believe strong digital systems are built on a foundation of transparency and trust. As part of our commitment to responsible technology, this section provides access to all essential legal and compliance information related to our platform and services.",
     "fallbackFooterTitle": "Need Help with a Legal or Compliance Query?",
@@ -380,7 +380,7 @@
     "no_content_found": "No content found"
   },
   "PrivacyPolicySection": {
-    "header": "Gnosis Freight Privacy Policy",
+    "header": "Navare Privacy Policy",
     "lastModifiedLabel": "Last Modified:",
     "download": "Download",
     "no_content_found": "No content found"
@@ -435,7 +435,9 @@
     "learn_more": "Learn More",
     "read_full_review": "Read the full review",
     "noStoriesFound": "No stories found",
-    "noLogosAvailable": "No logos available"
+    "noLogosAvailable": "No logos available",
+    "home": "Home",
+    "legalHub": "Legal Hub"
   },
   "errorPage": {
     "errorMessage": "An error occured!Please try again later."

@@ -167,7 +167,10 @@ const LandingPage = ({ landingPageDataServer, clientDataServer, testimonialDataS
             titleHighlight={footerTitleHighlight}
             description={footerDescription}
             buttonOneText={footerButtonText}
-            image={footerData?.impactSection?.footerSection?.bg_image?.url}
+            image={
+              footerData?.impactSection?.footerSection?.bg_image?.formats?.large?.url
+              || footerData?.impactSection?.footerSection?.bg_image?.url
+            }
           />
         </div>
       </div>

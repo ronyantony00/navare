@@ -175,7 +175,7 @@
   },
   "LegalSection": {
     "title": "Centre juridique",
-    "description": "Chez Gnosis Freight, nous nous engageons à libérer tout le potentiel de votre chaîne d'approvisionnement. Nos clients comprennent bon nombre des plus grandes marques mondiales et nous desservons des secteurs tels que l'électronique, les biens de consommation, les produits frais, les meubles et la décoration intérieure, les matériaux de construction, les équipements, ainsi que la mode et l'habillement. Chaque avis ci-dessous a été soumis par un véritable client de Gnosis Freight.",
+    "description": "Chez Navare, la transparence n'est pas seulement une valeur — c'est notre façon d'opérer. Cette section donne un accès clair et direct aux documents juridiques et de conformité qui régissent notre plateforme et nos services.",
     "fallbackTitle": "Conformité et juridique",
     "fallbackDescription": "Chez Navare, nous croyons que des systèmes numériques solides sont construits sur une base de transparence et de confiance. Dans le cadre de notre engagement envers une technologie responsable, cette section fournit l'accès à toutes les informations juridiques et de conformité essentielles liées à notre plateforme et à nos services.",
     "fallbackFooterTitle": "Besoin d'aide pour une question juridique ou de conformité ?",
@@ -377,7 +377,7 @@
     "no_content_found": "Aucun contenu trouvé"
   },
   "PrivacyPolicySection": {
-    "header": "Politique de confidentialité de Gnosis Freight",
+    "header": "Politique de confidentialité de Navare",
     "lastModifiedLabel": "Dernière modification :",
     "download": "Télécharger",
     "no_content_found": "Aucun contenu trouvé"
@@ -430,7 +430,9 @@
     "learn_more": "En savoir plus",
     "read_full_review": "Lire l'avis complet sur Nav2",
     "noStoriesFound": "Aucune histoire trouvée",
-    "noLogosAvailable": "Aucun logo disponible"
+    "noLogosAvailable": "Aucun logo disponible",
+    "home": "Accueil",
+    "legalHub": "Centre juridique"
   },
   "errorPage": {
     "errorMessage": "Une erreur s'est produite ! Veuillez réessayer plus tard."
