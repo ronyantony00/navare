@@ -87,8 +87,9 @@ const Button = ({ mainClass, variant, text, onClick, type, arrow, arrowClassName
   );
 
   if (link) {
+    const isExternal = /^https?:\/\//.test(link);
     return (
-      <Link href={link} className={buttonClassName} aria-label={text}>
+      <Link href={link} className={buttonClassName} aria-label={text} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         {content}
       </Link>
     );
