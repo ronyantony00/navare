@@ -54,7 +54,7 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
       {/* Shorter frame + TopCenter cover crops empty artboard space under the cards */}
       <div className="hidden lg:block w-full overflow-hidden aspect-[12/5] -mt-space-02">
         <RiveNavigation
-          src="/assets/animation/rive/archived_navera_(5).riv"
+          src="/assets/animation/rive/Rive-Updated.riv"
           className="w-full h-full"
           solutionSectionCard={solutionSectionCard}
         />

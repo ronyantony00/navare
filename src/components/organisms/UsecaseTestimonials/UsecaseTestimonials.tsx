@@ -23,7 +23,7 @@ const UsecaseTestimonials = ({ testimonialData, title, buttonText, tag }: Usecas
     <div className="w-full relative">
       <span className="absolute -left-space-50 top-space-100 w-space-200 h-space-200 bg-blue-circle-bg blur-[130px] rounded-full opacity-80 pointer-events-none" />
       <span className="absolute right-space-50 top-space-50 w-space-300 h-space-200 bg-primary-blur blur-[100px] rounded-full opacity-60 pointer-events-none" />
-      <div className="max-w-maxwidth mx-auto section-padding-x pt-space-20 md:pt-space-30 pb-space-00">
+      <div className="max-w-maxwidth mx-auto section-padding-x pt-space-20 md:pt-space-30 pb-space-20 md:pb-space-30">
         <div className="flex flex-col w-full gap-space-20 md:gap-space-30">
           <TextCombo
             title={titlePrefix || ''}

@@ -51,7 +51,7 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
   const lastUpdated = pageContent.effectiveDate || pageContent.lastUpdated || pageContent.updatedAt || '';
 
   return (
-    <div className="max-w-maxwidth mx-auto min-h-screen flex flex-col md:gap-space-15 gap-space-10 section-padding-y section-padding-x">
+    <div className="max-w-maxwidth mx-auto flex flex-col md:gap-space-15 gap-space-10 section-padding-y section-padding-x">
       <Breadcrumb
         items={[
           { label: tCommon('home'), href: '/' },

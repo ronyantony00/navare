@@ -89,7 +89,7 @@ const LandingPage = ({ landingPageDataServer, clientDataServer, testimonialDataS
   const { titlePrefix: serviceSectionTitlePrefix, titleHighlight: serviceSectionTitleHighlight } = useMemo(() => extractTitleParts(serviceSectionTitle), [serviceSectionTitle]);
 
   return (
-    <div className=" w-full flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center">
       <div className="relative landing-hero-bg w-full flex flex-col items-center justify-center">
         <LandingPageHeroSection
           titlePrefix={heroTitle || ''}

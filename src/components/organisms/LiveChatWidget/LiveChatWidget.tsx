@@ -96,7 +96,7 @@ const LiveChatWidget = () => {
         alt="LiveChatIcon"
         width={50}
         height={50}
-        className="cursor-pointer hover:scale-110 transition-transform duration-200"
+        className="cursor-pointer hover:scale-110 transition-transform duration-200 pr-space-10"
         onClick={toggleWidget}
       />
     </div>

@@ -133,11 +133,11 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
       .max(1000, t('messageMax1000Chars'))
       .matches(/^[a-z0-9\s\-.,!?'"()&@#$%\u00C0-\u017F]*$/i, t('messageInvalidChars'));
 
+    // Allow empty; enforce min length only when the user typed something.
     validationShape.message = messageOptional
-      ? // Allow empty; enforce min length only when the user typed something.
-        baseMessageSchema
-          .transform((value) => (value === '' ? undefined : value))
-          .test('min-if-present', t('messageWarning'), (value) => !value || value.length >= 20)
+      ? baseMessageSchema
+          .transform(value => (value === '' ? undefined : value))
+          .test('min-if-present', t('messageWarning'), value => !value || value.length >= 20)
           .notRequired()
       : baseMessageSchema.min(20, t('messageWarning'));
   }
