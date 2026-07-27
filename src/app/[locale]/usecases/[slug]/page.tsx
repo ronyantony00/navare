@@ -62,7 +62,7 @@ export default async function page({ params }: { params: Promise<{ slug: string 
         testimonialData={testimonialResponse.data || []}
       />
       {/* 120px gap between All Testimonials and Book a Demo */}
-      <div className="h-[120px] w-full shrink-0" aria-hidden />
+      {/* <div className="h-[100px] w-full shrink-0" aria-hidden /> */}
       <FooterSection
         title={useCaseData?.footerSection?.title || []}
         description={useCaseData?.footerSection?.description || ''}

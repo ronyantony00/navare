@@ -12,7 +12,8 @@ interface TeamPageCardProps {
 
 const TeamPageCard = ({ name, designation, image, description }: TeamPageCardProps) => {
   return (
-    <div className="relative stories-card-bg w-full overflow-hidden h-fit gap-space-01 flex flex-col items-center justify-center border-border-color rounded-md border hover:border-primary group">
+    <div className="relative stories-card-bg w-full overflow-hidden h-fit gap-space-01 flex flex-col items-center 
+    justify-center border-border-color rounded-md border hover:border-primary group">
       {/* Overlay: hidden by default, shown on hover */}
       <div className="absolute top-0 left-0 w-full !h-full hidden group-hover:block z-10">
         <div className="relative w-full h-full">
