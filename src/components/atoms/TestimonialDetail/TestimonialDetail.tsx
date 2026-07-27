@@ -2,10 +2,10 @@ import type { Testimonial } from '@/types/apiTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 import RichTextRenderer from '@/components/molecules/RichText/RichText';
-import ImageConstants from '@/constants/imageConstants/imageConstants';
 import { getImageUrl } from '@/utils/urlConstructor';
 import JobInfoItem from '../JobInfoCard/JobInfoCard';
 import TextCombo from '../TextCombo/TextCombo';
+import AuthorProfile from '../AuthorProfile/AuthorProfile';
 
 interface TestimonialDetailProps {
   data?: Testimonial[];
@@ -80,21 +80,11 @@ const TestimonialDetail = ({ data, title }: TestimonialDetailProps) => {
         </div>
         <div className="border border-border-color mt-space-10 md:mt-space-20 rounded-md-3 flex flex-col gap-space-19 px-space-08 md:px-space-15 py-space-10 md:py-space-22">
           {testimonial.authorName && (
-            <div className="flex gap-space-10">
-              {true && (
-                <Image
-                  src={testimonial.authorAvatar?.url ? getImageUrl(testimonial.authorAvatar.url) : ImageConstants.TestimonialImage}
-                  alt="Testimonial Image"
-                  width={100}
-                  height={100}
-                  className="size-space-24 object-cover object-center rounded-full"
-                />
-              )}
-              <div className="flex flex-col justify-center">
-                <div className="small-content text-primary">{testimonial.authorName}</div>
-                <div className="small-content text-desc-text">{testimonial.authorTitle || testimonial.authorCompany || 'Product Designer'}</div>
-              </div>
-            </div>
+            <AuthorProfile
+              avatarUrl={testimonial.authorAvatar?.url ? getImageUrl(testimonial.authorAvatar.url) : null}
+              name={testimonial.authorName}
+              role={testimonial.authorTitle || testimonial.authorCompany || 'Product Designer'}
+            />
           )}
           <div className="flex flex-col">
             <TextCombo title={testimonial.title} titleClass="card-title" className="2xs:max-w-pct-080 2md:max-w-pct-050 w-fit" />
