@@ -21,7 +21,7 @@ const TeamPageCard = ({ name, designation, image, description }: TeamPageCardPro
           <div className="w-full flex flex-col items-center justify-center p-space-10 gap-space-05 relative z-20">
             <div className="small-card-heading text-primary-content-white">{name}</div>
             <div className="text-primary very-small-heading !font-normal">{designation}</div>
-            <div className="small-content text-primary-content-white text-center line-clamp-11">{description}</div>
+            <div className="small-content text-primary-content-white text-center">{description}</div>
           </div>
         </div>
       </div>
