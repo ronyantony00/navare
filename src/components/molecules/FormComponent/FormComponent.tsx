@@ -128,22 +128,18 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
     validationShape.containers = Yup.string().required(t('required'));
   }
   if (activeFields.includes('message')) {
-    let messageSchema = Yup.string()
+    const baseMessageSchema = Yup.string()
       .trim()
       .max(1000, t('messageMax1000Chars'))
       .matches(/^[a-z0-9\s\-.,!?'"()&@#$%\u00C0-\u017F]*$/i, t('messageInvalidChars'));
 
-    if (messageOptional) {
-      // Allow empty; enforce min length only when the user typed something.
-      messageSchema = messageSchema
-        .transform((value) => (value === '' ? undefined : value))
-        .test('min-if-present', t('messageWarning'), (value) => !value || value.length >= 20)
-        .notRequired();
-    } else {
-      messageSchema = messageSchema.min(20, t('messageWarning'));
-    }
-
-    validationShape.message = messageSchema;
+    // Allow empty; enforce min length only when the user typed something.
+    validationShape.message = messageOptional
+      ? baseMessageSchema
+          .transform(value => (value === '' ? undefined : value))
+          .test('min-if-present', t('messageWarning'), value => !value || value.length >= 20)
+          .notRequired()
+      : baseMessageSchema.min(20, t('messageWarning'));
   }
 
   const validationSchema = Yup.object(validationShape);
