@@ -2,7 +2,7 @@
 import type { PaginationMeta } from '@/types/apiTypes';
 import type { CardSectionData } from '@/types/integration';
 import { useTranslations } from 'next-intl';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Button from '@/components/atoms/CustomButton/Button';
 import SearchBar from '@/components/atoms/SearchBar/SearchBar';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
@@ -26,6 +26,60 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
   const [isSearching, setIsSearching] = useState(false);
   const t = useTranslations('Integration');
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsSmallScreen(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const isInitialMount = useRef(true);
+  const activeFilterRef = useRef(activeFilter);
+  const searchQueryRef = useRef(searchQuery);
+  activeFilterRef.current = activeFilter;
+  searchQueryRef.current = searchQuery;
+
+  const pageSize = isSmallScreen ? 6 : 10;
+
+  // Re-fetch integrations when screen size changes (e.g., on resize)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      // On initial mount for large screens, server data is already correct (10 items)
+      // On initial mount for small screens, re-fetch with 6
+      if (!isSmallScreen) return;
+    }
+
+    const currentFilter = activeFilterRef.current;
+    const currentSearch = searchQueryRef.current;
+
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        let response;
+        if (currentSearch.trim()) {
+          response = await getSearchIntegrationsDataClientPaginated(currentSearch, 1, pageSize);
+        } else if (currentFilter === 'all') {
+          response = await getIntegrationsDataClientPaginated(1, pageSize);
+        } else {
+          response = await getFilteredIntegrationsDataClientPaginated(currentFilter, 1, pageSize);
+        }
+        setIntegrations(response.data);
+        setTotalPages(response.meta?.pagination?.pageCount ?? 1);
+        setCurrentPage(1);
+      } catch (error) {
+        console.error('Error re-fetching integrations on resize:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSmallScreen]);
+
   // Check if there are more integrations to load
   const hasMoreIntegrations = currentPage < totalPages;
 
@@ -42,12 +96,12 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     try {
       if (filter === 'all') {
         // Fetch all integrations for first page
-        const response = await getIntegrationsDataClientPaginated(1, 10);
+        const response = await getIntegrationsDataClientPaginated(1, pageSize);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       } else {
         // Fetch filtered integrations for first page
-        const response = await getFilteredIntegrationsDataClientPaginated(filter, 1, 10);
+        const response = await getFilteredIntegrationsDataClientPaginated(filter, 1, pageSize);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       }
@@ -58,7 +112,7 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     } finally {
       setIsFiltering(false);
     }
-  }, [activeFilter]);
+  }, [activeFilter, pageSize]);
 
   const handleSearch = useCallback(async (query: string) => {
     setSearchQuery(query);
@@ -66,11 +120,11 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     if (!query.trim()) {
       // If search is cleared, revert to current filter
       if (activeFilter === 'all') {
-        const response = await getIntegrationsDataClientPaginated(1, 10);
+        const response = await getIntegrationsDataClientPaginated(1, pageSize);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       } else {
-        const response = await getFilteredIntegrationsDataClientPaginated(activeFilter, 1, 10);
+        const response = await getFilteredIntegrationsDataClientPaginated(activeFilter, 1, pageSize);
         setIntegrations(response.data);
         setTotalPages(response.meta?.pagination?.pageCount ?? 1);
       }
@@ -83,7 +137,7 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     setCurrentPage(1);
 
     try {
-      const response = await getSearchIntegrationsDataClientPaginated(query, 1, 10);
+      const response = await getSearchIntegrationsDataClientPaginated(query, 1, pageSize);
       setIntegrations(response.data);
       setTotalPages(response.meta?.pagination?.pageCount ?? 1);
     } catch (error) {
@@ -93,7 +147,7 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
     } finally {
       setIsSearching(false);
     }
-  }, [activeFilter]);
+  }, [activeFilter, pageSize]);
 
   const handleLoadMore = async () => {
     if (isLoading || !hasMoreIntegrations) {
@@ -107,13 +161,13 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
       let response;
       if (searchQuery.trim()) {
         // Load more search results
-        response = await getSearchIntegrationsDataClientPaginated(searchQuery, nextPage, 10);
+        response = await getSearchIntegrationsDataClientPaginated(searchQuery, nextPage, pageSize);
       } else if (activeFilter === 'all') {
         // Load more all integrations
-        response = await getIntegrationsDataClientPaginated(nextPage, 10);
+        response = await getIntegrationsDataClientPaginated(nextPage, pageSize);
       } else {
         // Load more filtered integrations
-        response = await getFilteredIntegrationsDataClientPaginated(activeFilter, nextPage, 10);
+        response = await getFilteredIntegrationsDataClientPaginated(activeFilter, nextPage, pageSize);
       }
 
       // Append new integrations to the existing list

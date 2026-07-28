@@ -24,6 +24,8 @@ const LandingPageFooter = ({ titlePrefix, titleHighlight, description, buttonOne
             alt="landing page footer"
             width={1265}
             height={528}
+            quality={100}
+            sizes="100vw"
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
