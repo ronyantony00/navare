@@ -24,7 +24,7 @@ const IntegrationCard = ({ logo, title, description, className }: IntegrationCar
     <div className={clsx('border border-border-color rounded-md-2 hover:border-primary impact-card-bg md:p-space-15 p-space-10 cursor-pointer w-full', className)}>
       <div className="flex flex-col gap-space-12">
         <div className="flex justify-between">
-          <div className="flex gap-space-12 flex-col">
+          <div className="flex gap-space-12">
             <div className="impact-card-bg border border-border-color w-fit rounded p-space-02 flex items-center justify-center">
               <Image src={logoUrl || ''} alt="company-logo" width={65} height={60} className="object-cover" />
             </div>
