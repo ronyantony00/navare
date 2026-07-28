@@ -50,7 +50,9 @@ const FeatureTabs = ({ featureData }: FeatureTabsProps) => {
                   alt={tab.feature_title}
                   width={700}
                   height={100}
-                  className="w-full h-full object-cover"
+                  quality={100}
+                  sizes="100vw"
+                  className="w-full h-full"
                 />
               </div>
             ))}

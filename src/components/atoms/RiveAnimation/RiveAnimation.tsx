@@ -65,7 +65,7 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
             text: card.solution_name,
             textInputName: textInputTitle,
           });
-        }
+          }
       }
 
       return acc;
@@ -86,9 +86,9 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     return fallbackEntries;
   }, [solutionSectionCard, text, textInputName, title, textInputTitle]);
   const events = [
-    { name: 'NAVONE-EVENT', path: '/navonecms' },
+    { name: 'NAVONE-EVENT', path: '/navonetms' },
     { name: 'NAVSCAN-EVENT', path: '/navscan' },
-    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonetms' },
+    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonecms' },
     { name: 'NAVBRIDGE-EVENT', path: '/navbridge' },
   ];
 
@@ -108,7 +108,7 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     }
 
     const handler = (e: any) => {
-      // console.warn('Rive Event:', e);
+      console.warn('Rive Event:', e);
       const eventName = e.data?.name;
       if (!eventName) {
         return;

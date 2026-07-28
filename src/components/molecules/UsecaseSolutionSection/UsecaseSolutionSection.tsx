@@ -31,10 +31,10 @@ const SolutionSection = ({ title, description, subDescription, mainImage, subIma
               className=""
               description={description || 'At the same time, a lot of vets - whether theyre just starting out, or have years of experience in clinics are always looking for ways to expand their income and client base.  At the same time, a lot of vets - whether they are just starting out, or have years of experience in clinics are always looking for ways to expand their income and client base. '}
             />
-            <div className="mt-space-05 md:mt-space-30 xl:mt-space-77 2md:ml-space-14 rounded-lg overflow-hidden">
+            <div className="mt-space-05 rounded-lg overflow-hidden">
               <Image src={getImageUrl(subImage) || ImageConstants.SolutionSubImage} alt="solution-sub-image" width={600} height={357} className="max-h-space-175 w-full" />
             </div>
-            <div className="primary-content text-desc-text mt-space-15 md:mt-space-31 mb-space-22">
+            <div className="primary-content text-desc-text mt-space-15 md:mt-space-20 mb-space-22">
               { subDescription || 'Before grapes become wine, they need to be carefully harvested, packed, and transported. For Vineo Wines, delivering fresh, high-quality grapes on time is a constant challenge. Every crate shows how important timing is — even a small delay can impact the wine’s quality.' }
             </div>
           </div>
