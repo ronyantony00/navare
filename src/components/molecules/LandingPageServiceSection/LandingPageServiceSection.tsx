@@ -24,7 +24,21 @@ export interface LandingPageServiceSectionProps {
   solutionSectionCard: SolutionCard[];
 }
 
+const solutionLinkMap: Record<string, string> = {
+  NAVONETMS: 'solutions/navonetms',
+  NAVONECMS: 'solutions/navonecms',
+  NAVBRIDGE: 'solutions/navbridge',
+  NAVSCAN: 'solutions/navscan',
+  CUSTOMISED: 'solutions/customised',
+};
+
 const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, solutionSectionCard }: LandingPageServiceSectionProps) => {
+
+  const getSolutionLink = (link: string | null) => {
+    if (!link) return '';
+    return solutionLinkMap[link] || `solutions/${link.toLowerCase()}`;
+  };
+
   return (
     <div className="relative w-full max-w-maxwidth flex flex-col">
       <div className="lg:pb-space-00 lg:pt-space-20 py-space-16 section-padding-x flex flex-col lg:items-start items-center lg:gap-space-00 gap-space-12 z-20 overflow-hidden">
@@ -46,7 +60,7 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
               title={solution.solution_name}
               description={solution.description}
               image={getImageUrl(solution?.logo?.url || '')}
-              link={solution.link || ''}
+              link={getSolutionLink(solution.link)}
             />
           ))}
         </div>
