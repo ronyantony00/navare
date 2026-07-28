@@ -23,7 +23,7 @@ export const serviceSectionContent = [
   {
     id: 1,
     title: 'Dynamic Mobile and Scanning Solutions',
-    description: 'Our fully optioned cloud based mobile scanning application which is highly enterprise and process driven.',
+    description: 'cloud based mobile scanning application which is highly enterprise and process driven.',
     image: ImageConstants.Navscan,
   },
   {
@@ -40,7 +40,7 @@ export const serviceSectionContent = [
   {
     id: 4,
     title: 'Purpose Built Tool For Freight Forwarders',
-    description: '“Devsonic has been instrumental in helping us meet our regulatory obligations and keep our customers data safe.”',
+    description: '“has been instrumental in helping us meet our regulatory obligations and keep our customers data safe.”',
     image: ImageConstants.Navlogic,
   },
   {

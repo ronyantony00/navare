@@ -81,6 +81,9 @@ const TextFieldWithLabel = ({ label, required, name, value, onChange, error, max
           '& .MuiInputLabel-root.Mui-focused': {
             color: 'var(--color-primary)',
           },
+          '& .MuiInputLabel-root.Mui-error': {
+            color: 'var(--color-placeholder-text)',
+          },
           '& input:-webkit-autofill': {
             boxShadow: '0 0 0 1000px transparent inset',
             WebkitTextFillColor: 'var(--color-placeholder-text)',

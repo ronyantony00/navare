@@ -32,7 +32,7 @@ const CareersSection: React.FC<CareersSectionProps> = ({ carerrHeroData }) => {
   }
 
   return (
-    <div className="relative w-full flex flex-col items-center h-full base:min-h-max-height justify-center">
+    <div className="relative w-full flex flex-col items-center h-full justify-center">
       <div className="h-fit w-full max-w-maxwidth flex justify-center items-center section-padding-x section-padding-y">
         <TextCombo
           title={carerrHeroData.page_title}

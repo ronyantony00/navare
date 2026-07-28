@@ -46,7 +46,7 @@ const WhoWeAreSection = ({ titleSection, highlightFeatures, benefitPoints, mainI
             spanText={titleHighlight}
             extraTitle={titleSuffix}
             description={titleSection?.description}
-            descClass=""
+            descClass="2md:max-w-pct-080 lg:max-w-full"
             className="z-10"
           />
           {highlightFeatures && (
@@ -72,8 +72,9 @@ const WhoWeAreSection = ({ titleSection, highlightFeatures, benefitPoints, mainI
           </div>
         </div>
       </div>
-      <div className="mx-auto my-auto relative z-30 2md:w-full w-pct-080 flex-1">
-        <div className="absolute max-w-space-70 z-20 sm:top-space-50 top-space-10 -left-pct-010 bg-blue-light-shade w-fit text-center h-auto md:min-w-space-70 rounded-sm aspect-square flex flex-col items-center justify-center p-space-10">
+      <div className="mx-auto my-auto relative z-30 2md:w-full md:w-pct-060 w-pct-070 flex-1">
+        <div className="absolute w-space-60 sm:max-w-space-70 z-20 sm:top-space-50 top-space-10 -left-pct-010 bg-blue-light-shade w-fit text-center 
+          h-auto md:min-w-space-70 rounded-sm aspect-square flex flex-col items-center justify-center p-space-10">
           <div className="text-white card-title">{mainTextOnImage}</div>
           <div className="text-white card-heading">{smallTextOnImage}</div>
         </div>
