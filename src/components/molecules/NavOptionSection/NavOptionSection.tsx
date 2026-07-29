@@ -25,40 +25,35 @@ const NavOptionSection = ({ options, onNavigate }: OptionsSectionProps) => {
     if (optionsLength < SMALL_LAYOUT_THRESHOLD) {
       return {
         containerClass: clsx(
-          'flex flex-col gap-space-05',
-          '2xs:flex 2xs:flex-col 2xs:gap-space-08',
+          'flex flex-col gap-space-03',
+          '2xs:flex 2xs:flex-col 2xs:gap-space-04',
         ),
         iconOnTop: false,
       };
     } else if (optionsLength === SMALL_LAYOUT_THRESHOLD) {
       return {
         containerClass: clsx(
-          'flex flex-col',
+          'flex flex-col gap-space-03',
           '2xs:grid 2xs:grid-cols-2 2xs:grid-rows-2',
-          'xl:gap-space-20 md:gap-space-15 gap-space-10',
-          '',
+          'xl:gap-space-20 md:gap-space-15 2xs:gap-space-08 gap-space-03',
         ),
         iconOnTop: true,
       };
     } else if (optionsLength <= MEDIUM_LAYOUT_THRESHOLD) {
       return {
         containerClass: clsx(
-          'flex flex-col',
+          'flex flex-col gap-space-03',
           '2xs:grid 2xs:grid-cols-3 2xs:grid-rows-2',
-          // 'gap-space-05',
-          // '2xs:gap-x-space-10 md:gap-x-space-15 xl:gap-x-space-20 2xs:gap-y-space-16 2md:gap-y-space-34',
-          'xl:gap-space-20 md:gap-space-15 gap-space-10',
+          'xl:gap-space-20 md:gap-space-15 2xs:gap-space-08 gap-space-03',
         ),
         iconOnTop: true,
       };
     } else {
       return {
         containerClass: clsx(
-          'flex flex-col',
+          'flex flex-col gap-space-03',
           'sm:grid sm:grid-cols-4 sm:grid-rows-2',
-          // 'gap-space-05',
-          // '2xs:gap-x-space-10 md:gap-x-space-20 xl:gap-x-space-35 2xs:gap-y-space-16 2md:gap-y-space-34',
-          'xl:gap-space-20 md:gap-space-15 gap-space-10',
+          'xl:gap-space-20 md:gap-space-15 sm:gap-space-08 gap-space-03',
         ),
         iconOnTop: true,
       };

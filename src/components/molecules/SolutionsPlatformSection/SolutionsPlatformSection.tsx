@@ -63,15 +63,15 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
           />
         </div>
         <div className="flex sm:flex-row flex-col size-full gap-space-20">
-          <div className="flex flex-col gap-space-20 w-full justify-center lg:items-center items-start">
+          <div className="flex flex-col gap-space-20 w-full justify-start items-start">
             {firstHalf.map((feature: any, index: number) => (
-              <div key={index} className="flex items-center justify-center w-full gap-space-02 sm:gap-space-05 xl:gap-space-09 grow lg:flex-1">
+              <div key={index} className="flex items-start justify-start w-full gap-space-04 sm:gap-space-06 xl:gap-space-08 grow lg:flex-1">
                 <Image
                   src={ImageConstants.AllInOnePoint}
                   alt="border"
                   width={20}
-                  height={160}
-                  className="self-start"
+                  height={200}
+                  className="self-start h-full min-h-space-80 object-cover pt-space-01"
                 />
                 <div className="flex w-full grow flex-col gap-space-02 sm:gap-space-04 xl:gap-space-08">
                   <Image
@@ -79,7 +79,7 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
                     alt="icon"
                     height={30}
                     width={30}
-                    className="size-space-16"
+                    className="size-space-14"
                   />
                   <span className="font-medium text-size-xs text-subtle-desc">
                     {feature.advantage_title}
@@ -92,23 +92,23 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
             ))}
           </div>
           <Image src={ImageConstants.ManageShipmentCenterIcon} alt="border" width={100} height={100} className="w-full h-full flex-1 self-center lg:block hidden" />
-          <div className="flex flex-col gap-space-20 w-full justify-center items-center">
+          <div className="flex flex-col gap-space-20 w-full justify-start items-start">
             {secondHalf.map((feature: any, index: number) => (
-              <div key={index} className="flex items-center justify-center w-full gap-space-02 sm:gap-space-05 xl:gap-space-09 grow lg:flex-1">
+              <div key={index} className="flex items-start justify-start w-full gap-space-04 sm:gap-space-06 xl:gap-space-08 grow lg:flex-1">
                 <Image
                   src={ImageConstants.AllInOnePoint}
                   alt="border"
                   width={20}
-                  height={1000}
-                  className="!h-full"
+                  height={200}
+                  className="self-start h-full min-h-space-80 object-cover pt-space-01"
                 />
                 <div className="flex w-full flex-col gap-space-02 sm:gap-space-04 xl:gap-space-08">
                   <Image
                     src={getImageUrl(feature.icon.url)}
                     alt="icon"
-                    height={20}
-                    width={20}
-                    className="size-space-12"
+                    height={30}
+                    width={30}
+                    className="size-space-14"
                   />
                   <span className="font-medium text-size-xs text-subtle-desc">
                     {feature.advantage_title}
