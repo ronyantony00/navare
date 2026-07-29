@@ -151,7 +151,7 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
 
     // For solutions menu, generate dynamic data from API response
     if (menuId === 'solutions' && solutionsNavbarData && solutionsNavbarData.length > 0) {
-      return generateNavData(
+      const navData = generateNavData(
         solutionsNavbarData,
         '/solutions',
         NAVBAR.dropdownData.solutions,
@@ -159,6 +159,18 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
         false,
         0,
       );
+
+      const getSolutionOrderRank = (item: any) => {
+        const text = `${item.title || ''} ${item.href || ''}`.toLowerCase();
+        if (text.includes('cms')) return 1;
+        if (text.includes('tms')) return 2;
+        if (text.includes('bridge')) return 3;
+        if (text.includes('scan')) return 4;
+        return 99;
+      };
+
+      navData.options = [...navData.options].sort((a, b) => getSolutionOrderRank(a) - getSolutionOrderRank(b));
+      return navData;
     }
 
     // For use cases menu, generate dynamic data from API response
