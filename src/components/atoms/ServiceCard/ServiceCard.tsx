@@ -26,9 +26,8 @@ const ServiceCard = ({ className, title, description, image, link }: ServiceCard
                     <Image
                       src={image}
                       alt="Navlogic"
-                      width={100}
-                      height={100}
-                      className="max-w-space-35 h-auto"
+                      width={130}
+                      height={130}
                     />
                   </div>
                   <Image

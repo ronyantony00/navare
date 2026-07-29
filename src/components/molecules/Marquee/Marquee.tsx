@@ -1,7 +1,6 @@
 'use client';
 import type { ClientLogo } from '@/types/interfaces';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 
 interface MarqueeProps {
   logos: ClientLogo[];
@@ -10,49 +9,16 @@ interface MarqueeProps {
 }
 
 const Marquee = ({ logos, speed = 1, direction = 'left' }: MarqueeProps) => {
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee) {
-      return;
-    }
-
-    let animationFrame: number;
-    let offset = direction === 'left' ? 0 : marquee.scrollWidth / 2;
-
-    const animate = () => {
-      if (direction === 'left') {
-        // Moving left (default behavior)
-        if (marquee.scrollLeft >= marquee.scrollWidth / 2) {
-          marquee.scrollLeft = 0;
-          offset = 0;
-        } else {
-          offset += speed;
-          marquee.scrollLeft = offset;
-        }
-      } else {
-        // Moving right
-        if (marquee.scrollLeft <= 0) {
-          marquee.scrollLeft = marquee.scrollWidth / 2;
-          offset = marquee.scrollWidth / 2;
-        } else {
-          offset -= speed;
-          marquee.scrollLeft = offset;
-        }
-      }
-
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationFrame);
-  }, [speed, direction]);
+  const duration = Math.max(10, 40 / speed);
 
   return (
-    <div className="overflow-hidden whitespace-nowrap w-full" ref={marqueeRef}>
-      <div className="flex gap-4 md:gap-space-26 shrink-0">
+    <div className="overflow-hidden whitespace-nowrap w-full">
+      <div
+        className="flex gap-4 md:gap-space-26 shrink-0 w-fit"
+        style={{
+          animation: `marquee ${duration}s linear infinite${direction === 'right' ? ' reverse' : ''}`,
+        }}
+      >
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={`${logo.id}-${index}`}
