@@ -41,6 +41,7 @@ export default async function page({ params }: { params: Promise<{ slug: string 
       <ChallengesSection
         title={useCaseData?.challengesSection?.title || []}
         description={useCaseData?.challengesSection?.description || ''}
+        image={useCaseData?.challengesSection?.coverImage?.url || ''}
       />
       <SolutionSection
         title={useCaseData?.solutionSection?.title || []}
