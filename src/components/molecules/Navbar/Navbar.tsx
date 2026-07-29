@@ -252,7 +252,7 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
                 />
               </div>
 
-              {/* Hamburger visible below 992px */}
+              {/* Hamburger / Close icon visible below 992px */}
               <button
                 type="button"
                 className="2md:hidden flex items-center justify-center cursor-pointer text-secondary-text hover:text-navare-secondary-green transition-colors duration-200 min-w-space-22 min-h-space-22"
@@ -261,7 +261,31 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
               >
-                <Image src={ImageConstants.HamburgerIcon} alt="" width={23} height={23} className="w-space-16 h-space-16" aria-hidden />
+                <span className="relative w-space-16 h-space-16">
+                  <Image
+                    src={ImageConstants.HamburgerIcon}
+                    alt=""
+                    width={23}
+                    height={23}
+                    aria-hidden
+                    className={`absolute inset-0 w-full h-full transition-all duration-300 ease-in-out ${
+                      isMenuOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'
+                    }`}
+                  />
+                  <svg
+                    width="23"
+                    height="23"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden
+                    className={`absolute inset-0 w-full h-full transition-all duration-300 ease-in-out ${
+                      isMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'
+                    }`}
+                  >
+                    <path d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
               </button>
             </div>
           </div>
