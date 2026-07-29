@@ -2,21 +2,21 @@ import type { title } from '@/types/usecase';
 import Image from 'next/image';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
+import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 import { extractTitleParts } from '@/utils/utilFunctions/extractTitleParts';
 
 interface ChallengesSectionProps {
   title?: title[];
   description?: string;
-  image?: { url: string };
+  image?: string;
 }
 
-const ChallengesSection = ({ title, description }: ChallengesSectionProps) => {
+const ChallengesSection = ({ title, description, image }: ChallengesSectionProps) => {
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
   return (
     <div className="max-w-maxwidth mx-auto section-padding-y bg-navare-green w-full h-full relative">
       <Image
-        src={ImageConstants.ChallengesPageImage}
-        // src={ExternalMediaConstants.UsecaseChallengesImage}
+        src={getImageUrl(image) || ImageConstants.ChallengesPageImage}
         alt="challenges-image"
         width={1440}
         height={457}

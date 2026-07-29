@@ -23,8 +23,8 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
 
   // Map link values to their corresponding text input names in the Rive file
   const textInputNameMap: Record<string, string> = {
-    NAVONETMS: 'NAVONE TRANSPORT TEXT',
-    NAVONECMS: 'NAVONE CONTAINER TEXT',
+    NAVONETMS: 'NAVONE CONTAINER TEXT', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
+    NAVONECMS: 'NAVONE TRANSPORT TEXT', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
     NAVBRIDGE: 'NAVBRIDGE TEXT',
     NAVSCAN: 'NAVSCAN TEXT',
     CUSTOMISED: 'CUSTOMISED TEXT',
@@ -32,8 +32,8 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
 
   // Map link values to their corresponding title input names in the Rive file
   const textInputTitleMap: Record<string, string> = {
-    NAVONETMS: 'NAVONE TRANSPORT TITLE',
-    NAVONECMS: 'NAVONE CONTAINER TITLE',
+    NAVONETMS: 'NAVONE CONTAINER TITLE', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
+    NAVONECMS: 'NAVONE TRANSPORT TITLE', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
     NAVBRIDGE: 'NAVBRIDGE TITLE',
     NAVSCAN: 'NAVSCAN TITLE',
     NAVLOGIC: 'NAVLOGIC TITLE',
@@ -86,9 +86,9 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     return fallbackEntries;
   }, [solutionSectionCard, text, textInputName, title, textInputTitle]);
   const events = [
-    { name: 'NAVONE-EVENT', path: '/navonetms' },
+    { name: 'NAVONE-EVENT', path: '/navonecms' },
     { name: 'NAVSCAN-EVENT', path: '/navscan' },
-    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonecms' },
+    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonetms' },
     { name: 'NAVBRIDGE-EVENT', path: '/navbridge' },
   ];
 
