@@ -13,7 +13,7 @@ const LandingPageOurImpact = ({ smallText, titlePrefix, titleHighlight, impactDa
   return (
     <div className="relative w-full max-w-maxwidth flex flex-col items-center justify-center">
       <div className="absolute top-space-50 -left-space-160 size-space-300 sm:bg-blue-circle-bg bg-landing-our-impact-bg/30 blur-3xl opacity-30 rounded-full" />
-      <div className="relative max-w-maxwidth w-full flex flex-col gap-space-30 section-padding-y section-padding-x z-20">
+      <div className="relative max-w-maxwidth w-full flex flex-col gap-space-24 lg:gap-space-24 section-padding-y section-padding-x z-20">
         <TextCombo
           smallText={smallText}
           title={titlePrefix}

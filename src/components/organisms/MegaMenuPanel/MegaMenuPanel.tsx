@@ -41,13 +41,13 @@ const MegaMenuPanel = ({ options, promoCardImage, promoCardDescription, linkOnCa
         <span className="absolute top-space-50 -left-space-200 bg-blue-circle-bg w-space-290 h-space-225 blur-[100px] opacity-40"></span>
       </div>
 
-      <div className={`flex justify-between h-full gap-space-10 max-w-maxwidth mx-auto px-space-12 xl:px-space-40 pb-space-10
+      <div className={`flex justify-between h-full gap-space-03 2md:gap-space-10 max-w-maxwidth mx-auto px-space-12 xl:px-space-40 pb-space-10
         2md:pt-space-10
         ${!promoCardVisible ? 'bg-[image:var(--bg-image-mega-menu)] bg-no-repeat bg-right' : ''}`}
       >
-        <div className={`flex flex-col gap-space-16 md:gap-space-20 justify-between ${promoCardVisible ? '2md:w-1/2' : ''}`}>
+        <div className={`flex flex-col gap-space-04 2md:gap-space-16 md:gap-space-20 justify-between ${promoCardVisible ? '2md:w-1/2' : ''}`}>
           {options.length > 0 && (
-            <div className={`${promoCardVisible ? '' : ''} pt-space-10 w-full 2md:pl-space-12 z-10`}>
+            <div className={`${promoCardVisible ? '' : ''} pt-space-02 2md:pt-space-10 w-full 2md:pl-space-12 z-10`}>
               <NavOptionSection options={options} onNavigate={onMobileNavigate || onNavigate} />
             </div>
           )}

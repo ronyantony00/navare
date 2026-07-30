@@ -17,7 +17,7 @@ export interface LandingPageStoriesProps {
 const LandingPageStories = ({ smallText, titlePrefix, titleHighlight, stories, classname, storyCardVariant }: LandingPageStoriesProps) => {
   const t = useTranslations('commonMessages');
   return (
-    <div className="mx-auto w-full max-w-maxwidth section-padding-y section-padding-x flex flex-col lg:gap-space-27 gap-space-12">
+    <div className="mx-auto w-full max-w-maxwidth section-padding-y section-padding-x flex flex-col gap-space-06 lg:gap-space-27">
       <Image src={ImageConstants.StoriesNewBg} width={1000} height={1000} alt="stories" className="absolute z-10 top-0 left-0 w-full h-full object-cover" />
       <TextCombo
         smallText={smallText}

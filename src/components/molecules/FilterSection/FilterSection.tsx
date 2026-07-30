@@ -69,7 +69,7 @@ const FilterSection = ({ locations, selectedPlaces, onSelectionChange, onApplyFi
               </div>
               {/* create this as an reusable component */}
 
-              <div className="border border-border-color rounded-xs pt-space-09 px-space-14 pb-space-12 mb-space-11 md:mb-space-61 filter-section-shadow">
+              <div className="border border-border-color rounded-xs pt-space-09 px-space-14 pb-space-12 mb-space-04 filter-section-shadow">
                 <div className="flex flex-col gap-space-06">
                   {filteredLocations.length === 0
                     ? (

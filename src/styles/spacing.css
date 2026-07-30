@@ -420,12 +420,17 @@
 /* padding: top right bottom left; */
 
 .section-padding-y {
-  padding-top: var(--spacing-space-20);
-  padding-bottom: var(--spacing-space-20);
+  padding-top: var(--spacing-space-08);
+  padding-bottom: var(--spacing-space-08);
 
   @media (min-width: 768px) {
-    padding-top: var(--spacing-space-30);
-    padding-bottom: var(--spacing-space-30);
+    padding-top: var(--spacing-space-12);
+    padding-bottom: var(--spacing-space-12);
+  }
+
+  @media (min-width: 1200px) {
+    padding-top: var(--spacing-space-15);
+    padding-bottom: var(--spacing-space-15);
   }
 }
 

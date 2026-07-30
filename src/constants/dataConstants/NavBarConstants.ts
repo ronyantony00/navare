@@ -10,10 +10,10 @@ export const NAVBAR = {
   dropdownData: {
     solutions: {
       options: [
-        { id: 1, title: 'NavOne', href: '/solutions/navone', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-one.svg' },
-        { id: 2, title: 'NavScan', href: '/solutions/navscan', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-scan.svg' },
+        { id: 1, title: 'NavOne CMS', href: '/solutions/navone', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-one.svg' },
+        { id: 2, title: 'NavOne TMS', href: '/solutions/navone-tms', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-one.svg' },
         { id: 3, title: 'NavBridge', href: '/solutions/navbridge', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/navbridge-new.svg' },
-        { id: 4, title: 'NavAir and Ocean', href: '/solutions/navairandocean', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-ocean.svg' },
+        { id: 4, title: 'NavScan', href: '/solutions/navscan', description: 'Dynamic ERD & cargo cut-off dates across all of your shipments', icon: '/assets/icons/nav-scan.svg' },
       ],
       promocardImage: '/assets/images/meeting.jpg',
       promocardDescription: 'test',

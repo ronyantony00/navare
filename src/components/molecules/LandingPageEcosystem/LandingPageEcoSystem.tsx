@@ -47,7 +47,7 @@ const LandingPageEcoSystem = ({
   const logoChunks = chunkArray(logoData, logosPerSlide);
 
   return (
-    <div className="relative h-full w-full items-center overflow-hidden flex flex-col gap-space-30">
+    <div className="relative h-full w-full items-center overflow-hidden flex flex-col gap-space-06 lg:gap-space-20">
       <div className="bg-[#061611E3] opacity-30 absolute w-full h-full"></div>
       <span className="absolute top-space-85 w-space-125 h-space-220 -left-space-184 bg-secondary-blur rounded-full blur-[var(--blur-intensity)] opacity-90"></span>
       <span className="absolute top-space-60 w-space-100 h-space-150 -right-space-200 bg-primary-blur rounded-full blur-[var(--blur-intensity)] opacity-70"></span>
@@ -94,19 +94,18 @@ const LandingPageEcoSystem = ({
               >
                 {logoChunks.map((logoGroup, slideIndex) => (
                   <SwiperSlide key={slideIndex} className="!h-full">
-                    <div className="flex w-full h-full justify-center items-center flex-col lg:gap-space-30 gap-space-05">
+                    <div className="flex w-full h-full justify-center items-center flex-col lg:gap-space-30 gap-space-04">
                       {logoGroup.map((logo: any) => (
                         <div
                           key={logo.id}
-                          className="h-full "
+                          className="h-full flex items-center justify-center"
                         >
                           <Image
                             src={getImageUrl(logo.logo.url)}
                             alt={logo.logo.alternativeText || logo.clientName}
                             width={120}
                             height={80}
-                            className="object-contain w-full max-w-pct-080 mx-auto h-full min-h-space-50"
-                            // loading="lazy"
+                            className="object-contain w-full max-w-pct-080 mx-auto max-h-space-16 min-h-space-12"
                             priority={slideIndex === 0}
                           />
                         </div>

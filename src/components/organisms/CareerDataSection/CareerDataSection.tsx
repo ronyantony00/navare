@@ -59,7 +59,7 @@ const CareerDataSection = ({ careersData }: CareerDataSectionProps) => {
   const filteredJobs = getFilteredJobs();
 
   return (
-    <div className="flex flex-col gap-space-20 md:gap-space-40 w-full">
+    <div className="flex flex-col gap-space-10 md:gap-space-16 w-full">
       <div className="py-space-09 w-full flex justify-center border-b border-border-color gap-space-06">
         <Image src={ImageConstants.WhiteSearchIcon} width={26} height={26} alt="search-icon" />
         <div className="primary-content text-text-placeholder">{t('SearchIconText')}</div>

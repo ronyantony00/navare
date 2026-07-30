@@ -56,8 +56,8 @@ const NavlinkSection = ({
   };
 
   return (
-    <div className="relative bg-navare-green 2md:bg-transparent flex flex-col h-fit 2md:flex-row gap-space-10 w-full 2md:w-fit
-    pb-space-06 2md:pb-space-00 min-w-0 2md:min-w-space-150 py-space-05 2md:py-space-00"
+    <div className="relative bg-navare-green 2md:bg-transparent flex flex-col h-fit 2md:flex-row gap-space-03 2md:gap-space-10 w-full 2md:w-fit
+    pb-space-06 2md:pb-space-00 min-w-0 2md:min-w-space-150 py-space-03 2md:py-space-00"
     >
       {Navlinks.map((link) => {
         if (link.type === 'dropdown') {
