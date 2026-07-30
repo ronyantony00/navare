@@ -40,15 +40,28 @@ const FooterLinkTransformer = (socialLinks: SocialLinksData[] | undefined) => {
   };
 };
 
+const getSolutionOrderRank = (item: SolutionsNavbarData) => {
+  const text = `${item.navbarCard?.short_title || ''} ${item.slug || ''}`.toLowerCase();
+  if (text.includes('cms')) return 1;
+  if (text.includes('tms')) return 2;
+  if (text.includes('bridge')) return 3;
+  if (text.includes('scan')) return 4;
+  return 99;
+};
+
 const SolutionsLinkTransformer = (solutionsNavbarData: SolutionsNavbarData[] | undefined) => {
   if (!solutionsNavbarData || solutionsNavbarData.length === 0) {
     return null;
   }
 
+  const sortedSolutions = [...solutionsNavbarData].sort(
+    (a, b) => getSolutionOrderRank(a) - getSolutionOrderRank(b),
+  );
+
   return {
     id: 1,
     title: 'Product',
-    links: solutionsNavbarData.map((solution, index) => ({
+    links: sortedSolutions.map((solution, index) => ({
       id: index + 1,
       linkText: solution.navbarCard.short_title,
       path: `/solutions/${solution.slug}`,
