@@ -429,8 +429,8 @@
   }
 
   @media (min-width: 1200px) {
-    padding-top: var(--spacing-space-15);
-    padding-bottom: var(--spacing-space-15);
+    padding-top: var(--spacing-space-30);
+    padding-bottom: var(--spacing-space-30);
   }
 }
 

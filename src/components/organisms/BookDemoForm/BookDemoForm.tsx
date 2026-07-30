@@ -81,7 +81,7 @@ const BookDemoForm = ({
   };
 
   return (
-    <div className="rounded-md-3 p-space-10 md:p-space-12 2md:py-space-21 2md:px-space-37
+    <div className="rounded-md-3 p-space-10 md:p-space-12 2md:py-space-16 2md:px-space-20 xl:py-space-21 xl:px-space-37
      2md:max-w-space-340 form-bg-gradient border border-navare-green-light relative overflow-hidden"
     >
       <span className="bg-secondary-blur w-space-40 h-space-150 -rotate-45 blur-[100px] absolute bottom-space-50 right-space-00"></span>
@@ -111,7 +111,7 @@ const BookDemoForm = ({
         <span className="text-desc-text">{policyText || t('formFooterLineOne')}</span>
         <span>
           {' '}
-          <Link href="/website-terms-of-use?slug=privacy-policy" className="underline text-primary">{t('formFooterLineTwo')}</Link>
+          <Link href="/privacy-policy" className="underline text-primary">{t('formFooterLineTwo')}</Link>
         </span>
       </div>
 

@@ -147,7 +147,7 @@ const FooterLinkSection = ({ FooterLinks, socialLinks, solutionsNavbarData, useC
             links={obj.links}
             className={
               isSocial
-                ? '2xs:col-span-2 2md:col-auto pt-space-08 2xs:pt-space-04 2md:pt-space-00 border-t border-navare-green-light/30 2md:border-0'
+                ? '2xs:col-span-2 2md:col-auto'
                 : ''
             }
           />

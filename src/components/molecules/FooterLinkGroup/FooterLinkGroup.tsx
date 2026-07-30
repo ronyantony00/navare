@@ -16,20 +16,12 @@ interface LinkGroupProps {
 }
 
 const FooterLinkGroup = ({ title, links, className = '' }: LinkGroupProps) => {
-  const isSocial = title === 'Social';
-
   return (
     <div className={`flex flex-col gap-space-08 md:gap-space-10 items-start max-2xs:items-center min-w-0 ${className}`}>
       <div className="text-size-5xs 2xs:text-size-4xs md:text-size-2xs text-secondary-text font-bold text-left max-2xs:text-center">
         {title}
       </div>
-      <div
-        className={`flex gap-space-07 ${
-          isSocial
-            ? 'flex-row flex-wrap items-center justify-start max-2xs:justify-center gap-x-space-12'
-            : 'flex-col items-start max-2xs:items-center'
-        }`}
-      >
+      <div className="flex flex-col items-start max-2xs:items-center gap-space-07">
         {links.map((link) => {
           const { href, external } = resolveNavigationLink(link.path);
           const linkContent = (
