@@ -245,7 +245,7 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
                 alt="Navare Solutions-Home"
                 width={73}
                 height={24}
-                className="cursor-pointer min-w-space-50 transition-transform duration-200 active:scale-90 w-full h-full"
+                className="cursor-pointer min-w-space-50 transition-all duration-300 ease-in-out hover:opacity-80 hover:scale-105 active:scale-95 w-full h-full"
                 priority
               />
             </Link>
