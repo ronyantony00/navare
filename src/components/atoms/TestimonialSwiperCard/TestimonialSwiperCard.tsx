@@ -35,7 +35,7 @@ const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, link
   const t = useTranslations('commonMessages');
 
   return (
-    <div className={`${className} relative w-full flex flex-col h-full justify-between grow px-space-15 pt-space-15 pb-space-10 border overflow-hidden group
+    <div className={`${className} relative w-full flex flex-col h-full justify-between grow p-space-15 border overflow-hidden group
     ${variant === 'aboutus' ? 'border-primary' : 'border-border-color'} rounded-lg gap-space-10`}
     >
       {variant === 'usecase'
