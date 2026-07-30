@@ -214,7 +214,7 @@ const CareerDataSection = ({ careersData, paginationMeta, allCareersData, sectio
   }, [searchInput, appliedFilters, pageSize, setJobs, setTotalPages, setCurrentPage, isSearching]);
 
   return (
-    <div className="flex flex-col gap-space-20 md:gap-space-40 w-full section-padding-x section-padding-y">
+    <div className="flex flex-col gap-space-10 md:gap-space-16 w-full section-padding-x section-padding-y">
       <div className="w-full flex justify-center">
         <TextCombo
           smallText={sectionTitle?.tag}
@@ -242,7 +242,7 @@ const CareerDataSection = ({ careersData, paginationMeta, allCareersData, sectio
         onResultClick={handleSearchResultClick}
       />
 
-      <div className="flex flex-col md:flex-row gap-space-24 lg:gap-space-40">
+      <div className="flex flex-col md:flex-row gap-space-24 lg:gap-space-40 items-start">
         <div className="md:max-w-space-160 w-full z-10">
           <FilterSection
             locations={uniqueLocations}

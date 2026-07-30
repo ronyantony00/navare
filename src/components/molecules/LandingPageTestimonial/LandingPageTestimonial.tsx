@@ -39,11 +39,10 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
   return (
     <div className="w-full flex flex-col items-center justify-center section-padding-y relative overflow-hidden">
       <span className="w-space-75 h-space-75 bg-secondary-blur blur-[80px] opacity-80 absolute top-space-150 right-space-00"></span>
-      <div className={`w-full max-w-maxwidth flex flex-col items-center ${mainClass || 'lg:gap-space-40 gap-space-20'}`}>
+      <div className={`w-full max-w-maxwidth flex flex-col items-center ${mainClass || 'lg:gap-space-26 gap-space-12'}`}>
         <div
-          className={`lg:gap-space-40 gap-space-08 section-padding-x w-full flex flex-col ${
-            videoUrl ? 'lg:flex-row lg:items-start' : 'items-center'
-          }`}
+          className={`lg:gap-space-40 gap-space-08 section-padding-x w-full flex flex-col ${videoUrl ? 'lg:flex-row lg:items-start' : 'items-center'
+            }`}
         >
           <TextCombo
             smallText={smallText}
@@ -57,7 +56,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
           {videoUrl && (
             <VideoComponent
               videoUrl={getImageUrl(videoUrl)}
-              className={videoClassName}
+              className={`${videoClassName} lg:mt-space-06`}
               videoOverLay="testimonial-video-bg"
               autoPlay
               muted
@@ -105,7 +104,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="flex gap-space-04 justify-start mt-space-25 z-50">
+          <div className="flex gap-space-04 justify-start mt-space-08 lg:mt-space-12 z-50">
             <Button
               variant="rounded"
               text=""

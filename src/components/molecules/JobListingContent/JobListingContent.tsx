@@ -80,12 +80,12 @@ const JobListingContent: React.FC<JobListingContentProps> = ({
   }
 
   return (
-    <div className="flex flex-col gap-space-16 md:gap-space-32 w-full">
+    <div className="flex flex-col gap-space-08 md:gap-space-12 w-full">
       <JobGrid jobs={jobs} />
 
       {/* Pagination button */}
-      <div className="flex justify-center">
-        {currentPage < totalPages && jobs.length > 0 && (
+      {currentPage < totalPages && jobs.length > 0 && (
+        <div className="flex justify-center">
           <Button
             variant="primary"
             text={isLoadingMore ? t('loading') : t('view_more')}
@@ -93,8 +93,8 @@ const JobListingContent: React.FC<JobListingContentProps> = ({
             mainClass="w-space-68"
             onClick={onLoadMore}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
