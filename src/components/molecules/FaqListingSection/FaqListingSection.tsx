@@ -2,7 +2,7 @@
 import type { faqTag } from '@/types/apiTypes';
 import type { AnswerBlock, RawFAQItem } from '@/types/commonTypes';
 import { useTranslations } from 'next-intl';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import FaqCard from '@/components/atoms/FaqCard/FaqCard';
 
 interface FAQItem {
@@ -24,7 +24,34 @@ const GnosisFreightFAQ: React.FC<FaqListingSectionProps> = ({ faqData, faqTags }
   // Set initial active tab based on available tabs
   const [activeTab, setActiveTab] = useState<string>(hasFAQs ? 'All' : (faqTags.length > 0 ? faqTags[0]?.tag || '' : ''));
   const [openFaqId, setOpenFaqId] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('FaqListingSection');
+
+  useEffect(() => {
+    if (openFaqId === null) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpenFaqId(null);
+      }
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpenFaqId(null);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openFaqId]);
 
   // Function to extract text from Answer blocks
   const extractAnswerText = (answerBlocks: AnswerBlock[]): string => {
@@ -83,7 +110,7 @@ const GnosisFreightFAQ: React.FC<FaqListingSectionProps> = ({ faqData, faqTags }
         )}
 
         {/* FAQ Content */}
-        <div className="flex flex-col gap-space-12">
+        <div ref={containerRef} className="flex flex-col gap-space-12">
           {currentFAQs.map((faq: FAQItem) => (
             <FaqCard
               key={faq.id}

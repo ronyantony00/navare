@@ -3,10 +3,10 @@ export const footerLinks = [
     id: 1,
     title: 'Product',
     links: [
-      { id: 1, linkText: 'NavOne', path: '/solutions/navone' },
-      { id: 2, linkText: 'NavScan', path: '/solutions/navscan' },
+      { id: 1, linkText: 'NavOne CMS', path: '/solutions/navone' },
+      { id: 2, linkText: 'NavOne TMS', path: '/solutions/navone-tms' },
       { id: 3, linkText: 'NavBridge', path: '/solutions/navbridge' },
-      // { id: 4, linkText: 'NavLogic', path: '/###' },
+      { id: 4, linkText: 'NavScan', path: '/solutions/navscan' },
       { id: 5, linkText: 'NavAir & Ocean', path: '/solutions/navairandocean' },
     ],
   },
