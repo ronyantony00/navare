@@ -24,14 +24,14 @@ const InsightHeroSection = ({ heroTitle, description }: HeroSectionProps) => {
       />
       <div className="insights-hero-shade absolute inset-0 z-10"></div>
       <div className="w-full h-full absolute inset-0 bg-navare-green opacity-70 z-10"></div>
-      <div className="flex flex-col gap-space-20 2md:flex-row 2md:justify-between max-w-maxwidth mx-auto base:min-h-max-height section-padding-x section-padding-y">
-        <div className="max-w-pct-050 flex z-10">
-          <Image src={ImageConstants.InsightHeroIcon} width={163} height={284} alt="hero-image" className="z-10 w-space-50 md:w-space-80" />
-          <div className="flex flex-col -ml-space-35">
+      <div className="flex flex-col gap-space-20 2md:flex-row 2md:justify-between max-w-maxwidth mx-auto section-padding-x section-padding-y">
+        <div className="w-full 2md:max-w-pct-065 lg:max-w-pct-060 flex z-10">
+          <Image src={ImageConstants.InsightHeroIcon} width={163} height={284} alt="hero-image" className="z-10 w-space-50 md:w-space-80 shrink-0" />
+          <div className="flex flex-col -ml-space-35 min-w-0">
             <TextCombo
               title={heroTitle}
               className="text-white my-auto"
-              titleClass="hero-title"
+              titleClass="hero-title whitespace-nowrap"
             />
           </div>
         </div>

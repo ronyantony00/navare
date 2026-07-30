@@ -15,19 +15,6 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
   const [currentPage, setCurrentPage] = useState<number>(paginationMeta?.page ?? 1);
   const [isLoading, setIsLoading] = useState(false);
 
-  const col1: Testimonial[] = [];
-  const col2: Testimonial[] = [];
-  const col3: Testimonial[] = [];
-  testimonials?.forEach((item, idx) => {
-    if (idx % 3 === 0) {
-      col1.push(item);
-    } else if (idx % 3 === 1) {
-      col2.push(item);
-    } else {
-      col3.push(item);
-    }
-  });
-
   const styles = [
     '-bottom-space-03 -left-space-03',
     '-bottom-space-03 -right-space-03',
@@ -78,68 +65,28 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                   <div className="relative max-w-maxwidth w-full flex flex-col items-center justify-center">
                     <span className="absolute -left-space-50 top-space-200 w-space-200 h-space-200 bg-blue-circle-bg blur-[130px] rounded-full opacity-80"></span>
                     <span className="absolute right-space-10 top-space-150 w-space-300 h-space-250 bg-primary-blur blur-[100px] rounded-full opacity-60"></span>
-                    <div className="pt-space-30 pb-space-20 md:pb-space-30 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-space-16">
-                      <div className="flex flex-col gap-space-16">
-                        {col1.map((item, index) => (
-                          <div key={index} className="h-auto">
-                            <TestimonialSwiperCard
-                              description={item?.shortTestimonial}
-                              clientName={item?.authorName}
-                              designation={item?.authorCompany}
-                              imageUrl={item?.authorAvatar?.url}
-                              companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.authorAvatar?.url}
-                              rating={item?.rating}
-                              showRating={true}
-                              featured={item?.featured}
-                              linkUrl={item?.extrernalLink}
-                              slug={item?.slug}
-                              linkonButton={false}
-                              shortTestimonial={item?.shortTestimonial}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex flex-col gap-space-16 xl:pt-space-30">
-                        {col2.map((item, index) => (
-                          <div key={index} className="h-auto">
-                            <TestimonialSwiperCard
-                              description={item?.content}
-                              clientName={item?.authorName}
-                              designation={item?.authorCompany}
-                              companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.authorAvatar?.url}
-                              rating={item?.rating}
-                              showRating={true}
-                              linkUrl={item?.extrernalLink}
-                              slug={item?.slug}
-                              featured={item?.featured}
-                              linkonButton={false}
-                              shortTestimonial={item?.shortTestimonial}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="xl:flex xl:flex-col xl:col-span-1 md:col-span-2 md:grid md:grid-cols-2 flex flex-col gap-space-16">
-                        {col3.map((item, index) => (
-                          <div key={index} className="h-auto">
-                            <TestimonialSwiperCard
-                              description={item?.content}
-                              clientName={item?.authorName}
-                              designation={item?.authorCompany}
-                              companyLogo={item?.companyLogo?.url}
-                              authorAvatar={item?.authorAvatar?.url}
-                              rating={item?.rating}
-                              showRating={true}
-                              linkUrl={item?.extrernalLink}
-                              slug={item?.slug}
-                              featured={item?.featured}
-                              linkonButton={false}
-                              shortTestimonial={item?.shortTestimonial}
-                            />
-                          </div>
-                        ))}
-                      </div>
+                    
+                    {/* Equal-Height Testimonial Grid Layout */}
+                    <div className="pt-space-30 pb-space-20 md:pb-space-30 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-16 items-stretch w-full">
+                      {testimonials?.map((item, index) => (
+                        <div key={index} className="h-full flex flex-col">
+                          <TestimonialSwiperCard
+                            description={item?.content || item?.shortTestimonial}
+                            clientName={item?.authorName}
+                            designation={item?.authorCompany}
+                            imageUrl={item?.authorAvatar?.url}
+                            companyLogo={item?.companyLogo?.url}
+                            authorAvatar={item?.authorAvatar?.url}
+                            rating={item?.rating}
+                            showRating={true}
+                            featured={item?.featured}
+                            linkUrl={item?.extrernalLink}
+                            slug={item?.slug}
+                            linkonButton={false}
+                            shortTestimonial={item?.shortTestimonial}
+                          />
+                        </div>
+                      ))}
                     </div>
                     {hasMoreTestimonials && (
                       <div className="w-full flex justify-center mt-space-15">

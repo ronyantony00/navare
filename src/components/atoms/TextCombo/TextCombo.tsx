@@ -33,6 +33,11 @@ export interface TextComboProps {
   bannerImage?: string;
 }
 
+const formatTitleText = (text?: string) => {
+  if (!text) return '';
+  return text.replace(/\s+([?!.:;])/g, '\u00A0$1');
+};
+
 const TextCombo = ({ spanClass, title, description, spanText, className, titleClass = 'section-title', extraTitle, descClass = 'text-small-text', bannerText, breakText, buttonOneText, buttonTwoText, smallText, btnClass, keyText, valueText, textClass = '', buttonOneLink, buttonTwoLink, buttonOneClick, bannerImage }: TextComboProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const textRef = useRef<HTMLDivElement>(null);
@@ -102,13 +107,13 @@ const TextCombo = ({ spanClass, title, description, spanText, className, titleCl
       {smallText && <div className="very-small-heading pb-space-06 text-primary">{smallText}</div>}
       <div className={`${textClass} w-full max-w-full min-w-0 leading-sub-title font-medium font-comme pb-space-06 lg:pb-space-12`}>
         <span className={`${titleClass} gradient-text break-words [overflow-wrap:anywhere] ${title ? 'mr-space-05' : ''}`}>
-          {title}
+          {formatTitleText(title)}
           {breakText}
         </span>
         {/* {' '} */}
-        {spanText && <span className={` ${spanClass} ${titleClass} text-primary break-words [overflow-wrap:anywhere] ${spanText ? 'mr-space-05' : ''}`}>{spanText}</span>}
+        {spanText && <span className={`inline-block ${spanClass || ''} ${titleClass} text-primary break-words [overflow-wrap:anywhere] ${spanText ? 'mr-space-05' : ''}`}>{formatTitleText(spanText)}</span>}
         {/* {' '} */}
-        {extraTitle && <span className={`${titleClass} gradient-text break-words [overflow-wrap:anywhere]`}>{extraTitle}</span>}
+        {extraTitle && <span className={`${titleClass} gradient-text break-words [overflow-wrap:anywhere]`}>{formatTitleText(extraTitle)}</span>}
       </div>
       {description && (
         <div className={`leading-description primary-content text-desc-text break-words [overflow-wrap:anywhere] max-w-full ${descClass} pb-space-06 lg:pb-space-12`}>
