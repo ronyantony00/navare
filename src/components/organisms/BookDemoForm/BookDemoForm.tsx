@@ -51,7 +51,13 @@ const BookDemoForm = ({
         throw new Error(t('allFieldsRequired'));
       }
 
-      const response = await submitDemoBookingFormClient(formFields);
+      const recaptchaToken = (formData.get('recaptchaToken') as string) ?? '';
+
+      if (!recaptchaToken) {
+        throw new Error(t('recaptchaRequired'));
+      }
+
+      const response = await submitDemoBookingFormClient(formFields, recaptchaToken);
 
       console.warn('Demo booking form submission successful:', response);
       setSubmitStatus(true);

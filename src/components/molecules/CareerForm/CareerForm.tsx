@@ -39,8 +39,14 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
         throw new Error(t('allFieldsRequired'));
       }
 
+      const recaptchaToken = (formData.get('recaptchaToken') as string) ?? '';
+
+      if (!recaptchaToken) {
+        throw new Error(t('recaptchaRequired'));
+      }
+
       // POST → /api/job-opening-subscription-requests
-      const response = await submitCareerFormClient(formFields);
+      const response = await submitCareerFormClient(formFields, recaptchaToken);
 
       console.warn('Career form submission successful:', response);
       setSubmitStatus(true);

@@ -1,14 +1,19 @@
 'use client';
+import type { RecaptchaHandle } from '@/components/atoms/Recaptcha/Recaptcha';
 import { useFormik } from 'formik';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 import Button from '@/components/atoms/CustomButton/Button';
+import Recaptcha from '@/components/atoms/Recaptcha/Recaptcha';
 import SuccessPopup from '@/components/atoms/SuccessPopup/SuccessPopup';
 import TextFieldWithLabel from '@/components/atoms/TextField/TextField';
 import { numberOfContainers as options } from '@/constants/dataConstants/DemoPageConstants';
 
 type FieldKey = 'firstName' | 'lastName' | 'email' | 'number' | 'company' | 'containers' | 'message';
+
+/** Formik field holding the reCAPTCHA token. Not a user-editable input. */
+const RECAPTCHA_FIELD = 'recaptcha';
 
 interface FormComponentProps {
   /**
@@ -30,11 +35,19 @@ interface FormComponentProps {
   phoneFieldClass?: string;
   /** When true, empty message is allowed (career enquiry). When false, min length still applies if filled. */
   messageOptional?: boolean;
+  /**
+   * Renders the reCAPTCHA checkbox and requires a token before submitting.
+   * Defaults to true: every consumer of this component is a public form, so a
+   * new one should be protected unless it deliberately opts out.
+   */
+  withRecaptcha?: boolean;
 }
 
-const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 'grid grid-cols-2', FormButtonText, submitStatusProp, fieldClass, emailFieldClass, phoneFieldClass, messageOptional = false }: FormComponentProps) => {
+const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 'grid grid-cols-2', FormButtonText, submitStatusProp, fieldClass, emailFieldClass, phoneFieldClass, messageOptional = false, withRecaptcha = true }: FormComponentProps) => {
   const [submitStatus, setSubmitStatus] = useState<boolean>(Boolean(submitStatusProp));
   const [error, setError] = useState(false);
+  const [recaptchaUnavailable, setRecaptchaUnavailable] = useState(false);
+  const recaptchaRef = useRef<RecaptchaHandle>(null);
   const t = useTranslations('DemoBookingPage.validation');
   const t2 = useTranslations('DemoBookingPage');
 
@@ -56,6 +69,10 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
     acc[key] = '';
     return acc;
   }, {});
+
+  if (withRecaptcha) {
+    initialValues[RECAPTCHA_FIELD] = '';
+  }
 
   // Build validation schema shape for active fields only
   const validationShape: { [key: string]: Yup.AnySchema } = {};
@@ -142,6 +159,10 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
       : baseMessageSchema.min(20, t('messageWarning'));
   }
 
+  if (withRecaptcha) {
+    validationShape[RECAPTCHA_FIELD] = Yup.string().required(t('recaptchaRequired'));
+  }
+
   const validationSchema = Yup.object(validationShape);
 
   const formik = useFormik({
@@ -150,15 +171,25 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
     validateOnMount: false,
     validateOnChange: true,
     validateOnBlur: true,
-    onSubmit: async (values, { resetForm, setSubmitting }) => {
+    onSubmit: async (values, { resetForm, setSubmitting, setFieldValue }) => {
       // If an external submit handler is provided, use it.
       try {
         if (onSubmit) {
           // Convert raw values to FormData to keep the handler signature consistent.
           const formData = new FormData();
           Object.entries(values).forEach(([key, value]) => {
+            // The captcha token is appended below under the name the API
+            // expects, so it is skipped here.
+            if (key === RECAPTCHA_FIELD) {
+              return;
+            }
             formData.append(key, value as string);
           });
+
+          if (withRecaptcha) {
+            formData.append('recaptchaToken', values[RECAPTCHA_FIELD] ?? '');
+          }
+
           await onSubmit(formData);
           resetForm();
           return;
@@ -175,6 +206,15 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
         setError(true);
       } finally {
         setSubmitting(false);
+
+        // reCAPTCHA v2 tokens are single use. Whether the submission succeeded
+        // or failed, the token is spent, so the widget has to be reset before
+        // the user can submit again — otherwise a retry is rejected by Google
+        // with `timeout-or-duplicate`.
+        if (withRecaptcha) {
+          recaptchaRef.current?.reset();
+          setFieldValue(RECAPTCHA_FIELD, '', false);
+        }
       }
     },
   });
@@ -293,6 +333,33 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
             maxLength={1000}
             className={fieldClass}
           />
+        </div>
+      )}
+      {withRecaptcha && (
+        <div className="col-span-2 z-10">
+          <Recaptcha
+            ref={recaptchaRef}
+            onChange={(token) => {
+              formik.setFieldValue(RECAPTCHA_FIELD, token);
+              if (token) {
+                setRecaptchaUnavailable(false);
+              }
+            }}
+            onLoadError={() => setRecaptchaUnavailable(true)}
+          />
+          {recaptchaUnavailable
+            ? (
+                <div className="text-red-500 text-size-5xs ml-space-07 mt-1">
+                  {t('recaptchaUnavailable')}
+                </div>
+              )
+            : formik.touched[RECAPTCHA_FIELD] && formik.errors[RECAPTCHA_FIELD]
+              ? (
+                  <div className="text-red-500 text-size-5xs ml-space-07 mt-1">
+                    {formik.errors[RECAPTCHA_FIELD] as string}
+                  </div>
+                )
+              : null}
         </div>
       )}
       <div className="col-span-2 z-10 mt-space-06">

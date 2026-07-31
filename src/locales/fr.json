@@ -205,7 +205,9 @@
       "companyMax100Chars": "Le nom de l'entreprise ne doit pas dépasser 100 caractères",
       "companyMustHaveLetter": "Le nom de l'entreprise doit contenir au moins une lettre",
       "messageMax1000Chars": "Le message ne doit pas dépasser 1000 caractères",
-      "messageInvalidChars": "Le message contient des caractères invalides"
+      "messageInvalidChars": "Le message contient des caractères invalides",
+      "recaptchaRequired": "Veuillez confirmer que vous n’êtes pas un robot",
+      "recaptchaUnavailable": "Le captcha n’a pas pu être chargé. Veuillez actualiser la page et réessayer."
     },
     "firstName": "Prénom",
     "lastName": "Nom de famille",
@@ -219,7 +221,8 @@
     "allFieldsRequired": "Tous les champs sont obligatoires",
     "submissionFailed": "Échec de l'envoi. Veuillez réessayer.",
     "headerTitle": "Découvrez comment la gestion du cycle de vie des conteneurs peut fonctionner pour vous",
-    "mainHeading": "Présentation de la plateforme Container Lifecycle Management®, la première au monde de vos conteneurs d'expédition."
+    "mainHeading": "Présentation de la plateforme Container Lifecycle Management®, la première au monde de vos conteneurs d'expédition.",
+    "recaptchaRequired": "Veuillez confirmer que vous n’êtes pas un robot"
   },
   "aboutUs": {
     "heroTitle": "L'histoire de notre entreprise",
@@ -277,7 +280,8 @@
     "defaultEmail": "contact@talentbridge.com",
     "defaultAddress": "123 Main St, Anytown, USA",
     "allFieldsRequired": "Tous les champs sont requis",
-    "submissionFailed": "L'envoi a échoué. Veuillez réessayer."
+    "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
+    "recaptchaRequired": "Veuillez confirmer que vous n’êtes pas un robot"
   },
   "successPopup": {
     "title": "Merci !",
@@ -325,7 +329,8 @@
     "allFieldsRequired": "Le nom et l'e-mail sont obligatoires",
     "submissionFailed": "L'envoi a échoué. Veuillez réessayer.",
     "submittingText": "Envoi en cours...",
-    "sendMessageText": "Envoyer le message"
+    "sendMessageText": "Envoyer le message",
+    "recaptchaRequired": "Veuillez confirmer que vous n’êtes pas un robot"
   },
   "CareersSection": {
     "title": "Carrières",

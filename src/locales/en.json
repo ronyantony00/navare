@@ -141,7 +141,6 @@
     "location": "Location",
     "employment_type": "Employment Type"
   },
-
   "FaqListingSection": {
     "no_faq_found": "No FAQ items found"
   },
@@ -206,7 +205,9 @@
       "companyMax100Chars": "Company name must not exceed 100 characters",
       "companyMustHaveLetter": "Company name must contain at least one letter",
       "messageMax1000Chars": "Message must not exceed 1000 characters",
-      "messageInvalidChars": "Message contains invalid characters"
+      "messageInvalidChars": "Message contains invalid characters",
+      "recaptchaRequired": "Please confirm you are not a robot",
+      "recaptchaUnavailable": "The captcha could not be loaded. Please refresh the page and try again."
     },
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -220,7 +221,8 @@
     "allFieldsRequired": "All fields are required",
     "submissionFailed": "Submission failed. Please try again.",
     "headerTitle": "See How Container Lifecycle Management Can Work For You",
-    "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers."
+    "mainHeading": "Introducing the Container Lifecycle Management® Platform, the world's  of your shipping containers.",
+    "recaptchaRequired": "Please confirm you are not a robot"
   },
   "aboutUs": {
     "heroTitle": "The story behind our company",
@@ -246,7 +248,6 @@
       "testimonial": "Gnosis can provide a tailored platform for any part of your supply chain. The team there works hard and also I have found they bring solutions to problems that I did not even know I had. The team is responsive and explains complex issues to me in a manner that I can understand and relay to my team in an ever changing logistics world.",
       "author": "Chandler Brown",
       "position": "Director of Procurement"
-
     }
   },
   "contactUsPage": {
@@ -280,7 +281,8 @@
     "defaultAddress": "123 Main St, Anytown, USA",
     "allFieldsRequired": "All fields are required",
     "submissionFailed": "Submission failed. Please try again.",
-    "firstName": "First Name"
+    "firstName": "First Name",
+    "recaptchaRequired": "Please confirm you are not a robot"
   },
   "successPopup": {
     "title": "Thank you!",
@@ -328,7 +330,8 @@
     "allFieldsRequired": "Name and email are required",
     "submissionFailed": "Submission failed. Please try again.",
     "submittingText": "Submitting...",
-    "sendMessageText": "Send Message"
+    "sendMessageText": "Send Message",
+    "recaptchaRequired": "Please confirm you are not a robot"
   },
   "CareersSection": {
     "title": "Careers",
@@ -394,7 +397,6 @@
     "bonus": "Bonus",
     "whyBuildYourCareer": "Why Build Your Career at Gnosis Freight?",
     "jobDetails": "Job Details",
-
     "notFoundTitle": "Job Not Found",
     "notFoundDescription": "This job could not be found. Explore more opportunities at Navare.",
     "backToCareers": "Back to Careers",
@@ -425,7 +427,6 @@
   "usecaseTestimonialsection": {
     "readcasestudy": "Read case study",
     "no_testimonials": "No testimonials available at the moment"
-
   },
   "commonMessages": {
     "no_content_found": "No content found",
@@ -471,7 +472,6 @@
       "spanText": "Modern Logistics",
       "dummyText": "Enhancing Customer Experience | Executive Interview\n\nIn today’s competitive market, enhancing customer experience (CX) has become a top priority for businesses aiming to build lasting relationships and drive growth. In this executive interview, we explore how industry leaders are rethinking customer engagement, using data-driven insights, innovative technology, and personalized service strategies to exceed expectations at every touchpoint. From streamlining digital interfaces to fostering a culture of customer-centricity within their teams, these executives share their perspectives on what it takes to create seamless, meaningful, and memorable experiences that foster loyalty and set brands apart.",
       "NoBlog": "No Blog content available at the moment."
-
     },
     "landingPageStories": {
       "smallText": "News & Insights",
