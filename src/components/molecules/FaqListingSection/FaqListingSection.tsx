@@ -87,11 +87,11 @@ const GnosisFreightFAQ: React.FC<FaqListingSectionProps> = ({ faqData, faqTags }
   }, [faqData, activeTab, hasFAQs]);
 
   return (
-    <div className="w-full max-w-maxwidth mx-auto section-padding-x section-padding-y">
+    <div className="w-full max-w-maxwidth mx-auto section-padding-x py-space-20 md:section-padding-y">
       <div className="w-full">
         {/* Tab Navigation */}
         {tabs.length > 0 && (
-          <div className="flex flex-wrap gap-space-04 md:gap-space-08 mb-space-16 md:mb-space-30">
+          <div className="flex flex-wrap gap-space-06 md:gap-space-08 mb-space-20 md:mb-space-30">
             {tabs.map(tab => (
               <button
                 type="button"
@@ -110,7 +110,7 @@ const GnosisFreightFAQ: React.FC<FaqListingSectionProps> = ({ faqData, faqTags }
         )}
 
         {/* FAQ Content */}
-        <div ref={containerRef} className="flex flex-col gap-space-12">
+        <div ref={containerRef} className="flex flex-col gap-space-16 md:gap-space-12">
           {currentFAQs.map((faq: FAQItem) => (
             <FaqCard
               key={faq.id}

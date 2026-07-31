@@ -306,6 +306,7 @@ const IntegrationCardSection = ({ cardData, error, smallText, textPrefix, textSu
               <Button
                 text={isLoading ? t('loading') : t('load_more')}
                 variant="primary"
+                animation={true}
                 onClick={handleLoadMore}
                 disabled={isLoading}
               />

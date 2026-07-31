@@ -162,8 +162,8 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
 
       const getSolutionOrderRank = (item: any) => {
         const text = `${item.title || ''} ${item.href || ''}`.toLowerCase();
-        if (text.includes('cms')) return 1;
-        if (text.includes('tms')) return 2;
+        if (text.includes('tms')) return 1;
+        if (text.includes('cms')) return 2;
         if (text.includes('bridge')) return 3;
         if (text.includes('scan')) return 4;
         return 99;

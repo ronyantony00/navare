@@ -69,7 +69,7 @@ const LandingPageEcoSystem = ({
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={20}
                 slidesPerView={1}
-                autoplay={{ delay: 5000, disableOnInteraction: true }}
+                autoplay={{ delay: 16000, disableOnInteraction: true }}
                 navigation={{ prevEl: '.swiper-prev-btn', nextEl: '.swiper-next-btn' }}
                 loop={true}
                 className="w-full !h-full"
@@ -98,14 +98,14 @@ const LandingPageEcoSystem = ({
                       {logoGroup.map((logo: any) => (
                         <div
                           key={logo.id}
-                          className="h-full flex items-center justify-center"
+                          className="h-full flex items-center justify-center w-full py-space-02"
                         >
                           <Image
                             src={getImageUrl(logo.logo.url)}
                             alt={logo.logo.alternativeText || logo.clientName}
-                            width={120}
-                            height={80}
-                            className="object-contain w-full max-w-pct-080 mx-auto max-h-space-16 min-h-space-12"
+                            width={150}
+                            height={60}
+                            className="object-contain w-full max-w-[130px] sm:max-w-[150px] xl:max-w-[160px] mx-auto h-[44px] sm:h-[50px] xl:h-[54px] transition-transform duration-300 hover:scale-105"
                             priority={slideIndex === 0}
                           />
                         </div>

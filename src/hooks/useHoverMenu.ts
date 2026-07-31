@@ -65,11 +65,9 @@ export const useHoverMenu = ({
   }, [isTouchDevice, clearHoverTimeout, setActiveMenuItem, hoverDelay]);
 
   const handleMenuItemClick = useCallback((menuId: string) => {
-    if (isMobile || isTouchDevice) {
-      clearHoverTimeout();
-      setActiveMenuItem(hoveredMenuItem === menuId ? null : menuId);
-    }
-  }, [isMobile, isTouchDevice, hoveredMenuItem, clearHoverTimeout, setActiveMenuItem]);
+    clearHoverTimeout();
+    setActiveMenuItem(hoveredMenuItem === menuId ? null : menuId);
+  }, [hoveredMenuItem, clearHoverTimeout, setActiveMenuItem]);
 
   return {
     handleMenuItemHover,

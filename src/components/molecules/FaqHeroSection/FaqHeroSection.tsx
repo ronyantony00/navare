@@ -29,7 +29,7 @@ const FaqHeroSection = ({ titlePrefix, description, ctaText, ctaLinkText, ctaLin
         poster="/assets/backgroundImage/faq-hero-fallback.svg"
       />
       <div className="w-full h-full absolute inset-0 bg-navare-green opacity-70 z-10"></div>
-      <div className="w-full flex flex-col items-center justify-center max-w-maxwidth mx-auto base:min-h-max-height section-padding-x section-padding-y">
+      <div className="w-full flex flex-col items-center justify-center max-w-maxwidth mx-auto base:min-h-max-height section-padding-x py-space-20 md:section-padding-y">
         <div className="size-full flex flex-col items-center justify-center gap-space-12">
           <TextCombo
             title={titlePrefix}
@@ -39,7 +39,7 @@ const FaqHeroSection = ({ titlePrefix, description, ctaText, ctaLinkText, ctaLin
             className="max-w-pct-080 2md:max-w-pct-060 xl:max-w-pct-080 base:max-w-pct-060 text-center mx-auto z-10"
             titleClass="hero-title"
           />
-          <div className="primary-content text-center z-10">
+          <div className="primary-content text-center z-10 px-space-10">
             <span className="text-subtle-desc">{ctaText || t('still_have_question')}</span>
             {' '}
             <span className="text-primary underline">

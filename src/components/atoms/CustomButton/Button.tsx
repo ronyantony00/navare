@@ -20,7 +20,7 @@ interface ButtonProps {
 
 const Button = ({ mainClass, variant, text, onClick, type, arrow, arrowClassName, arrowDirection = 'right', animation, link, disabled, wrapText }: ButtonProps) => {
   const BUTTON_VARIANTS = {
-    primary: 'btn-gradient ease-in-out duration-500 text-black font-bold text-wrap rounded-2xs px-space-07 py-space-05',
+    primary: 'btn-gradient ease-in-out duration-300 transition-all hover:brightness-110 hover:shadow-md hover:shadow-primary/20 text-black font-bold text-wrap rounded-2xs px-space-07 py-space-05',
     secondary: 'bg-transparent border-btn-secondary text-secondary-text border hover:bg-btn-primary hover:border-0 rounded-full px-space-16 py-space-08',
     outline: 'bg-transparent border-primary text-subtle-desc font-normal hover:border-base-white border rounded-2xs px-space-10 py-space-05',
     linkButton: 'bg-transparent border border-link-hover text-secondary-text hover:text-subtle-text px-space-10 py-space-06 transition-transform duration-200 hover:scale-100',
