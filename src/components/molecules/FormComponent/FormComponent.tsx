@@ -349,13 +349,13 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
           />
           {recaptchaUnavailable
             ? (
-                <div className="text-red-500 text-size-5xs ml-space-07 mt-1">
+                <div className="text-red-500 text-size-5xs ml-space-07">
                   {t('recaptchaUnavailable')}
                 </div>
               )
             : formik.touched[RECAPTCHA_FIELD] && formik.errors[RECAPTCHA_FIELD]
               ? (
-                  <div className="text-red-500 text-size-5xs ml-space-07 mt-1">
+                  <div className="text-red-500 text-size-5xs ml-space-07">
                     {formik.errors[RECAPTCHA_FIELD] as string}
                   </div>
                 )
