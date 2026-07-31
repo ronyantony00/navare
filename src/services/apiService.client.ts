@@ -359,9 +359,13 @@ export async function getSearchIntegrationsDataClientPaginated(
 }
 
 // Client-side form submission function for demo booking
-export async function submitDemoBookingFormClient(formData: DemoBookingRequest): Promise<ApiResponse<any>> {
+export async function submitDemoBookingFormClient(formData: DemoBookingRequest, recaptchaToken: string): Promise<ApiResponse<any>> {
+  // The token travels as a sibling of `data`, never inside it — Strapi rejects
+  // unknown attributes on the content-type. The verify-recaptcha middleware
+  // strips it before the record is created.
   const requestPayload = {
     data: formData,
+    recaptchaToken,
   };
 
   try {
@@ -379,9 +383,10 @@ export async function submitDemoBookingFormClient(formData: DemoBookingRequest):
 }
 
 // Client-side form submission function for contact form
-export async function submitContactFormClient(formData: ContactFormRequest): Promise<ApiResponse<any>> {
+export async function submitContactFormClient(formData: ContactFormRequest, recaptchaToken: string): Promise<ApiResponse<any>> {
   const requestPayload = {
     data: formData,
+    recaptchaToken,
   };
 
   try {
@@ -399,9 +404,10 @@ export async function submitContactFormClient(formData: ContactFormRequest): Pro
 }
 
 // Client-side form submission function for career form
-export async function submitCareerFormClient(formData: CareerFormRequest): Promise<ApiResponse<any>> {
+export async function submitCareerFormClient(formData: CareerFormRequest, recaptchaToken: string): Promise<ApiResponse<any>> {
   const requestPayload = {
     data: formData,
+    recaptchaToken,
   };
 
   try {

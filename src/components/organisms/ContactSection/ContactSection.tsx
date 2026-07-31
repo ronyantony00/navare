@@ -45,8 +45,14 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
         throw new Error(t('allFieldsRequired'));
       }
 
+      const recaptchaToken = (formData.get('recaptchaToken') as string) ?? '';
+
+      if (!recaptchaToken) {
+        throw new Error(t('recaptchaRequired'));
+      }
+
       // Submit form to Strapi
-      const response = await submitContactFormClient(formFields);
+      const response = await submitContactFormClient(formFields, recaptchaToken);
 
       console.warn('Contact form submission successful:', response);
       setSubmitStatus(true);
