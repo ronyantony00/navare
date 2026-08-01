@@ -16,7 +16,7 @@ const FaqItem = ({ question, answer, isOpen, onToggle }: FaqProps) => {
     <div className="w-full bg-brand-subtle pt-space-16">
       <button
         type="button"
-        className="flex justify-between w-full items-center cursor-pointer"
+        className="flex justify-between w-full items-center cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-navare-green rounded-sm transition-all p-space-02"
         onClick={onToggle}
       >
         <div className="text-size-sm text-start text-secondary font-semibold">

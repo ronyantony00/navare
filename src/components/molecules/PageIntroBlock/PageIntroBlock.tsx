@@ -13,7 +13,7 @@ interface PageIntroBlockProps {
 
 const PageIntroBlock = ({ titlePrefix, description, tagText, buttonOneText, buttonOneLink }: PageIntroBlockProps) => {
   return (
-    <div className="bg-navare-green border-subtle-border flex justify-center items-center relative section-padding-y w-full h-full base:min-h-max-height">
+    <div className="bg-navare-green border-subtle-border flex justify-center items-center relative py-space-15 md:py-space-30 w-full h-full base:min-h-max-height">
       <video
         src={ExternalMediaConstants.UseCaseHeroVideo}
         autoPlay
