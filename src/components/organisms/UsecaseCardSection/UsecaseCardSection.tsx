@@ -16,7 +16,7 @@ const UsecaseCardSection = ({ CardData, title, sectionDescription }: CardSection
   const t = useTranslations('commonMessages');
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
   return (
-    <section className="bg-navare-green section-padding-y relative">
+    <section className="bg-navare-green py-space-15 md:py-space-30 relative">
       <Image src={ImageConstants.combinedShape} width={200} height={190} alt="grid" className="absolute top-0 right-0 z-0" />
       <div className="max-w-maxwidth section-padding-x mx-auto flex flex-col md:gap-space-15 2md:gap-space-27 z-50">
         <TextCombo

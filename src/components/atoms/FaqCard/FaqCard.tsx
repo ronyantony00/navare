@@ -16,7 +16,7 @@ const FaqCard: React.FC<FaqCardProps> = ({ title, description, isOpen, onClick }
       <button
         type="button"
         onClick={onClick}
-        className="flex gap-space-15 w-full items-center justify-between px-space-10 md:px-space-20 py-space-14 text-left hover:cursor-pointer"
+        className="flex gap-space-15 w-full items-center justify-between px-space-10 md:px-space-20 py-space-16 md:py-space-14 text-left hover:cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-navare-green rounded-lg transition-all"
         aria-expanded={isOpen}
         aria-controls={`faq-content-${title.replace(/\s+/g, '-').toLowerCase()}`}
       >

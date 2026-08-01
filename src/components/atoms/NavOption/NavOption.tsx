@@ -22,7 +22,7 @@ const NavOption = ({ title, description, icon, iconOnTop, href, onNavigate }: Na
         </div>
         <div className="flex flex-col gap-space-04">
           <div className="text-subtle-desc very-small-heading group-hover:text-primary ">{title}</div>
-          <div className="text-subtle-desc small-content ">{description}</div>
+          <div className="hidden md:block text-subtle-desc small-content ">{description}</div>
         </div>
       </div>
     </div>

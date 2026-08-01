@@ -34,27 +34,27 @@ const NewsCard: React.FC<BlogCardProps> = ({ date, title, desc, videoUrl, link, 
       <div className="relative">
         {videoUrl
           ? (
-              <div className="h-space-100 2xs:h-space-150">
-                <VideoComponent videoUrl={video} className="h-full" playButtonClass="hidden group-hover:block" />
-              </div>
-            )
+            <div className="h-space-100 2xs:h-space-150">
+              <VideoComponent videoUrl={video} className="h-full" playButtonClass="hidden group-hover:block" />
+            </div>
+          )
           : (
-              blogImg
-                ? (
-                    <div className="h-space-100 2xs:h-space-150 bg-gray-200 rounded-sm bg-blog-card-bg flex items-center justify-center">
-                      <Image src={blogImg} alt="blog-card-image" width={1000} height={1000} className="w-full h-full object-cover" />
-                    </div>
-                  )
-                : (
-                    <div className="h-space-100 2xs:h-space-150 stories-card-bg rounded-sm flex items-center justify-center">
-                      <span className="text-desc-text">{title}</span>
-                    </div>
-                  )
-            )}
+            blogImg
+              ? (
+                <div className="h-space-100 2xs:h-space-150 bg-gray-200 rounded-sm bg-blog-card-bg flex items-center justify-center">
+                  <Image src={blogImg} alt="blog-card-image" width={1000} height={1000} className="w-full h-full object-cover" />
+                </div>
+              )
+              : (
+                <div className="h-space-100 2xs:h-space-150 stories-card-bg rounded-sm flex items-center justify-center">
+                  <span className="text-desc-text">{title}</span>
+                </div>
+              )
+          )}
       </div>
       <div className={`${link && 'group-hover:pt-space-06'} pt-space-12 pb-space-13 px-space-13 flex flex-col z-10 h-space-100`}>
-        <div className="flex gap-space-12 mb-space-06">
-          <div className="w-space-25 h-space-25 impact-card-bg px-space-06 py-space-02 self-center
+        <div className="flex items-center gap-space-12 mb-space-06">
+          <div className="w-space-25 h-space-25 impact-card-bg px-space-06 py-space-02 shrink-0
               rounded-sm text-size-4xs leading-sm font-normal text-primary
               flex flex-col items-center justify-center border-hairline"
           >

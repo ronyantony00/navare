@@ -110,7 +110,7 @@ export const contactDetails = [
   {
     id: 1,
     title: 'Email address',
-    info: 'contact@talentbridge.com',
+    info: 'info@navareglobal.com, vrn@navaresolutions.co.nz, arun@navareglobal.com',
   },
   {
     id: 2,

@@ -71,7 +71,7 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
                   alt="border"
                   width={20}
                   height={200}
-                  className="self-start h-full min-h-space-80 object-cover pt-space-01"
+                  className="self-start h-full min-h-space-80 object-contain object-top pt-space-01 shrink-0"
                 />
                 <div className="flex w-full grow flex-col gap-space-02 sm:gap-space-04 xl:gap-space-08">
                   <Image
@@ -100,7 +100,7 @@ const SolutionsPlatformSection = ({ tagText, featureTabData, titlePrefix, titleH
                   alt="border"
                   width={20}
                   height={200}
-                  className="self-start h-full min-h-space-80 object-cover pt-space-01"
+                  className="self-start h-full min-h-space-80 object-contain object-top pt-space-01 shrink-0"
                 />
                 <div className="flex w-full flex-col gap-space-02 sm:gap-space-04 xl:gap-space-08">
                   <Image
