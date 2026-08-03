@@ -29,9 +29,10 @@ interface TestimonialSwiperCardProps {
   featured?: boolean;
   slug?: string;
   contentClass?: string;
+  authorTitle?: string;
 }
 
-const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, linkonButton = true, contentClass, className = 'service-card-bg', rating, variant = 'testimonial', title, linkUrl, headerOnTop = false, titleVariant = 'small', showRating = false, featured, slug, companyLogo, authorAvatar }: TestimonialSwiperCardProps) => {
+const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, authorTitle, linkonButton = true, contentClass, className = 'service-card-bg', rating, variant = 'testimonial', title, linkUrl, headerOnTop = false, titleVariant = 'small', showRating = false, featured, slug, companyLogo, authorAvatar }: TestimonialSwiperCardProps) => {
   const t = useTranslations('commonMessages');
 
   return (
@@ -74,10 +75,10 @@ const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, link
           </Link>
         )
       }
-      {featured && !linkUrl && linkonButton && (
+      {slug && !linkUrl && linkonButton && (
         <Button variant="primary" arrow animation text="Read Customer Success Story" arrowClassName="size-space-05" mainClass="gap-space-05 max-w-space-220 mx-auto w-full z-10" wrapText link={`/testimonials/${slug}`} />
       )}
-      {featured && !linkUrl && !linkonButton && (
+      {slug && !linkUrl && !linkonButton && (
         <Link href={`/testimonials/${slug}`}>
           <div className="flex">
             <div className="self-center text-primary text-size-4xs group-hover:underline">Read Customer Success Story</div>
@@ -95,7 +96,7 @@ const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, link
         <div className={`${headerOnTop ? 'order-first' : ''}`}>
           <AuthorProfile
             name={clientName}
-            role={designation || ''}
+            role={[authorTitle, designation].filter(Boolean).join(', ')}
             companyLogo={getImageUrl(companyLogo)}
             avatarUrl={getImageUrl(authorAvatar)}
             avatarAlt={clientName}

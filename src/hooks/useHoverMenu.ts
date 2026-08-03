@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from 'react';
 
 interface UseHoverMenuParams {
   isTouchDevice: boolean;
-  isMobile: boolean;
+  isMobile?: boolean;
   hoveredMenuItem: string | null;
   setActiveMenuItem: (menuId: string | null) => void;
   hoverDelay?: number; // milliseconds
@@ -18,7 +18,7 @@ interface UseHoverMenuReturn {
 
 export const useHoverMenu = ({
   isTouchDevice,
-  isMobile,
+  isMobile: _isMobile,
   hoveredMenuItem,
   setActiveMenuItem,
   hoverDelay = 200,
