@@ -73,6 +73,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                           <TestimonialSwiperCard
                             description={item?.content || item?.shortTestimonial}
                             clientName={item?.authorName}
+                            authorTitle={item?.authorTitle}
                             designation={item?.authorCompany}
                             imageUrl={item?.authorAvatar?.url}
                             companyLogo={item?.companyLogo?.url}
