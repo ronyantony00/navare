@@ -93,6 +93,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
                 <TestimonialSwiperCard
                   shortTestimonial={item?.shortTestimonial}
                   clientName={item?.authorName}
+                  authorTitle={item?.authorTitle}
                   designation={item?.authorCompany}
                   companyLogo={item?.companyLogo?.url}
                   authorAvatar={item?.authorAvatar?.url}

@@ -96,7 +96,7 @@ const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, auth
         <div className={`${headerOnTop ? 'order-first' : ''}`}>
           <AuthorProfile
             name={clientName}
-            role={[authorTitle, designation].filter(Boolean).join(', ')}
+            role={[authorTitle, designation].filter(Boolean).join(' @ ')}
             companyLogo={getImageUrl(companyLogo)}
             avatarUrl={getImageUrl(authorAvatar)}
             avatarAlt={clientName}
