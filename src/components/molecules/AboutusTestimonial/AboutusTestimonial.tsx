@@ -14,7 +14,7 @@ interface AboutusTestimonialProps {
   backgroundImage?: string;
 }
 
-const AboutusTestimonial = ({ title, testimonialTitle, authorName, testimonial, imageUrl, backgroundImage }: AboutusTestimonialProps) => {
+const AboutusTestimonial = ({ title, testimonialTitle, authorName, authorTitle, testimonial, imageUrl, backgroundImage }: AboutusTestimonialProps) => {
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
   return (
     <div className="w-full bg-navare-green border-white">
@@ -28,6 +28,7 @@ const AboutusTestimonial = ({ title, testimonialTitle, authorName, testimonial, 
         <TestimonialCard
           shortTestimonial={testimonial}
           clientName={authorName}
+          designation={authorTitle}
           title={testimonialTitle}
           imageUrl={imageUrl}
           backgroundImage={backgroundImage}
