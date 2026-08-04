@@ -36,7 +36,7 @@ const MegaMenuPanel = ({ options, promoCardImage, promoCardDescription, linkOnCa
   }, [optionsLength]);
   return (
     <div className="bg-navare-green border-b 2md:border-t border-navare-green-light relative max-h-[80vh] overflow-y-auto scrollbar-hide" role="menu" aria-label="Navigation menu">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-visible pointer-events-none">
         <span className="absolute top-space-80 right-space-40 bg-primary-blur h-space-240 w-pct-050 rounded-full blur-[100px] opacity-65" />
         <span className="absolute top-space-50 -left-space-200 bg-blue-circle-bg w-space-290 h-space-225 blur-[100px] opacity-40"></span>
       </div>

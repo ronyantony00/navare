@@ -348,10 +348,8 @@ html {
   background: linear-gradient(180deg, #122518 0%, #071712 100%);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .navoption:hover {
-    background-image: linear-gradient(142.48deg, #062019 35.38%, #083415 78.28%);
-  }
+.navoption:hover {
+  background-image: linear-gradient(142.48deg, #062019 35.38%, #083415 78.28%);
 }
 
 .marquee-card-bg {
