@@ -22,7 +22,7 @@ const TestimonialCard = ({ shortTestimonial, clientName, designation, title, ima
           title={title}
           shortTestimonial={shortTestimonial}
           clientName={clientName}
-          designation={designation}
+          authorTitle={designation}
           imageUrl={imageUrl}
         />
       </div>

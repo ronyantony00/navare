@@ -37,57 +37,55 @@ const UsecaseTestimonials = ({ testimonialData, title, buttonText, tag }: Usecas
           />
           {testimonials.length > 0
             ? (
-              <div className="flex flex-col md:flex-row items-start gap-x-space-25 md:gap-y-space-00 gap-y-space-16 w-full">
-                <div className="flex flex-col gap-y-space-16 flex-1">
-                  {firstColumnData.map(testimonial => (
-                    <TestimonialSwiperCard
-                      key={testimonial.id}
-                      rating={testimonial.rating}
-                      title={testimonial.title}
-                      shortTestimonial={testimonial?.shortTestimonial}
-                      clientName={testimonial.authorName}
-                      designation={testimonial.authorTitle}
-                      companyLogo={testimonial.companyLogo?.url}
-                      authorAvatar={testimonial.authorAvatar?.url}
-                      featured={testimonial.featured}
-                      className="impact-card-bg"
-                      headerOnTop={true}
-                      linkUrl={testimonial.extrernalLink}
-                      linkonButton={true}
-                      titleVariant="large"
-                      showRating={true}
-                      variant="usecase"
-                      slug={testimonial.slug}
-                      contentClass="line-clamp-4"
-                    />
-                  ))}
+                <div className="flex flex-col md:flex-row items-start gap-x-space-25 md:gap-y-space-00 gap-y-space-16 w-full">
+                  <div className="flex flex-col gap-y-space-16 flex-1">
+                    {firstColumnData.map(testimonial => (
+                      <TestimonialSwiperCard
+                        key={testimonial.id}
+                        rating={testimonial.rating}
+                        title={testimonial.title}
+                        shortTestimonial={testimonial?.shortTestimonial}
+                        clientName={testimonial.authorName}
+                        companyLogo={testimonial.companyLogo?.url}
+                        authorAvatar={testimonial.authorAvatar?.url}
+                        featured={testimonial.featured}
+                        className="impact-card-bg"
+                        headerOnTop={true}
+                        linkUrl={testimonial.extrernalLink}
+                        linkonButton={true}
+                        titleVariant="large"
+                        showRating={true}
+                        variant="usecase"
+                        slug={testimonial.slug}
+                        contentClass="line-clamp-4"
+                      />
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-y-space-16 flex-1">
+                    {secondColumnData.map(testimonial => (
+                      <TestimonialSwiperCard
+                        key={testimonial.id}
+                        rating={testimonial.rating}
+                        title={testimonial.title}
+                        shortTestimonial={testimonial?.shortTestimonial}
+                        clientName={testimonial.authorName}
+                        companyLogo={testimonial.companyLogo?.url}
+                        authorAvatar={testimonial.authorAvatar?.url}
+                        featured={testimonial.featured}
+                        className="impact-card-bg"
+                        headerOnTop={true}
+                        linkUrl={testimonial.extrernalLink}
+                        linkonButton={true}
+                        titleVariant="large"
+                        showRating={true}
+                        variant="usecase"
+                        slug={testimonial.slug}
+                        contentClass="line-clamp-3"
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-col gap-y-space-16 flex-1">
-                  {secondColumnData.map(testimonial => (
-                    <TestimonialSwiperCard
-                      key={testimonial.id}
-                      rating={testimonial.rating}
-                      title={testimonial.title}
-                      shortTestimonial={testimonial?.shortTestimonial}
-                      clientName={testimonial.authorName}
-                      designation={testimonial.authorTitle}
-                      companyLogo={testimonial.companyLogo?.url}
-                      authorAvatar={testimonial.authorAvatar?.url}
-                      featured={testimonial.featured}
-                      className="impact-card-bg"
-                      headerOnTop={true}
-                      linkUrl={testimonial.extrernalLink}
-                      linkonButton={true}
-                      titleVariant="large"
-                      showRating={true}
-                      variant="usecase"
-                      slug={testimonial.slug}
-                      contentClass="line-clamp-3"
-                    />
-                  ))}
-                </div>
-              </div>
-            )
+              )
             : null}
         </div>
       </div>

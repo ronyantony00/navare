@@ -12,7 +12,6 @@ interface TestimonialSwiperCardProps {
   shortTestimonial?: string;
   description?: BlocksContent | string;
   clientName?: string;
-  designation?: string;
   className?: string;
   rating?: number;
   imageUrl?: string;
@@ -32,7 +31,7 @@ interface TestimonialSwiperCardProps {
   authorTitle?: string;
 }
 
-const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, authorTitle, linkonButton = true, contentClass, className = 'service-card-bg', rating, variant = 'testimonial', title, linkUrl, headerOnTop = false, titleVariant = 'small', showRating = false, featured, slug, companyLogo, authorAvatar }: TestimonialSwiperCardProps) => {
+const TestimonialSwiperCard = ({ shortTestimonial, clientName, authorTitle, linkonButton = true, contentClass, className = 'service-card-bg', rating, variant = 'testimonial', title, linkUrl, headerOnTop = false, titleVariant = 'small', showRating = false, featured, slug, companyLogo, authorAvatar }: TestimonialSwiperCardProps) => {
   const t = useTranslations('commonMessages');
 
   return (
@@ -96,7 +95,7 @@ const TestimonialSwiperCard = ({ shortTestimonial, clientName, designation, auth
         <div className={`${headerOnTop ? 'order-first' : ''}`}>
           <AuthorProfile
             name={clientName}
-            role={[authorTitle, designation].filter(Boolean).join(' @ ')}
+            role={authorTitle || ''}
             companyLogo={getImageUrl(companyLogo)}
             avatarUrl={getImageUrl(authorAvatar)}
             avatarAlt={clientName}
