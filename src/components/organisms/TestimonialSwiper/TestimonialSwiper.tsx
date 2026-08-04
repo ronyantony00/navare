@@ -64,7 +64,6 @@ const TestimonialSwiper = ({ testimonialData }: { testimonialData: Testimonial[]
               description={item?.content}
               clientName={item?.authorName}
               authorTitle={item?.authorTitle}
-              designation={item?.authorCompany}
               imageUrl={item?.companyLogo?.url}
               shortTestimonial="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
             />

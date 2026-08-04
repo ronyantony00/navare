@@ -285,7 +285,7 @@
   },
   "successPopup": {
     "title": "Merci !",
-    "successDescription": "Votre message a été soumis. Quelqu'un de notre équipe vous contactera bientôt.",
+    "successDescription": "Merci d'avoir demandé une démonstration de notre produit. Nous avons bien reçu votre demande, et notre équipe vous contactera sous peu pour planifier une démonstration.",
     "failed": "Échec de la soumission",
     "failedDescription": "Quelque chose s'est mal passé lors de la soumission de votre formulaire. Veuillez réessayer dans quelques instants.",
     "contactSupport": "Si le problème persiste, contactez le support !",

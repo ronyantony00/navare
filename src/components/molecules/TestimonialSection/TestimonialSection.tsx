@@ -65,7 +65,7 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                   <div className="relative max-w-maxwidth w-full flex flex-col items-center justify-center">
                     <span className="absolute -left-space-50 top-space-200 w-space-200 h-space-200 bg-blue-circle-bg blur-[130px] rounded-full opacity-80"></span>
                     <span className="absolute right-space-10 top-space-150 w-space-300 h-space-250 bg-primary-blur blur-[100px] rounded-full opacity-60"></span>
-                    
+
                     {/* Equal-Height Testimonial Grid Layout */}
                     <div className="pt-space-30 pb-space-20 md:pb-space-30 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-16 items-stretch w-full">
                       {testimonials?.map((item, index) => (
@@ -74,7 +74,6 @@ const TestimonialSection = ({ testimonialData, borderColor = 'border-border-colo
                             description={item?.content || item?.shortTestimonial}
                             clientName={item?.authorName}
                             authorTitle={item?.authorTitle}
-                            designation={item?.authorCompany}
                             imageUrl={item?.authorAvatar?.url}
                             companyLogo={item?.companyLogo?.url}
                             authorAvatar={item?.authorAvatar?.url}

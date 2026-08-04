@@ -5,13 +5,12 @@ import { getImageUrl } from '@/utils/utilFunctions/urlConstructor';
 interface TestimonialCardProps {
   shortTestimonial?: string;
   clientName?: string;
-  designation?: string;
   title?: string;
   imageUrl?: string;
   backgroundImage?: string;
 }
 
-const TestimonialCard = ({ shortTestimonial, clientName, designation, title, imageUrl, backgroundImage }: TestimonialCardProps) => {
+const TestimonialCard = ({ shortTestimonial, clientName, title, imageUrl, backgroundImage }: TestimonialCardProps) => {
   return (
     <div className="w-full min-h-space-270 rounded-md-3 overflow-hidden relative border border-primary">
       <Image src={getImageUrl(backgroundImage) || '/assets/images/about-us/testimonialCardBg.jpg'} alt="background" width={1270} height={541} className="w-full h-full object-cover object-top lg:object-[75%_top] absolute inset-0" />
@@ -22,7 +21,6 @@ const TestimonialCard = ({ shortTestimonial, clientName, designation, title, ima
           title={title}
           shortTestimonial={shortTestimonial}
           clientName={clientName}
-          designation={designation}
           imageUrl={imageUrl}
         />
       </div>

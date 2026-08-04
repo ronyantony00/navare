@@ -11,8 +11,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const videoClassName =
-  'rounded-lg overflow-hidden border border-border-color lg:max-h-space-150 aspect-video lg:max-w-space-270 w-full lg:ml-auto lg:mx-0 mx-auto';
+const videoClassName
+  = 'rounded-lg overflow-hidden border border-border-color lg:max-h-space-150 aspect-video lg:max-w-space-270 w-full lg:ml-auto lg:mx-0 mx-auto';
 
 const VideoComponent = dynamic(
   () => import('@/components/atoms/VideoComponent/VideoComponent'),
@@ -42,7 +42,7 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
       <div className={`w-full max-w-maxwidth flex flex-col items-center ${mainClass || 'lg:gap-space-26 gap-space-12'}`}>
         <div
           className={`lg:gap-space-40 gap-space-08 section-padding-x w-full flex flex-col ${videoUrl ? 'lg:flex-row lg:items-start' : 'items-center'
-            }`}
+          }`}
         >
           <TextCombo
             smallText={smallText}
@@ -94,7 +94,6 @@ const LandingPageTestimonial = ({ smallText, titlePrefix, titleHighlight, descri
                   shortTestimonial={item?.shortTestimonial}
                   clientName={item?.authorName}
                   authorTitle={item?.authorTitle}
-                  designation={item?.authorCompany}
                   companyLogo={item?.companyLogo?.url}
                   authorAvatar={item?.authorAvatar?.url}
                   linkUrl={item?.extrernalLink}
