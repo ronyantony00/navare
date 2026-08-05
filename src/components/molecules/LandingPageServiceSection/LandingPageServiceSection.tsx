@@ -33,9 +33,10 @@ const solutionLinkMap: Record<string, string> = {
 };
 
 const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, solutionSectionCard }: LandingPageServiceSectionProps) => {
-
   const getSolutionLink = (link: string | null) => {
-    if (!link) return '';
+    if (!link) {
+      return '';
+    }
     return solutionLinkMap[link] || `solutions/${link.toLowerCase()}`;
   };
 
@@ -68,7 +69,7 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
       {/* Shorter frame + TopCenter cover crops empty artboard space under the cards */}
       <div className="hidden lg:block w-full overflow-hidden aspect-[12/5] -mt-space-02">
         <RiveNavigation
-          src="/assets/animation/rive/archived_navera (18).riv"
+          src="/assets/animation/archived_navera (19).riv"
           className="w-full h-full"
           solutionSectionCard={solutionSectionCard}
         />
