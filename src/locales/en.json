@@ -286,7 +286,7 @@
   },
   "successPopup": {
     "title": "Thank you!",
-    "successDescription": "Your message has been submitted. Someone from our team will contact you shortly.",
+    "successDescription": "Thank you for requesting our product demo. We've received your request, and our team will contact you shortly to schedule a demonstration.",
     "failed": "Submission Failed",
     "failedDescription": "Something went wrong while submitting your form. Please try again in a few moments.",
     "contactSupport": "If the issue persists, contact support.!",
