@@ -1,9 +1,9 @@
 'use client';
 
+import type { SolutionCard } from '@/components/molecules/LandingPageServiceSection/LandingPageServiceSection';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useMemo, useState } from 'react';
-import type { SolutionCard } from '@/components/molecules/LandingPageServiceSection/LandingPageServiceSection';
 import MediaContainerSkeleton from '@/components/molecules/Skeleton/MediaContainerSkeleton';
 
 interface RiveNavigationProps {
@@ -19,6 +19,7 @@ interface RiveNavigationProps {
 export default function RiveNavigation({ solutionSectionCard, className = 'relative', text, textInputName, title, textInputTitle, src }: RiveNavigationProps) {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState(false);
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
   const STATE_MACHINE = 'State Machine 1';
 
   // Map link values to their corresponding text input names in the Rive file
@@ -65,7 +66,7 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
             text: card.solution_name,
             textInputName: textInputTitle,
           });
-          }
+        }
       }
 
       return acc;
@@ -101,6 +102,20 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
       alignment: Alignment.TopCenter,
     }),
   });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(pointer: coarse)');
+    const updatePointerMode = () => {
+      setIsCoarsePointer(mediaQuery.matches);
+    };
+
+    updatePointerMode();
+    mediaQuery.addEventListener('change', updatePointerMode);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updatePointerMode);
+    };
+  }, []);
 
   useEffect(() => {
     if (!rive) {
@@ -151,10 +166,20 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
   }, [rive, textOverrides]);
 
   return (
-    <div className={`relative ${className}`} style={{ cursor: isHovering ? 'pointer' : 'default' }}>
+    <div
+      className={`relative ${className}`}
+      style={{
+        cursor: isHovering ? 'pointer' : 'default',
+        touchAction: 'pan-y',
+      }}
+    >
       {!rive && <MediaContainerSkeleton />}
       <div
         className={`w-full h-full transition-opacity duration-300 ${rive ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          touchAction: 'pan-y',
+          pointerEvents: isCoarsePointer ? 'none' : 'auto',
+        }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
