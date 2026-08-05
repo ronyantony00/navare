@@ -19,24 +19,21 @@ interface RiveNavigationProps {
 export default function RiveNavigation({ solutionSectionCard, className = 'relative', text, textInputName, title, textInputTitle, src }: RiveNavigationProps) {
   const router = useRouter();
   const [isHovering, setIsHovering] = useState(false);
-  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
   const STATE_MACHINE = 'State Machine 1';
 
-  // Map link values to their corresponding text input names in the Rive file
   const textInputNameMap: Record<string, string> = {
-    NAVONETMS: 'NAVONE CONTAINER TEXT', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
+    NAVONETMS: 'NAVSCAN TEXT', // Intentional: NAVONE TMS renders in the Rive file's NAVSCAN text run.
     NAVONECMS: 'NAVONE TRANSPORT TEXT', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
     NAVBRIDGE: 'NAVBRIDGE TEXT',
-    NAVSCAN: 'NAVSCAN TEXT',
+    NAVSCAN: 'NAVONE CONTAINER TEXT', // Intentional: NAVSCAN renders in the Rive file's NAVONE TMS text run.
     CUSTOMISED: 'CUSTOMISED TEXT',
   };
 
-  // Map link values to their corresponding title input names in the Rive file
   const textInputTitleMap: Record<string, string> = {
-    NAVONETMS: 'NAVONE CONTAINER TITLE', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
+    NAVONETMS: 'NAVSCAN TITLE', // Intentional: NAVONE TMS renders in the Rive file's NAVSCAN title run.
     NAVONECMS: 'NAVONE TRANSPORT TITLE', // Crossed on purpose - Rive file names the NAVONE runs opposite to the cards they render on.
     NAVBRIDGE: 'NAVBRIDGE TITLE',
-    NAVSCAN: 'NAVSCAN TITLE',
+    NAVSCAN: 'NAVONE CONTAINER TITLE', // Intentional: NAVSCAN renders in the Rive file's NAVONE TMS title run.
     NAVLOGIC: 'NAVLOGIC TITLE',
     CUSTOMISED: 'CUSTOMISED TITLE',
   };
@@ -88,8 +85,8 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
   }, [solutionSectionCard, text, textInputName, title, textInputTitle]);
   const events = [
     { name: 'NAVONE-EVENT', path: '/navonecms' },
-    { name: 'NAVSCAN-EVENT', path: '/navscan' },
-    { name: 'NAVAIR&OCEAN-EVENT', path: '/navonetms' },
+    { name: 'NAVSCAN-EVENT', path: '/navonetms' }, // Intentional: this event is emitted by the visible NAVONE TMS card.
+    { name: 'NAVAIR&OCEAN-EVENT', path: '/navscan' }, // Intentional: this event is emitted by the visible NAVSCAN card.
     { name: 'NAVBRIDGE-EVENT', path: '/navbridge' },
   ];
 
@@ -97,25 +94,12 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
     src,
     stateMachines: STATE_MACHINE,
     autoplay: true,
+    isTouchScrollEnabled: true,
     layout: new Layout({
       fit: Fit.Cover,
       alignment: Alignment.TopCenter,
     }),
   });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(pointer: coarse)');
-    const updatePointerMode = () => {
-      setIsCoarsePointer(mediaQuery.matches);
-    };
-
-    updatePointerMode();
-    mediaQuery.addEventListener('change', updatePointerMode);
-
-    return () => {
-      mediaQuery.removeEventListener('change', updatePointerMode);
-    };
-  }, []);
 
   useEffect(() => {
     if (!rive) {
@@ -178,7 +162,6 @@ export default function RiveNavigation({ solutionSectionCard, className = 'relat
         className={`w-full h-full transition-opacity duration-300 ${rive ? 'opacity-100' : 'opacity-0'}`}
         style={{
           touchAction: 'pan-y',
-          pointerEvents: isCoarsePointer ? 'none' : 'auto',
         }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
