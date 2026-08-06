@@ -58,7 +58,7 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
       {/* <div className="hidden base:block bg-primary-blur h-space-200 w-space-225 rounded-full absolute top-space-200 -right-space-30 blur-[150px] opacity-50"></div> */}
       <Image src={ImageConstants.SeaCargoBg} alt="SeaCargoBg" width={500} height={500} className="absolute md:size-space-200 size-space-100 md:-top-space-20 top-0 md:-left-space-20 -left-space-30  object-contain z-10" />
       <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 xl:gap-space-40 gap-space-20 section-padding-y">
-        <div className="sm:px-space-15 px-space-08 xl:pl-space-40 lg:pl-space-20 md:pl-space-15 lg:pr-space-00 h-full grid md:grid-cols-2 grid-cols-1 md:gap-space-13 gap-space-10">
+        <div className="self-start h-full sm:px-space-15 px-space-08 xl:pl-space-40 lg:pl-space-20 md:pl-space-15 lg:pr-space-00 grid md:grid-cols-2 grid-cols-1 md:gap-space-13 gap-space-10">
           <div className="flex flex-col md:gap-space-13 gap-space-10">
             <Image
               src={imageOneUrl || ImageConstants.SeaCargoThree}
@@ -102,7 +102,7 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
                 <button
                   type="button"
                   key={idx}
-                  className="relative border border-border-color z-20 flex flex-col items-start justify-between navare-green-gradient rounded-lg p-space-10 gap-space-05 cursor-pointer hover:bg-opacity-80 transition-all duration-200 text-left"
+                  className={`relative border border-border-color z-20 flex flex-col items-start justify-between navare-green-gradient rounded-lg p-space-10 gap-space-05 cursor-pointer hover:bg-opacity-80 transition-all duration-200 text-left ${expandedFeatureIndex === idx ? 'lg:h-[180px] h-auto' : ''}`}
                   onMouseEnter={() => handleFeatureHover(idx)}
                   aria-expanded={expandedFeatureIndex === idx}
                   aria-controls={`feature-description-${idx}`}
