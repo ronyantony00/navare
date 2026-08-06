@@ -8,8 +8,8 @@ interface MarqueeProps {
   direction?: 'left' | 'right';
 }
 
-const Marquee = ({ logos, speed = 1, direction = 'left' }: MarqueeProps) => {
-  const duration = Math.max(10, 40 / speed);
+const Marquee = ({ logos, speed = 0.5, direction = 'left' }: MarqueeProps) => {
+  const duration = Math.max(10, 100 / speed);
 
   return (
     <div className="overflow-hidden whitespace-nowrap w-full">
