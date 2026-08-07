@@ -46,8 +46,8 @@ const BookDemoForm = ({
         message: formData.get('message') as string,
       };
 
-      // Ensure all required fields are present (message is optional)
-      if (!formFields.first_name || !formFields.last_name || !formFields.work_email || !formFields.phone_number) {
+      // Ensure all required fields are present
+      if (!formFields.first_name || !formFields.last_name || !formFields.work_email || !formFields.phone_number || !formFields.message) {
         throw new Error(t('allFieldsRequired'));
       }
 
@@ -110,7 +110,6 @@ const BookDemoForm = ({
           onSubmit={handleFormSubmit}
           fieldClass="bg-navare-green border rounded-xs"
           firstName="First Name"
-          messageOptional
         />
       </div>
       <div className="mt-space-08 text-center text-size-4xs">
