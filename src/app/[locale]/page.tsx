@@ -3,7 +3,7 @@ import LandingPage from '@/components/organisms/LandingPage/LandingPage';
 import { getAllTestimonialDataServer, getArticlesDataServer, getClientLogosDataServer, getLandingPageFooterDataServer, getLandingPageGeneralDataServer, getLandingPageHeroDataServer, getLandingPageKeyValueDataServer } from '@/services/apiService';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const title = 'Navare Solutions | Technology That Moved Transport';
+  const title = 'Navare Solutions | Digitalising Your Transport Business';
   const description = 'Navare is a platform revolutionizing supply chain and logistics management. Discover smart solutions for importers, exporters, and logistics providers.';
   const keywords = [
     'Navare',
