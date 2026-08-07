@@ -156,7 +156,7 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
           .transform(value => (value === '' ? undefined : value))
           .test('min-if-present', t('messageWarning'), value => !value || value.length >= 20)
           .notRequired()
-      : baseMessageSchema.min(20, t('messageWarning'));
+      : baseMessageSchema.required(t('required')).min(20, t('messageWarning'));
   }
 
   if (withRecaptcha) {
@@ -326,6 +326,7 @@ const FormComponent = ({ onSubmit, fields, firstName = 'FirstName', className = 
             variant="textarea"
             label="Message"
             name="message"
+            required={!messageOptional}
             value={formik.values.message ?? ''}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

@@ -32,10 +32,11 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
       const formFields = {
         name: (formData.get('firstName') as string) ?? '',
         email: (formData.get('email') as string) ?? '',
+        phone: (formData.get('number') as string) ?? '',
         message: (formData.get('message') as string) ?? '',
       };
 
-      if (!formFields.name || !formFields.email) {
+      if (!formFields.name || !formFields.email || !formFields.phone || !formFields.message) {
         throw new Error(t('allFieldsRequired'));
       }
 
@@ -94,10 +95,9 @@ const CareerForm: React.FC<CareerFormProps> = ({ title, description }) => {
             onSubmit={handleFormSubmit}
             className="flex flex-col z-10"
             firstName="Name"
-            fields={['firstName', 'email', 'message']}
+            fields={['firstName', 'email', 'number', 'message']}
             FormButtonText={isLoading ? t('submittingText') : t('sendMessageText')}
             fieldClass="stories-card-bg rounded-md"
-            messageOptional
           />
         </div>
         <Image

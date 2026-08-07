@@ -41,7 +41,7 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
       };
 
       // Ensure all required fields are present
-      if (!formFields.first_name || !formFields.last_name || !formFields.email || !formFields.phone) {
+      if (!formFields.first_name || !formFields.last_name || !formFields.email || !formFields.phone || !formFields.message) {
         throw new Error(t('allFieldsRequired'));
       }
 
@@ -106,7 +106,6 @@ const ContactSection = ({ title, description, bannerText, buttonText }: contactS
               phoneFieldClass="col-span-2 sm:col-span-1"
               fieldClass="contact-page-field-bg rounded-sm"
               firstName="First Name"
-              messageOptional
             />
             {/* Make sure this section is needed or not */}
             {/* <div className="flex flex-col gap-space-15 sm:gap-space-20 sm:gap-space-10 sm:flex-row w-full justify-between mt-space-12 md:mt-space-24 border-t border-border-light text-text-placeholder very-small-heading pt-space-14 md:pt-space-28">
