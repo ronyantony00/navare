@@ -58,6 +58,7 @@ export interface NavbarCard {
   short_title: string;
   short_description: string;
   icon: NavbarIcon;
+  path?: string;
 }
 
 export interface SolutionsNavbarData {

@@ -88,6 +88,6 @@ export const footerTexts = [
 ];
 
 export const linkPaths = {
-  resource: [{ text: 'News and Insights', path: '/insights' }, { text: 'Customer Testimonial', path: '/testimonials' }, { text: 'FAQ', path: '/faq' }],
+  resource: [{ text: 'News & Insights', path: '/insights' }, { text: 'Customer Testimonial', path: '/testimonials' }, { text: 'FAQ', path: '/faq' }],
   company: [{ text: 'About Us', path: '/about-us' }, { text: 'Careers', path: '/careers' }, { text: 'Contact Us', path: '/contact-us' }, { text: 'Our Team', path: '/team' }],
 };

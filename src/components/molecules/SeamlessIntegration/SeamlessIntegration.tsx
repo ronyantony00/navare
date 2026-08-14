@@ -1,4 +1,5 @@
 import type { title } from '@/types/usecase';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
@@ -15,6 +16,7 @@ interface SeamlessIntegrationProps {
 }
 
 const SeamlessIntegration = ({ tag, title, description, buttonOneText, buttonOneLink, image }: SeamlessIntegrationProps) => {
+  const t = useTranslations('CareersJobListing');
   const { titlePrefix, titleHighlight, titleSuffix } = extractTitleParts(title);
   return (
     <div className="relative w-full flex flex-col items-center justify-center border-t border-border-color section-padding-y gap-space-30 ">
@@ -26,7 +28,7 @@ const SeamlessIntegration = ({ tag, title, description, buttonOneText, buttonOne
             spanText={titleHighlight}
             extraTitle={titleSuffix}
             description={description}
-            buttonOneText={buttonOneText || 'Contact Us'}
+            buttonOneText={buttonOneText || t('contact_us')}
             buttonOneLink={buttonOneLink || '/contact-us'}
             className="z-30 sm:max-w-pct-050 max-w-pct-090 sm:items-start sm:justify-start items-center justify-center"
             textClass="text-center sm:text-left"
