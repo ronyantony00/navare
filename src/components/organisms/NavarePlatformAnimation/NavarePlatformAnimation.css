@@ -1,0 +1,194 @@
+:root {
+  --bg: #061611;
+  --card: #0c1e15;
+  --line: #113d31;
+  --border-idle: #1e5547;
+  /* extracted from .riv: 0xff1e5547 */
+  --border-hover: #2ed960;
+  /* extracted from .riv: 0xff2ed960 */
+  --text: #ffffff;
+  --muted: #738079;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  margin: 0;
+  min-height: 100%;
+  font-family: Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.viewport * {
+  box-sizing: border-box;
+}
+
+.stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1185px;
+  height: 600px;
+  overflow: hidden;
+  transform-origin: 0 0;
+  /* background: rgb(216, 179, 179); */
+}
+
+/* Preserve the existing 872x387 design exactly, but place it inside the
+ full composition bounds shown in the reference screenshot. */
+.design {
+  position: absolute;
+  left: 186px;
+  top: 64px;
+  width: 872px;
+  height: 387px;
+}
+
+.circuit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circuit path,
+.circuit line {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.05;
+  vector-effect: non-scaling-stroke;
+}
+
+.circuit .flow-dot {
+  fill: var(--border-hover);
+  stroke: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.circuit .diamond {
+  fill: #0d3127;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.decor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.quote {
+  left: 483px;
+  top: 13px;
+  width: 56px;
+  height: auto;
+}
+
+.waves {
+  left: 362.5px;
+  top: 143px;
+  width: 176px;
+  height: auto;
+  z-index: 4;
+}
+
+.product-card {
+  position: absolute;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--border-idle);
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 3;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate(0, 0) scale(1);
+  transition: transform 450ms ease-out, border-color 200ms ease;
+  will-change: transform, border-color;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top right, rgba(46, 217, 96, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* The relevant Rive hover timelines have a single frame-0 color key and the
+ state-machine transitions have no mix duration. Therefore the border color
+ switches immediately; no invented lift/scale/easing is added here. */
+.product-card.is-hovered,
+.product-card:focus-visible,
+.product-card:hover {
+  border-color: var(--border-hover);
+  transform: translate(4px, -4px) scale(1.01);
+}
+
+.product-card.is-hovered::before,
+.product-card:focus-visible::before,
+.product-card:hover::before {
+  opacity: 1;
+}
+
+
+.card-container {
+  left: 100px;
+  top: 50px;
+  width: 330px;
+  height: 152px;
+}
+
+.card-transport {
+  left: 559px;
+  top: -47px;
+  width: 330px;
+  height: 152px;
+}
+
+.card-navscan {
+  left: 10px;
+  top: 260px;
+  width: 330px;
+  height: 152px;
+}
+
+.card-navbridge {
+  left: 559px;
+  top: 167px;
+  width: 330px;
+  height: 152px;
+}
+
+.product-card.is-hovered .title,
+.product-card:focus-visible .title {
+  color: var(--border-hover);
+}
+
+.product-card.is-hovered .arrow {
+  transform: translate(2px, -4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

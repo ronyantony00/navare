@@ -1,11 +1,12 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import RiveNavigation from '@/components/atoms/RiveAnimation/RiveAnimation';
+// import RiveNavigation from '@/components/atoms/RiveAnimation/RiveAnimation';
 import ServiceCard from '@/components/atoms/ServiceCard/ServiceCard';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import ImageConstants from '@/constants/imageConstants/imageConstants';
 import { getImageUrl } from '@/utils/urlConstructor';
+import NavarePlatformAnimation from '@/components/organisms/NavarePlatformAnimation/NavarePlatformAnimation';
 
 export interface SolutionCard {
   id: number;
@@ -67,12 +68,13 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
         </div>
       </div>
       {/* Shorter frame + TopCenter cover crops empty artboard space under the cards */}
-      <div className="hidden lg:block w-full overflow-hidden aspect-[12/5] -mt-space-02">
-        <RiveNavigation
+      <div className="hidden lg:block w-full overflow-hidden aspect-[1185/600] -mt-space-02">
+        {/* <RiveNavigation
           src="/assets/animation/archived_navera (20).riv"
           className="w-full h-full"
           solutionSectionCard={solutionSectionCard}
-        />
+        /> */}
+        <NavarePlatformAnimation solutionSectionCard={solutionSectionCard} />
       </div>
     </div>
   );
