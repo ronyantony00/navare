@@ -39,7 +39,7 @@ export function buildPlatformCards(solutionSectionCard?: SolutionCard[]): Platfo
       ariaLabel: backendCard.solution_name || slot.ariaLabel,
       title: backendCard.solution_name || slot.title,
       description: backendCard.description || slot.description,
-      logo: logoUrl || slot.logo,
+      logo: slot.linkKey === 'NAVBRIDGE' ? slot.logo : (logoUrl || slot.logo),
       logoAlt: backendCard.solution_name || slot.logoAlt,
       href: getSolutionHref(backendCard.link, slot.href),
     };
