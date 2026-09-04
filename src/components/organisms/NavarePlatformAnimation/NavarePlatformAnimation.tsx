@@ -37,26 +37,6 @@ export default function NavarePlatformAnimation({ solutionSectionCard }: NavareP
     fitStage();
     window.addEventListener('resize', fitStage, { passive: true });
 
-    const cards = document.querySelectorAll('.product-card');
-    const listeners = new Map();
-
-    for (const card of Array.from(cards)) {
-      const cardElement = card as HTMLElement;
-      const enter = () => {
-        cardElement.classList.add('is-hovered');
-      };
-      const leave = () => {
-        cardElement.classList.remove('is-hovered');
-      };
-
-      cardElement.addEventListener('pointerenter', enter);
-      cardElement.addEventListener('pointerleave', leave);
-      cardElement.addEventListener('focus', enter);
-      cardElement.addEventListener('blur', leave);
-
-      listeners.set(cardElement, { enter, leave });
-    }
-
     // GSAP logic
     let timelineAnimations: any[] = [];
     const w = window as any;
@@ -97,18 +77,6 @@ export default function NavarePlatformAnimation({ solutionSectionCard }: NavareP
 
     return () => {
       window.removeEventListener('resize', fitStage);
-      for (const card of Array.from(cards)) {
-        const cardElement = card as HTMLElement;
-        const { enter, leave } = listeners.get(cardElement) || {};
-        if (enter) {
-          cardElement.removeEventListener('pointerenter', enter);
-          cardElement.removeEventListener('focus', enter);
-        }
-        if (leave) {
-          cardElement.removeEventListener('pointerleave', leave);
-          cardElement.removeEventListener('blur', leave);
-        }
-      }
       timelineAnimations.forEach(tl => tl.kill());
     };
   }, [scriptsLoaded]);
