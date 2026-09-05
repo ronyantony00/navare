@@ -15,6 +15,7 @@ export default function NavarePlatformAnimation({ solutionSectionCard }: NavareP
     () => buildPlatformCards(solutionSectionCard),
     [solutionSectionCard],
   );
+
   const viewportRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const [scriptsLoaded, setScriptsLoaded] = useState(0);
