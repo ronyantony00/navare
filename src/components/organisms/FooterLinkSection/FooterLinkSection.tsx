@@ -126,7 +126,7 @@ const FooterLinkSection = ({ FooterLinks, socialLinks, solutionsNavbarData, useC
             links: resourceCompanyData.navbar.resources.map((company, index) => ({
               id: index + 1,
               linkText: company.short_title,
-              path: linkPaths.resource.find(path => path.text === company.short_title)?.path || '',
+              path: company.path || linkPaths.resource.find(path => path.text === company.short_title)?.path || '',
             })),
           }
         : link,
@@ -142,7 +142,7 @@ const FooterLinkSection = ({ FooterLinks, socialLinks, solutionsNavbarData, useC
             links: resourceCompanyData.navbar.company.map((company, index) => ({
               id: index + 1,
               linkText: company.short_title,
-              path: linkPaths.company.find(path => path.text === company.short_title)?.path || '',
+              path: company.path || linkPaths.company.find(path => path.text === company.short_title)?.path || '',
             })),
           }
         : link,

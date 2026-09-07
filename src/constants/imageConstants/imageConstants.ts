@@ -124,6 +124,7 @@ import BlackTick from '@/public/assets/icons/tick-circle.svg';
 import VideoPauseIcon from '@/public/assets/icons/video-pause-icon.svg';
 import aboutusHeroImage from '@/public/assets/images/about-us-hero-image.avif';
 import experienceBadge from '@/public/assets/images/about-us/25years.svg';
+import TestimonialCardBg from '@/public/assets/images/about-us/testimonialCardBg.jpg';
 import vissionSectionImage from '@/public/assets/images/about-us/vision-section-img.jpg';
 import whoWeAreSectionImage from '@/public/assets/images/about-us/who-we-are-image.svg';
 import BulbIcon from '@/public/assets/images/career/blub-icon.svg';
@@ -241,6 +242,7 @@ const ImageConstants = {
   BlogDetailImage,
   greenCheck,
   FeatureImage,
+  TestimonialCardBg,
   vissionSectionImage,
   quoteImage,
   authorImage,

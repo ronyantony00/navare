@@ -68,7 +68,7 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ pageDetails }) => {
           className="gap-space-04"
         />
         <div className="flex gap-space-02 mb-space-16">
-          <span className="very-small-content font-bold text-desc-text">Last Updated at:</span>
+          <span className="very-small-content font-bold text-desc-text">{t('lastModifiedLabel')}</span>
           <span className="very-small-content text-desc-text">{formatDateToLongString(lastUpdated)}</span>
         </div>
         <Button variant="primary" arrow arrowClassName="size-space-05" text={t('download')} mainClass="w-fit gap-space-05" onClick={handleDownloadPDF} />

@@ -2,7 +2,7 @@ import type { ClientLogo } from '@/types/interfaces';
 import type { title } from '@/types/usecase';
 import TextCombo from '@/components/atoms/TextCombo/TextCombo';
 import Marquee from '@/components/molecules/Marquee/Marquee';
-// import { logos } from '@/constants/dataConstants/NavareConstants';
+import { useTranslations } from 'next-intl';
 
 interface MarqueeProps {
   clientLogos: ClientLogo[];
@@ -13,6 +13,8 @@ interface MarqueeProps {
 }
 
 const IntegrationLogoMarquee = ({ clientLogos, titlePrefix, titleHighlight, description }: MarqueeProps) => {
+  const t = useTranslations('Integration.marquee');
+
   if (clientLogos.length === 0) {
     return null;
   }
@@ -24,7 +26,7 @@ const IntegrationLogoMarquee = ({ clientLogos, titlePrefix, titleHighlight, desc
         <TextCombo
           title={titlePrefix}
           spanText={titleHighlight}
-          description={description || 'Navare connects with industry-leading tools to bring together logistics, finance, and ecommerce - all in one system.'}
+          description={description || t('description')}
           textClass="sm:max-w-pct-060"
           descClass="sm:max-w-pct-060"
           className="items-center text-center mx-auto section-padding-x lg:pt-space-30 pt-space-20 relative z-20"

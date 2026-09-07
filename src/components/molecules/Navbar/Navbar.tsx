@@ -136,7 +136,7 @@ const Navbar = ({ solutionsNavbarData, useCaseNavbarData, articleToShowNavData, 
           return {
             id: item.id,
             title: item.short_title,
-            href: navbarConfig.options[index]?.href || `${basePath}/${item.short_title.toLowerCase().replace(/\s+/g, '-')}`,
+            href: item.path || navbarConfig.options[index]?.href || `${basePath}/${item.short_title.toLowerCase().replace(/\s+/g, '-')}`,
             description: item.short_description,
             icon: getImageUrl(item.icon.url),
           };
