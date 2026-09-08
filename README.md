@@ -1,4 +1,4 @@
-### Features.
+### Features
 
 Developer experience first, extremely flexible code structure and only keep what you need:
 
