@@ -102,7 +102,7 @@ const LandingPageSeaCargo = ({ titlePrefix, titleHighlight, helpText, contactNum
                 <button
                   type="button"
                   key={idx}
-                  className={`relative border border-border-color z-20 flex flex-col items-start justify-between navare-green-gradient rounded-lg p-space-10 gap-space-05 cursor-pointer hover:bg-opacity-80 transition-all duration-200 text-left ${expandedFeatureIndex === idx ? 'lg:h-[180px] h-auto' : ''}`}
+                  className={`relative border border-border-color z-20 flex flex-col items-start justify-between navare-green-gradient rounded-lg p-space-10 gap-space-05 cursor-pointer hover:border-primary hover:bg-opacity-80 transition-all duration-200 text-left ${expandedFeatureIndex === idx ? 'lg:h-[180px] h-auto' : ''}`}
                   onMouseEnter={() => handleFeatureHover(idx)}
                   aria-expanded={expandedFeatureIndex === idx}
                   aria-controls={`feature-description-${idx}`}
