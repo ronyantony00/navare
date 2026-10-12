@@ -1,194 +1,429 @@
-:root {
-  --bg: #061611;
+/* Layout based on the production site (navareglobal.com), with the four cards
+ made one equal, readable size. Plain CSS in real pixels, no scaling.
+
+ The viewport is the page's content container (it has no padding of its own,
+ the section already has the page's side padding). The composition is one block
+ centred in it: card width follows the page width up to a cap; heights, logo and
+ text keep fixed sizes. It is wider than it is tall.
+
+ Every line meets a card at the CENTRE of a side:
+   Container (CMS) -> right side     Scanning -> left side
+   Transport (TMS) -> right side     Freight  -> left side (straight line from the hub's first blob)
+ and the hub's first (top) blob on its left edge (Scanning's main line), on its
+ right edge (Freight's line) and at its centre (the line from the diamond). The left trunk sits at x = 0,
+ --g left of Scanning; the right line sits --g beyond Transport's right edge.
+
+ One spacing value, --g, is kept between every line and every card / the hub,
+ both horizontally and vertically. All positions are derived from the variables
+ in .nvp-stage. */
+.nvp {
   --card: #0c1e15;
   --line: #113d31;
   --border-idle: #1e5547;
-  /* extracted from .riv: 0xff1e5547 */
   --border-hover: #2ed960;
-  /* extracted from .riv: 0xff2ed960 */
-  --text: #ffffff;
-  --muted: #738079;
-}
 
-.viewport {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  background: var(--bg);
-  margin: 0;
-  min-height: 100%;
+  direction: ltr; /* the diagram is positioned absolutely and must not mirror in RTL pages */
+  container-type: inline-size;
   font-family: Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-.viewport * {
+.nvp * {
   box-sizing: border-box;
 }
 
-.stage {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1185px;
-  height: 600px;
-  overflow: hidden;
-  transform-origin: 0 0;
-  /* background: rgb(216, 179, 179); */
+.nvp-stage {
+  /* logo + inner margins drive the card height */
+  --lw: 200px; /* logo width */
+  --lh: 55px; /* logo height */
+  --px: 24px; /* inner side margin of a card */
+  --py: 18px; /* inner top / bottom margin of a card */
+  --gs: 14px; /* gap between logo and title */
+  --gt: 6px; /* gap between title and description */
+  --ch: calc(var(--lh) + var(--py) * 2 + var(--gs) + var(--gt) + 80px); /* logo + title + up to 3 description lines */
+  /* spacing */
+  --g: 26px; /* clearance between every line and every card / the hub (and side gutters) */
+  --gv: var(--g); /* vertical clearance: the same as the side clearance */
+  --xl: 44px; /* extra space between the left cards (Scanning, Container) and the hub */
+  --tt: calc(var(--qs) / 2 - var(--hw) * 0.3743); /* Transport's offset from the first column beside the hub: negative = further left, until it is --g from the quote badge (set 0px to put it back) */
+  --tb: 48px; /* how far Freight sits right of that column: Freight is further right than Transport */
+  /* centre elements */
+  --hw: 190px; /* hub width */
+  --hh: calc(var(--hw) * 0.749); /* hub height (artwork ratio) */
+  --qs: 66px; /* quote badge size */
+  --ds: 16px; /* diamond size */
+  --dh: calc(var(--ds) * 0.7071); /* half the diamond's diagonal: lines stop at its corners */
+  --ql: var(--qs); /* how far the quote badge is lifted above its normal --gv distance: one badge diameter */
+  /* card width: a fixed fallback; the fluid version below needs container query units */
+  --cw: 380px;
+  /* horizontal anchors, left to right */
+  --hl: calc(var(--cw) + var(--g) * 2 + var(--xl)); /* hub left edge */
+  --cl: calc(var(--cx) - var(--qs) / 2 - var(--g) - var(--cw)); /* Container left: its right edge is --g from the quote badge, exactly like Transport on the other side */
+  --bl: calc(var(--hl) + var(--hw) + var(--g)); /* first column right of the hub: --g from the hub */
+  --tl: calc(var(--bl) + var(--tt)); /* Transport left */
+  --fl: calc(var(--bl) + var(--tb)); /* Freight left */
+  --cx: calc(var(--hl) + var(--hw) * 0.6257); /* centre of the hub's first (top) blob */
+  --w: calc(var(--fl) + var(--cw)); /* composition width: Freight is the right-most card */
+  /* vertical anchors */
+  --yr: calc(var(--ch) + var(--gv)); /* row through the diamond: --gv under Transport */
+  --yc: calc(var(--yr) - var(--ch) / 2); /* Container top: its centre is on the diamond row */
+  --ybus: calc(var(--yc) + var(--ch) + var(--gv)); /* main line: --gv under Container, --gv above Scanning */
+  --yh: calc(var(--ybus) - var(--hh) * 0.161); /* hub top: its first (top) blob is level with the main line */
+  --yb: calc(var(--yr) + var(--gv)); /* Freight top: --gv under the row, like every other card */
+  --ys: calc(var(--ybus) + var(--gv)); /* Scanning top: --gv below the main line */
+
+  position: relative;
+  width: var(--w);
+  max-width: 100%;
+  margin-inline: auto;
+  height: calc(var(--ys) + var(--ch));
 }
 
-/* Preserve the existing 872x387 design exactly, but place it inside the
- full composition bounds shown in the reference screenshot. */
-.design {
-  position: absolute;
-  left: 186px;
-  top: 64px;
-  width: 872px;
-  height: 387px;
+/* Narrow desktop containers: slightly smaller logo, hub and text */
+@container (max-width: 1000px) {
+  .nvp-stage {
+    --lw: 170px;
+    --lh: 47px;
+    --px: 20px;
+    --py: 16px;
+    --hw: 150px;
+    --qs: 54px;
+    --ds: 14px;
+    --g: 22px;
+    --xl: 28px;
+    --tb: 32px;
+  }
+
+  .nvp-stage .nvp-card-title {
+    font-size: 14px;
+  }
+
+  .nvp-stage .nvp-card-desc {
+    font-size: 11.5px;
+  }
 }
 
-.circuit {
+/* Card width follows the page width, up to a cap (browsers with container query
+ units: Chrome/Edge 105+, Safari 16+, Firefox 110+). Older browsers keep the
+ fixed 380px above. */
+@supports (width: 1cqw) {
+  .nvp-stage {
+    --cw: clamp(300px, calc((100cqw - var(--hw) - var(--g) * 3 - var(--xl) - var(--tb)) / 2), 380px);
+  }
+}
+
+/* ---- circuit lines ---- */
+.nvp-seg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  pointer-events: none;
   z-index: 0;
+  background: var(--line);
+  pointer-events: none;
+  --dur: 2.4s;
+  --delay: 0s;
 }
 
-.circuit path,
-.circuit line {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 1.05;
-  vector-effect: non-scaling-stroke;
+.nvp-seg.nvp-h {
+  height: 1px;
 }
 
-.circuit .flow-dot {
-  fill: var(--border-hover);
-  stroke: none;
+.nvp-seg.nvp-v {
+  width: 1px;
+}
+
+/* Main line: leaves the left edge of the hub's first (top) blob, runs left to the
+ trunk and drops to the Scanning card. */
+.nvp-seg-bus {
+  left: 0;
+  top: var(--ybus);
+  width: calc(var(--hl) + var(--hw) * 0.2565 + 5px); /* ends 5px inside the left edge of the hub's first (top) blob */
+  --dur: 3.4s;
+}
+
+/* Container card: from the centre of its right side straight across to the diamond */
+.nvp-seg-c-d {
+  left: calc(var(--cl) + var(--cw) - 12px);
+  top: var(--yr);
+  width: calc(var(--cx) - var(--dh) - var(--cl) - var(--cw) + 12px);
+  --delay: 0.4s;
+}
+
+/* Left trunk (x = 0): main line down to the Scanning card, centre of its left side */
+.nvp-seg-trunk {
+  left: 0;
+  top: var(--ybus);
+  height: calc(var(--ys) + var(--ch) / 2 - var(--ybus));
+  --delay: 1s;
+  --dur: 3s;
+}
+
+.nvp-seg-s-h {
+  left: 0;
+  top: calc(var(--ys) + var(--ch) / 2);
+  width: calc(var(--g) + 12px);
+  --delay: 1.8s;
+}
+
+/* Diamond -> hub: straight down the centre of the hub's first blob, from the
+ diamond's bottom corner to the blob's neck (15.4% down the artwork, the bottom
+ of the notch between its two lobes) and not a pixel further */
+.nvp-seg-hub-v {
+  left: var(--cx);
+  top: calc(var(--yr) + var(--dh));
+  height: calc(var(--yh) + var(--hh) * 0.154 - var(--yr) - var(--dh));
+  --delay: 0.6s;
+}
+
+/* Row from the diamond's right corner: runs right to the right line, which goes up into Transport */
+.nvp-seg-row {
+  left: calc(var(--cx) + var(--dh));
+  top: var(--yr);
+  width: calc(var(--tl) + var(--cw) + var(--g) - var(--cx) - var(--dh));
+  --dur: 3.4s;
+  --delay: 0.2s;
+}
+
+/* Right line: --g beyond Transport's right edge, up from the row, then into the centre of Transport's right side */
+.nvp-seg-loop-v {
+  left: calc(var(--tl) + var(--cw) + var(--g) - 1px);
+  top: calc(var(--ch) / 2);
+  height: calc(var(--yr) - var(--ch) / 2);
+  --delay: 1.6s;
+}
+
+.nvp-seg-loop-h {
+  left: calc(var(--tl) + var(--cw) - 12px);
+  top: calc(var(--ch) / 2);
+  width: calc(var(--g) + 12px);
+  --delay: 2.4s;
+}
+
+/* Freight card: a straight line from the right edge of the hub's first (top) blob
+ into the centre of Freight's left side. Freight sits --gv under the row, so its
+ centre is exactly level with the main line to Scanning, which meets the same blob
+ on its left edge: one straight line through the first blob. */
+.nvp-seg-b-hub {
+  left: calc(var(--hl) + var(--hw) * 0.995 - 5px);
+  top: var(--ybus);
+  width: calc(var(--fl) - var(--hl) - var(--hw) * 0.995 + 5px + 12px);
+  --delay: 2.4s;
+  --dur: 3s;
+}
+
+/* Diamond -> quote badge */
+.nvp-seg-q-v {
+  left: var(--cx);
+  top: calc(var(--yr) - var(--gv) - var(--ql));
+  height: calc(var(--gv) + var(--ql) - var(--dh));
+  --delay: 2s;
+}
+
+/* travelling dot: always ends at the segment's end, i.e. at a junction */
+.nvp-seg.nvp-flow::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-hover);
   opacity: 0;
-  will-change: transform, opacity;
+  animation: var(--dur) linear var(--delay) infinite;
 }
 
-.circuit .diamond {
-  fill: #0d3127;
-  stroke: var(--line);
-  stroke-width: 1;
+.nvp-seg.nvp-h.nvp-flow::after {
+  top: -2px;
+  left: 0;
+  animation-name: nvp-flow-x;
 }
 
-.decor {
+.nvp-seg.nvp-v.nvp-flow::after {
+  left: -2px;
+  top: 0;
+  animation-name: nvp-flow-y;
+}
+
+.nvp-seg.nvp-h.nvp-flow.nvp-rev::after {
+  animation-name: nvp-flow-x-rev;
+}
+
+.nvp-seg.nvp-v.nvp-flow.nvp-rev::after {
+  animation-name: nvp-flow-y-rev;
+}
+
+@keyframes nvp-flow-x {
+  0% { left: 0; opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { left: calc(100% - 5px); opacity: 0; }
+}
+
+@keyframes nvp-flow-x-rev {
+  0% { left: calc(100% - 5px); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { left: 0; opacity: 0; }
+}
+
+@keyframes nvp-flow-y {
+  0% { top: 0; opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { top: calc(100% - 5px); opacity: 0; }
+}
+
+@keyframes nvp-flow-y-rev {
+  0% { top: calc(100% - 5px); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { top: 0; opacity: 0; }
+}
+
+.nvp-diamond {
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--cx) - var(--ds) / 2);
+  top: calc(var(--yr) - var(--ds) / 2);
+  width: var(--ds);
+  height: var(--ds);
+  background: #0d3127;
+  border: 1px solid var(--line);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* ---- decor ---- */
+.nvp-decor {
   position: absolute;
   pointer-events: none;
   user-select: none;
-  z-index: 1;
 }
 
-.quote {
-  left: 483px;
-  top: 13px;
-  width: 56px;
-  height: auto;
+.nvp-quote {
+  z-index: 2;
+  left: calc(var(--cx) - var(--qs) / 2);
+  top: calc(var(--yr) - var(--gv) - var(--ql) - var(--qs));
+  width: var(--qs);
+  height: var(--qs);
 }
 
-.waves {
-  left: 362.5px;
-  top: 143px;
-  width: 176px;
-  height: auto;
+.nvp-waves {
   z-index: 4;
+  left: var(--hl);
+  top: var(--yh);
+  width: var(--hw);
+  height: auto;
 }
 
-.product-card {
+/* ---- cards ----
+ .nvp-card is the fixed hit area and never moves. The visible card is the
+ inner layer, which is the only thing that lifts on hover. */
+.nvp-card {
   position: absolute;
   display: block;
+  width: var(--cw);
+  height: var(--ch);
   color: inherit;
   text-decoration: none;
-  background: var(--card);
-  border: 1px solid var(--border-idle);
-  border-radius: 16px;
-  overflow: hidden;
   z-index: 3;
   outline: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transform: translate(0, 0) scale(1);
-  transition: transform 450ms ease-out, border-color 200ms ease;
-  will-change: transform, border-color;
 }
 
-.product-card::before {
+.nvp-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--py) var(--px);
+  background: var(--card);
+  border: 1px solid var(--border-idle);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nvp-card-inner::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(circle at top right, rgba(46, 217, 96, 0.15), transparent 70%);
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
   pointer-events: none;
 }
 
-/* The relevant Rive hover timelines have a single frame-0 color key and the
- state-machine transitions have no mix duration. Therefore the border color
- switches immediately; no invented lift/scale/easing is added here. */
-.product-card.is-hovered,
-.product-card:focus-visible,
-.product-card:hover {
-  border-color: var(--border-hover);
-  transform: translate(4px, -4px) scale(1.01);
+.nvp-card-logo {
+  width: var(--lw);
+  height: var(--lh);
 }
 
-.product-card.is-hovered::before,
-.product-card:focus-visible::before,
-.product-card:hover::before {
+/* One cohesive stack: logo, then title, then description, on fixed gaps and a
+ shared left edge. The stack is centred in the card, so the spare space is
+ split evenly above and below instead of opening a hole between the parts. */
+.nvp-card-stack {
+  gap: var(--gs);
+}
+
+.nvp-card-copy {
+  gap: var(--gt);
+}
+
+.nvp-card-title {
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  text-wrap: balance; /* even line lengths if the title wraps */
+}
+
+.nvp-card-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #97a49c;
+  text-align: left;
+  text-wrap: balance; /* even line lengths: a tidy block without stretched word gaps */
+}
+
+.nvp-card:hover .nvp-card-inner,
+.nvp-card:focus-visible .nvp-card-inner {
+  border-color: var(--border-hover);
+  transform: translate(3px, -3px);
+}
+
+.nvp-card:hover .nvp-card-inner::before,
+.nvp-card:focus-visible .nvp-card-inner::before {
   opacity: 1;
 }
 
-
-.card-container {
-  left: 100px;
-  top: 50px;
-  width: 330px;
-  height: 152px;
+/* Positions */
+.nvp-card-container {
+  left: var(--cl);
+  top: var(--yc);
 }
 
-.card-transport {
-  left: 559px;
-  top: -47px;
-  width: 330px;
-  height: 152px;
+.nvp-card-transport {
+  left: var(--tl);
+  top: 0;
 }
 
-.card-navscan {
-  left: 10px;
-  top: 260px;
-  width: 330px;
-  height: 152px;
+.nvp-card-navscan {
+  left: var(--g);
+  top: var(--ys);
 }
 
-.card-navbridge {
-  left: 559px;
-  top: 167px;
-  width: 330px;
-  height: 152px;
-}
-
-.product-card.is-hovered .title,
-.product-card:focus-visible .title {
-  color: var(--border-hover);
-}
-
-.product-card.is-hovered .arrow {
-  transform: translate(2px, -4px);
+.nvp-card-navbridge {
+  left: var(--fl);
+  top: var(--yb);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .nvp-seg.nvp-flow::after {
+    animation: none;
+    opacity: 0;
+  }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+  .nvp-card-inner,
+  .nvp-card-inner::before {
+    transition-duration: 0.001ms;
   }
 }

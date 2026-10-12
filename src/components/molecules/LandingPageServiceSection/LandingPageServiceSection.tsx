@@ -67,8 +67,8 @@ const LandingPageServiceSection = ({ smallText, titlePrefix, titleHighlight, sol
           ))}
         </div>
       </div>
-      {/* Shorter frame + TopCenter cover crops empty artboard space under the cards */}
-      <div className="hidden lg:block w-full overflow-hidden aspect-[1185/600] -mt-space-02">
+      {/* Desktop only: the platform diagram fills the content width, with the same side padding as the heading */}
+      <div className="hidden lg:block w-full section-padding-x pt-space-08 pb-space-20">
         {/* <RiveNavigation
           src="/assets/animation/archived_navera (20).riv"
           className="w-full h-full"
